@@ -59,15 +59,6 @@ Regras:
 """
 
 
-def analyze_image_with_gemini(image_path: str, api_key: str) -> Optional[Dict[str, Any]]:
-    if not os.path.exists(image_path):
-        return None
-
-    try:
-        with open(image_path, "rb") as f:
-            image_bytes = f.read()
-        b64_img = base64.b64encode(image_bytes).decode("utf-8")
-
 _ACTIVE_FLASH_MODEL = None
 
 
