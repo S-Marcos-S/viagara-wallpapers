@@ -116,66 +116,73 @@ def get_active_flash_model(api_key: str) -> str:
     return _ACTIVE_FLASH_MODEL
 
 
-def analyze_image_with_gemini(image_path: str, api_key: str) -> Optional[Dict[str, Any]]:
+def analyze_image_with_gemini(image_path: str, api_key: str, max_retries: int = 3) -> Optional[Dict[str, Any]]:
     if not os.path.exists(image_path):
         return None
 
-    try:
-        with open(image_path, "rb") as f:
-            image_bytes = f.read()
-        b64_img = base64.b64encode(image_bytes).decode("utf-8")
+    with open(image_path, "rb") as f:
+        image_bytes = f.read()
+    b64_img = base64.b64encode(image_bytes).decode("utf-8")
 
-        model_name = get_active_flash_model(api_key)
+    model_name = get_active_flash_model(api_key)
 
-        payload = {
-            "contents": [
-                {
-                    "parts": [
-                        {"text": PROMPT},
-                        {
-                            "inline_data": {
-                                "mime_type": "image/webp",
-                                "data": b64_img
-                            }
+    payload = {
+        "contents": [
+            {
+                "parts": [
+                    {"text": PROMPT},
+                    {
+                        "inline_data": {
+                            "mime_type": "image/webp",
+                            "data": b64_img
                         }
-                    ]
-                }
-            ],
-            "generationConfig": {
-                "temperature": 0.2,
-                "response_mime_type": "application/json"
+                    }
+                ]
             }
+        ],
+        "generationConfig": {
+            "temperature": 0.2,
+            "response_mime_type": "application/json"
         }
+    }
 
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
-        req = urllib.request.Request(
-            url,
-            data=json.dumps(payload).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
-            method="POST"
-        )
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
 
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            resp_data = json.loads(resp.read().decode("utf-8"))
+    for attempt in range(max_retries):
+        try:
+            req = urllib.request.Request(
+                url,
+                data=json.dumps(payload).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+                method="POST"
+            )
 
-        text = resp_data["candidates"][0]["content"]["parts"][0]["text"].strip()
-        if text.startswith("```json"):
-            text = text[7:]
-        if text.startswith("```"):
-            text = text[3:]
-        if text.endswith("```"):
-            text = text[:-3]
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                resp_data = json.loads(resp.read().decode("utf-8"))
 
-        return json.loads(text.strip())
-    except urllib.error.HTTPError as e:
-        print(f"Gemini API HTTP Error {e.code}: {e.read().decode('utf-8')}")
-        if e.code == 429:
-            print("Rate limit reached. Waiting 10s...")
-            time.sleep(10)
-        return None
-    except Exception as e:
-        print(f"Error calling Gemini: {e}")
-        return None
+            text = resp_data["candidates"][0]["content"]["parts"][0]["text"].strip()
+            if text.startswith("```json"):
+                text = text[7:]
+            if text.startswith("```"):
+                text = text[3:]
+            if text.endswith("```"):
+                text = text[:-3]
+
+            return json.loads(text.strip())
+        except urllib.error.HTTPError as e:
+            err_body = e.read().decode("utf-8", errors="ignore")
+            print(f"Gemini API HTTP Error {e.code} (attempt {attempt + 1}/{max_retries}): {err_body}")
+            if e.code == 429:
+                wait_sec = 12 * (attempt + 1)
+                print(f"RPM Rate limit hit. Waiting {wait_sec}s before retry...")
+                time.sleep(wait_sec)
+            else:
+                return None
+        except Exception as e:
+            print(f"Error calling Gemini (attempt {attempt + 1}/{max_retries}): {e}")
+            time.sleep(3)
+
+    return None
 
 
 def main():
@@ -199,6 +206,7 @@ def main():
 
     MAX_PER_RUN = int(os.environ.get("MAX_CLASSIFY_PER_RUN", "25"))
     updated_count = 0
+    consecutive_failures = 0
     total = len(wallpapers)
 
     print(f"Starting classification batch (limit: {MAX_PER_RUN} wallpapers this run)...")
@@ -257,12 +265,16 @@ def main():
                 json.dump(catalog, f, indent=2, ensure_ascii=False)
                 f.write("\n")
 
+            consecutive_failures = 0
             # Intervalo respeitoso para a cota gratuita da API
             time.sleep(4.0)
         else:
-            print(f" -> Skipping {item_id} due to API limit or error.")
-            # Se tomou erro de rate limit, encerra o lote salvando o que já fez
-            break
+            print(f" -> Skipping {item_id} due to API error/limit.")
+            consecutive_failures += 1
+            if consecutive_failures >= 3:
+                print("Multiple consecutive API failures or quota exhaustion. Stopping batch gracefully.")
+                break
+            time.sleep(8.0)
 
     catalog["categories"] = list(categories_dict.values())
     catalog["wallpapers"] = wallpapers
