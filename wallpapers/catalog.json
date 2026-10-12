@@ -10,94 +10,226 @@
       "label": "Live Wallpapers"
     },
     {
-      "id": "images",
-      "label": "Imagens"
+      "id": "anime",
+      "label": "Anime"
+    },
+    {
+      "id": "games",
+      "label": "Jogos"
+    },
+    {
+      "id": "nature",
+      "label": "Natureza"
+    },
+    {
+      "id": "space",
+      "label": "Espaço"
+    },
+    {
+      "id": "cars",
+      "label": "Carros"
+    },
+    {
+      "id": "city",
+      "label": "Cidades"
+    },
+    {
+      "id": "animals",
+      "label": "Animais"
+    },
+    {
+      "id": "oled",
+      "label": "OLED"
+    },
+    {
+      "id": "minimal",
+      "label": "Minimalista"
+    },
+    {
+      "id": "abstract",
+      "label": "Abstrato"
+    },
+    {
+      "id": "cyberpunk",
+      "label": "Cyberpunk"
+    },
+    {
+      "id": "fantasy",
+      "label": "Fantasia"
+    },
+    {
+      "id": "sports",
+      "label": "Sports"
+    },
+    {
+      "id": "art",
+      "label": "Art"
     }
   ],
   "wallpapers": [
     {
       "id": "tg_45723",
-      "name": "Wallpaper #45723",
+      "name": "O Andarilho com Lanterna",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45723.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45723.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#000000",
+      "category": "oled",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
+        "andarilho",
+        "viajante",
+        "wanderer",
+        "lanterna",
+        "lantern"
+      ],
+      "search_terms": [
+        "andarilho",
+        "viajante",
+        "wanderer",
+        "lanterna",
+        "lantern",
+        "mochila",
+        "backpack",
+        "barba branca",
+        "white beard",
+        "pele vermelha",
+        "fundo preto",
+        "dark aesthetic"
       ]
     },
     {
       "id": "tg_45722",
-      "name": "Wallpaper #45722",
+      "name": "Mike Tyson",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45722.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45722.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#1C1C1C",
+      "category": "sports",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
+        "Mike Tyson",
+        "boxe",
+        "boxing",
+        "boxer",
+        "Iron Mike"
+      ],
+      "search_terms": [
+        "Mike Tyson",
+        "boxe",
+        "boxing",
+        "boxer",
+        "Iron Mike",
+        "campeão",
+        "lutador",
+        "heavyweight",
+        "luvas de boxe",
+        "preto e branco",
+        "monochrome",
+        "musculoso"
       ]
     },
     {
       "id": "tg_45721",
-      "name": "Wallpaper #45721",
+      "name": "Marla Singer Mona Lisa",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45721.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45721.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#2a1d18",
+      "category": "art",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
+        "Marla Singer",
+        "Fight Club",
+        "Clube da Luta",
+        "Mona Lisa",
+        "Helena Bonham Carter"
+      ],
+      "search_terms": [
+        "Marla Singer",
+        "Fight Club",
+        "Clube da Luta",
+        "Mona Lisa",
+        "Helena Bonham Carter",
+        "cigarro",
+        "fumaça",
+        "cigarette",
+        "smoke",
+        "óculos escuros",
+        "vintage",
+        "pintura clássica"
       ]
     },
     {
       "id": "tg_45720",
-      "name": "Wallpaper #45720",
+      "name": "Estátua de Anjo Dark Aesthetic Collage",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45720.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45720.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#000000",
+      "category": "oled",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
+        "estátua",
+        "anjo",
+        "angel statue",
+        "sculpture",
+        "escultura"
+      ],
+      "search_terms": [
+        "estátua",
+        "anjo",
+        "angel statue",
+        "sculpture",
+        "escultura",
+        "colagem",
+        "collage",
+        "dark aesthetic",
+        "grunge",
+        "cigarro",
+        "smoking",
+        "fundo preto"
       ]
     },
     {
       "id": "tg_45719",
-      "name": "Wallpaper #45719",
+      "name": "Shaun o Carneiro",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45719.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45719.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#333333",
+      "category": "animals",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
+        "Shaun o Carneiro",
+        "Shaun the Sheep",
+        "ovelha",
+        "sheep",
+        "carneiro"
+      ],
+      "search_terms": [
+        "Shaun o Carneiro",
+        "Shaun the Sheep",
+        "ovelha",
+        "sheep",
+        "carneiro",
+        "lã",
+        "wool",
+        "fundo escuro",
+        "dark background",
+        "minimalista",
+        "3d",
+        "cute"
       ]
     },
     {
