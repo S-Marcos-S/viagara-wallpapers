@@ -56,14 +56,6 @@
     {
       "id": "fantasy",
       "label": "Fantasia"
-    },
-    {
-      "id": "sports",
-      "label": "Sports"
-    },
-    {
-      "id": "art",
-      "label": "Art"
     }
   ],
   "wallpapers": [
@@ -234,19 +226,35 @@
     },
     {
       "id": "tg_45718",
-      "name": "Wallpaper #45718",
+      "name": "Benjamin Franklin 100 Dólares com a Língua para Fora",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45718.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45718.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#000000",
+      "category": "oled",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
+        "benjamin franklin",
+        "dólar",
+        "dollar bill",
+        "dinheiro",
+        "money"
+      ],
+      "search_terms": [
+        "benjamin franklin",
+        "dólar",
+        "dollar bill",
+        "dinheiro",
+        "money",
+        "100 dollars",
+        "cem dólares",
+        "rolo de dinheiro",
+        "money roll",
+        "língua para fora",
+        "tongue out",
+        "fundo preto"
       ]
     },
     {
