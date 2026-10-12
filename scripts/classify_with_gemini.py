@@ -197,10 +197,17 @@ def main():
     existing_cat_ids = {c["id"] for c in STANDARD_CATEGORIES}
     categories_dict = {c["id"]: c for c in STANDARD_CATEGORIES}
 
+    MAX_PER_RUN = int(os.environ.get("MAX_CLASSIFY_PER_RUN", "25"))
     updated_count = 0
     total = len(wallpapers)
 
+    print(f"Starting classification batch (limit: {MAX_PER_RUN} wallpapers this run)...")
+
     for idx, item in enumerate(wallpapers):
+        if updated_count >= MAX_PER_RUN:
+            print(f"Reached batch limit of {MAX_PER_RUN} classifications for this run.")
+            break
+
         item_id = item["id"]
         # Skip if already categorized with rich search terms and not generic
         if item.get("search_terms") and not item["name"].startswith("Wallpaper #"):
@@ -210,7 +217,7 @@ def main():
         if not os.path.exists(thumb_path):
             continue
 
-        print(f"[{idx+1}/{total}] Classifying {item_id} with Gemini Flash...")
+        print(f"[{updated_count+1}/{MAX_PER_RUN} - Global {idx+1}/{total}] Classifying {item_id} with Gemini Flash...")
         result = analyze_image_with_gemini(thumb_path, GEMINI_API_KEY)
 
         if result:
@@ -243,10 +250,19 @@ def main():
             updated_count += 1
             print(f" -> '{name}' | Categoria: {assigned_cat} | Tags: {', '.join(search_terms[:4])}")
 
-            # Sleep slightly to stay comfortably within rate limits
-            time.sleep(2.0)
+            # Salva o catálogo progressivamente a cada classificação
+            catalog["categories"] = list(categories_dict.values())
+            catalog["wallpapers"] = wallpapers
+            with open(CATALOG_PATH, "w", encoding="utf-8") as f:
+                json.dump(catalog, f, indent=2, ensure_ascii=False)
+                f.write("\n")
+
+            # Intervalo respeitoso para a cota gratuita da API
+            time.sleep(4.0)
         else:
-            print(f" -> Failed to classify {item_id}, keeping existing metadata.")
+            print(f" -> Skipping {item_id} due to API limit or error.")
+            # Se tomou erro de rate limit, encerra o lote salvando o que já fez
+            break
 
     catalog["categories"] = list(categories_dict.values())
     catalog["wallpapers"] = wallpapers
