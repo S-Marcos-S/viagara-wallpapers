@@ -42,21 +42,21 @@ os.makedirs(FULL_DIR, exist_ok=True)
 os.makedirs(THUMB_DIR, exist_ok=True)
 
 
-def generate_image_thumbnail(source_path: str, thumb_path: str, max_h: int = 720):
+def generate_image_thumbnail(source_path: str, thumb_path: str, max_h: int = 1080):
     try:
         with Image.open(source_path) as img:
             img = img.convert("RGB")
             w, h = img.size
             thumb_w = int(w * (max_h / h))
             thumb = img.resize((thumb_w, max_h), Image.Resampling.LANCZOS)
-            thumb.save(thumb_path, format="WEBP", quality=75, method=4)
+            thumb.save(thumb_path, format="WEBP", quality=82, method=4)
         return True
     except Exception as e:
         print(f"Error generating image thumbnail: {e}")
         return False
 
 
-def generate_video_thumbnail(video_path: str, thumb_path: str, max_h: int = 720):
+def generate_video_thumbnail(video_path: str, thumb_path: str, max_h: int = 1080):
     try:
         if cv2 is not None:
             cap = cv2.VideoCapture(video_path)
@@ -69,7 +69,7 @@ def generate_video_thumbnail(video_path: str, thumb_path: str, max_h: int = 720)
                 w, h = img.size
                 thumb_w = int(w * (max_h / h))
                 thumb = img.resize((thumb_w, max_h), Image.Resampling.LANCZOS)
-                thumb.save(thumb_path, format="WEBP", quality=75, method=4)
+                thumb.save(thumb_path, format="WEBP", quality=82, method=4)
                 return True
 
         # Fallback using ffmpeg if installed
@@ -131,12 +131,23 @@ async def main():
 
         doc = msg.media.document
         mime = doc.mime_type or ""
+        doc_size = getattr(doc, "size", 0)
         
         # Check filename attribute
+        has_video_attr = False
         for attr in doc.attributes:
             if isinstance(attr, DocumentAttributeFilename):
                 filename = attr.file_name
-                break
+            elif isinstance(attr, DocumentAttributeVideo):
+                has_video_attr = True
+
+        # In Telegram channels, live wallpapers are posted twice:
+        # 1. As an inline video preview (compressed stream video, usually < 1MB)
+        # 2. As an uncompressed document (.mp4) with full high resolution (10MB - 30MB)
+        # We strictly discard compressed video stream previews to avoid duplicate live wallpapers!
+        if has_video_attr and (not filename or doc_size < 1_200_000):
+            print(f"Skipping low-res/preview video message #{msg.id} (size: {doc_size} bytes)")
+            continue
 
         if filename:
             lower_fn = filename.lower()
@@ -151,7 +162,10 @@ async def main():
                 ext = "mp4"
 
         if not media_type:
-            if "video" in mime or any(isinstance(a, DocumentAttributeVideo) for a in doc.attributes):
+            if "video" in mime or has_video_attr:
+                # Discard low-res preview without filename
+                if doc_size < 1_200_000:
+                    continue
                 media_type = "video"
                 ext = "mp4"
             elif "image" in mime:
