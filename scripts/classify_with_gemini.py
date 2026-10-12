@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
-AI Wallpaper Classifier using Google Gemini 1.5 Flash.
+AI Wallpaper Classifier using Google Gemini Flash.
 Analyzes wallpaper thumbnails to determine:
 - Accurate character/scene/subject title
 - Semantic category (anime, games, nature, cars, space, minimal, abstract, etc.)
@@ -80,28 +80,39 @@ def get_active_flash_model(api_key: str) -> str:
             if "generateContent" in m.get("supportedGenerationMethods", [])
         ]
 
-        # Prioritize newest flash models discovered live from the user's account
+        # Prioritize active production Gemini 3+ models with free tier
+        # Strictly exclude specialized/paid-only models like 'omni', 'audio', 'robotics'
+        preferred = [
+            "gemini-3.8-flash",
+            "gemini-3.6-flash",
+            "gemini-3.5-flash-lite",
+            "gemini-flash-latest",
+        ]
+        for pref in preferred:
+            if pref in available:
+                _ACTIVE_FLASH_MODEL = pref
+                print(f"Selected official active Gemini model: {_ACTIVE_FLASH_MODEL}")
+                return _ACTIVE_FLASH_MODEL
+
+        # Fallback to any valid flash candidate
         flash_candidates = [
             m for m in available
-            if "flash" in m.lower() and "preview" not in m.lower() and "lite" not in m.lower()
+            if "flash" in m.lower()
+            and "omni" not in m.lower()
+            and "audio" not in m.lower()
+            and "live" not in m.lower()
+            and "preview" not in m.lower()
         ]
-
-        if not flash_candidates:
-            # Fallback to any flash model
-            flash_candidates = [m for m in available if "flash" in m.lower()]
-
-        # Sort descending to get the newest version available
-        flash_candidates.sort(reverse=True)
 
         if flash_candidates:
             _ACTIVE_FLASH_MODEL = flash_candidates[0]
-            print(f"Dynamically discovered active Gemini model from API: {_ACTIVE_FLASH_MODEL}")
+            print(f"Selected Gemini model from available candidates: {_ACTIVE_FLASH_MODEL}")
             return _ACTIVE_FLASH_MODEL
     except Exception as e:
         print(f"Notice: Could not list models dynamically: {e}")
 
-    # Fallback if discovery fails
-    _ACTIVE_FLASH_MODEL = "gemini-1.5-flash"
+    # Fallback to the dynamic official latest flash alias or stable gemini-3.8-flash
+    _ACTIVE_FLASH_MODEL = "gemini-3.8-flash"
     return _ACTIVE_FLASH_MODEL
 
 
@@ -244,7 +255,7 @@ def main():
         json.dump(catalog, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
-    print(f"\nSuccessfully categorized {updated_count} wallpapers with Gemini 1.5 Flash!")
+    print(f"\nSuccessfully categorized {updated_count} wallpapers with Gemini Flash!")
 
 
 if __name__ == "__main__":
