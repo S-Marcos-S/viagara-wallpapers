@@ -68,14 +68,62 @@ def analyze_image_with_gemini(image_path: str, api_key: str) -> Optional[Dict[st
             image_bytes = f.read()
         b64_img = base64.b64encode(image_bytes).decode("utf-8")
 
-        # List of candidate models in order of priority (uses current active models with automatic fallback)
-        CANDIDATE_MODELS = [
-            "gemini-2.5-flash",
-            "gemini-2.0-flash",
-            "gemini-flash-latest",
-            "gemini-1.5-flash-latest",
-            "gemini-1.5-flash",
+_ACTIVE_FLASH_MODEL = None
+
+
+def get_active_flash_model(api_key: str) -> str:
+    """Dynamically query the official Google AI Studio models endpoint to pick the active Flash model."""
+    global _ACTIVE_FLASH_MODEL
+    if _ACTIVE_FLASH_MODEL:
+        return _ACTIVE_FLASH_MODEL
+
+    try:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models?key={api_key}"
+        req = urllib.request.Request(url, headers={"User-Agent": "ViagaraClassifier/1.0"})
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+
+        available = [
+            m["name"].replace("models/", "")
+            for m in data.get("models", [])
+            if "generateContent" in m.get("supportedGenerationMethods", [])
         ]
+
+        # Prioritize newest flash models discovered live from the user's account
+        flash_candidates = [
+            m for m in available
+            if "flash" in m.lower() and "preview" not in m.lower() and "lite" not in m.lower()
+        ]
+
+        if not flash_candidates:
+            # Fallback to any flash model
+            flash_candidates = [m for m in available if "flash" in m.lower()]
+
+        # Sort descending to get the newest version available
+        flash_candidates.sort(reverse=True)
+
+        if flash_candidates:
+            _ACTIVE_FLASH_MODEL = flash_candidates[0]
+            print(f"Dynamically discovered active Gemini model from API: {_ACTIVE_FLASH_MODEL}")
+            return _ACTIVE_FLASH_MODEL
+    except Exception as e:
+        print(f"Notice: Could not list models dynamically: {e}")
+
+    # Fallback if discovery fails
+    _ACTIVE_FLASH_MODEL = "gemini-1.5-flash"
+    return _ACTIVE_FLASH_MODEL
+
+
+def analyze_image_with_gemini(image_path: str, api_key: str) -> Optional[Dict[str, Any]]:
+    if not os.path.exists(image_path):
+        return None
+
+    try:
+        with open(image_path, "rb") as f:
+            image_bytes = f.read()
+        b64_img = base64.b64encode(image_bytes).decode("utf-8")
+
+        model_name = get_active_flash_model(api_key)
 
         payload = {
             "contents": [
@@ -97,42 +145,26 @@ def analyze_image_with_gemini(image_path: str, api_key: str) -> Optional[Dict[st
             }
         }
 
-        for model_name in CANDIDATE_MODELS:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
-            req = urllib.request.Request(
-                url,
-                data=json.dumps(payload).encode("utf-8"),
-                headers={"Content-Type": "application/json"},
-                method="POST"
-            )
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST"
+        )
 
-            try:
-                with urllib.request.urlopen(req, timeout=30) as resp:
-                    resp_data = json.loads(resp.read().decode("utf-8"))
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            resp_data = json.loads(resp.read().decode("utf-8"))
 
-                text = resp_data["candidates"][0]["content"]["parts"][0]["text"].strip()
-                # Clean potential markdown wrapping
-                if text.startswith("```json"):
-                    text = text[7:]
-                if text.startswith("```"):
-                    text = text[3:]
-                if text.endswith("```"):
-                    text = text[:-3]
+        text = resp_data["candidates"][0]["content"]["parts"][0]["text"].strip()
+        if text.startswith("```json"):
+            text = text[7:]
+        if text.startswith("```"):
+            text = text[3:]
+        if text.endswith("```"):
+            text = text[:-3]
 
-                return json.loads(text.strip())
-            except urllib.error.HTTPError as e:
-                # If model is not found / deprecated (404), try next model in CANDIDATE_MODELS
-                if e.code == 404:
-                    print(f"Model {model_name} not found or retired, trying next model...")
-                    continue
-                elif e.code == 429:
-                    print(f"Rate limited on {model_name}. Waiting 10s...")
-                    time.sleep(10)
-                    return None
-                else:
-                    print(f"HTTP error {e.code} on {model_name}: {e.read().decode('utf-8')}")
-                    continue
-        return None
+        return json.loads(text.strip())
     except urllib.error.HTTPError as e:
         print(f"Gemini API HTTP Error {e.code}: {e.read().decode('utf-8')}")
         if e.code == 429:
