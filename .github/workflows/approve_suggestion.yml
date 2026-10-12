@@ -1,0 +1,60 @@
+name: Approve Wallpaper Suggestion
+
+on:
+  issue_comment:
+    types: [created]
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  approve:
+    if: >
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/approve') &&
+       (github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'COLLABORATOR' || github.event.comment.author_association == 'MEMBER')) ||
+      (github.event_name == 'issues' && github.event.label.name == 'approved')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Apply suggestion to catalog
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          python scripts/apply_suggestion.py
+
+      - name: Commit and push updated catalog
+        env:
+          ISSUE_NUM: ${{ github.event.issue.number }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -n "$(git status --porcelain wallpapers/catalog.json)" ]; then
+            git add wallpapers/catalog.json
+            git commit -m "chore(catalog): apply suggestion from issue #${ISSUE_NUM} [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "No changes detected in catalog.json."
+          fi
+
+      - name: Close Issue with confirmation comment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUM: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUM" --body "✅ **Sugestão Aprovada!** As novas tags e título foram incorporados com sucesso ao catálogo oficial."
+          gh issue close "$ISSUE_NUM" --reason "completed"
