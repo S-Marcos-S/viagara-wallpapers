@@ -125,38 +125,38 @@ async def main():
         ext = None
         filename = None
 
-        if isinstance(msg.media, MessageMediaPhoto):
-            media_type = "image"
-            ext = "jpg"
-        elif isinstance(msg.media, MessageMediaDocument):
-            doc = msg.media.document
-            mime = doc.mime_type or ""
-            
-            # Check filename attribute
-            for attr in doc.attributes:
-                if isinstance(attr, DocumentAttributeFilename):
-                    filename = attr.file_name
-                    break
+        # Strictly ignore Telegram compressed photos; only download original uncompressed documents
+        if not isinstance(msg.media, MessageMediaDocument):
+            continue
 
-            if filename:
-                lower_fn = filename.lower()
-                if lower_fn.endswith((".jpg", ".jpeg")):
-                    media_type = "image"
-                    ext = "jpg"
-                elif lower_fn.endswith(".png"):
-                    media_type = "image"
-                    ext = "png"
-                elif lower_fn.endswith(".mp4"):
-                    media_type = "video"
-                    ext = "mp4"
+        doc = msg.media.document
+        mime = doc.mime_type or ""
+        
+        # Check filename attribute
+        for attr in doc.attributes:
+            if isinstance(attr, DocumentAttributeFilename):
+                filename = attr.file_name
+                break
 
-            if not media_type:
-                if "video" in mime or any(isinstance(a, DocumentAttributeVideo) for a in doc.attributes):
-                    media_type = "video"
-                    ext = "mp4"
-                elif "image" in mime:
-                    media_type = "image"
-                    ext = "png" if "png" in mime else "jpg"
+        if filename:
+            lower_fn = filename.lower()
+            if lower_fn.endswith((".jpg", ".jpeg")):
+                media_type = "image"
+                ext = "jpg"
+            elif lower_fn.endswith(".png"):
+                media_type = "image"
+                ext = "png"
+            elif lower_fn.endswith(".mp4"):
+                media_type = "video"
+                ext = "mp4"
+
+        if not media_type:
+            if "video" in mime or any(isinstance(a, DocumentAttributeVideo) for a in doc.attributes):
+                media_type = "video"
+                ext = "mp4"
+            elif "image" in mime:
+                media_type = "image"
+                ext = "png" if "png" in mime else "jpg"
 
         if not media_type or not ext:
             continue
