@@ -69,6 +69,8 @@ def main():
 
     target["tags"] = current_tags
     target["search_terms"] = current_search_terms
+    target["classified_by"] = "manual"
+    target["custom_classified"] = True
 
     with open(catalog_path, "w", encoding="utf-8") as f:
         json.dump(catalog, f, indent=2, ensure_ascii=False)

@@ -185,6 +185,35 @@ def analyze_image_with_gemini(image_path: str, api_key: str, max_retries: int = 
     return None
 
 
+def should_skip_classification(item: Dict[str, Any]) -> bool:
+    """
+    Garante estritamente que o Gemini NUNCA altere:
+    1. Imagens com tags ou títulos definidos manualmente por um usuário.
+    2. Imagens que já foram classificadas pelo Gemini anteriormente.
+    3. Imagens que já possuem tags descritivas ou títulos específicos.
+    """
+    # 1. Se foi classificado manualmente pelo usuário, NUNCA toca
+    if item.get("classified_by") == "manual" or item.get("custom_classified") is True:
+        return True
+
+    # 2. Se já foi classificado pelo Gemini anteriormente, NUNCA toca
+    if item.get("classified_by") == "gemini":
+        return True
+
+    # 3. Se já possui tags de busca (search_terms), já foi classificado
+    search_terms = item.get("search_terms")
+    if search_terms and len(search_terms) > 0:
+        return True
+
+    # 4. Se o título não for genérico (não começa com Wallpaper # ou Live Wallpaper #) e já tiver tags
+    name = item.get("name", "")
+    is_generic = name.startswith("Wallpaper #") or name.startswith("Live Wallpaper #")
+    if not is_generic and len(item.get("tags", [])) > 2:
+        return True
+
+    return False
+
+
 def main():
     if not GEMINI_API_KEY:
         print("Error: GEMINI_API_KEY environment variable is not set.")
@@ -217,8 +246,8 @@ def main():
             break
 
         item_id = item["id"]
-        # Skip if already categorized with rich search terms and not generic
-        if item.get("search_terms") and not item["name"].startswith("Wallpaper #"):
+        # Skip if manual, already classified by Gemini, or has custom tags/title
+        if should_skip_classification(item):
             continue
 
         thumb_path = os.path.join(THUMB_DIR, f"{item_id}.webp")
@@ -248,6 +277,7 @@ def main():
             item["primary_color"] = color
             item["search_terms"] = search_terms
             item["tags"] = list(dict.fromkeys(search_terms[:5]))
+            item["classified_by"] = "gemini"
 
             # Register category if new
             if assigned_cat not in existing_cat_ids:
