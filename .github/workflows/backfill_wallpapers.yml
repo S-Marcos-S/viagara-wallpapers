@@ -1,0 +1,92 @@
+name: Backfill Historical Wallpapers
+
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'Quantidade de papéis de parede para baixar'
+        required: true
+        default: '30'
+        type: string
+      skip_today:
+        description: 'Ignorar postagens do dia atual (apenas histórico passado)'
+        required: true
+        default: true
+        type: boolean
+      ai_classifier:
+        description: 'Classificador de Tags e Categorias'
+        required: true
+        default: 'both_with_fallback'
+        type: choice
+        options:
+          - 'both_with_fallback'
+          - 'gemini'
+          - 'simple_ai'
+          - 'skip'
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    name: Backfill Wallpapers from History
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install telethon pillow opencv-python-headless
+          # Install lightweight CPU-only PyTorch & Torchvision for offline Simple AI
+          pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu || echo "Torch installation skipped or failed, fallback to PIL heuristics."
+
+      - name: Run historical backfill
+        env:
+          TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_STRING_SESSION: ${{ secrets.TELEGRAM_STRING_SESSION }}
+          BACKFILL_COUNT: ${{ inputs.count }}
+          SKIP_TODAY: ${{ inputs.skip_today }}
+        run: |
+          python scripts/backfill_telegram.py
+
+      - name: Classify wallpapers
+        if: inputs.ai_classifier != 'skip'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CLASSIFY_PROVIDER: ${{ inputs.ai_classifier }}
+          MAX_CLASSIFY_PER_RUN: ${{ inputs.count }}
+        run: |
+          python scripts/classify_wallpapers.py
+
+      - name: Commit and push backfilled wallpapers
+        env:
+          BACKFILL_COUNT: ${{ inputs.count }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -n "$(git status --porcelain wallpapers/)" ]; then
+            git add wallpapers/
+            git commit -m "chore(wallpapers): backfill ${BACKFILL_COUNT} historical wallpapers [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+            echo "Successfully committed and pushed backfilled wallpapers."
+          else
+            echo "No new wallpapers to commit."
+          fi
