@@ -287,6 +287,15 @@ async def main():
     all_wallpapers.sort(key=get_sort_key, reverse=True)
     catalog["wallpapers"] = all_wallpapers
 
+    # Save newly added item IDs for priority classification
+    new_ids = [item["id"] for item in new_items]
+    tmp_path = os.path.join(BASE_DIR, "wallpapers", ".newly_added_ids.json")
+    try:
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            json.dump(new_ids, f)
+    except Exception as e:
+        print(f"Notice: Could not write .newly_added_ids.json: {e}")
+
     with open(CATALOG_PATH, "w", encoding="utf-8") as f:
         json.dump(catalog, f, indent=2, ensure_ascii=False)
         f.write("\n")

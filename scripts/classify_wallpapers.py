@@ -359,8 +359,21 @@ def main():
     categories_dict = {c["id"]: c for c in STANDARD_CATEGORIES}
     existing_cat_ids = set(categories_dict.keys())
 
+    # Prioritize newly backfilled items if available
+    new_ids_file = os.path.join(BASE_DIR, "wallpapers", ".newly_added_ids.json")
+    priority_ids = set()
+    if os.path.exists(new_ids_file):
+        try:
+            with open(new_ids_file, "r", encoding="utf-8") as f:
+                priority_ids = set(json.load(f))
+            os.remove(new_ids_file)
+            print(f"Prioritizing {len(priority_ids)} newly backfilled wallpapers for classification.")
+        except Exception:
+            pass
+
     # Filter candidates
-    to_classify = [w for w in wallpapers if not should_skip_classification(w)]
+    candidates = [w for w in wallpapers if not should_skip_classification(w)]
+    to_classify = sorted(candidates, key=lambda w: 0 if w.get("id") in priority_ids else 1)
     print(f"Wallpapers needing classification: {len(to_classify)}")
 
     if not to_classify:
