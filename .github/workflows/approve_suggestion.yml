@@ -4,7 +4,13 @@ on:
   issue_comment:
     types: [created]
   issues:
-    types: [labeled]
+    types: [closed, labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Número da Issue de sugestão para aplicar manualmente'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -13,9 +19,26 @@ permissions:
 jobs:
   approve:
     if: >
-      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/approve') &&
-       (github.event.comment.author_association == 'OWNER' || github.event.comment.author_association == 'COLLABORATOR' || github.event.comment.author_association == 'MEMBER')) ||
-      (github.event_name == 'issues' && github.event.label.name == 'approved')
+      (
+        github.event_name == 'issues' &&
+        github.event.action == 'closed' &&
+        github.event.issue.state_reason != 'not_planned' &&
+        github.actor == github.repository_owner &&
+        (contains(github.event.issue.title, '[Sugestão]') || contains(github.event.issue.labels.*.name, 'wallpaper-suggestion') || contains(github.event.issue.body, 'custom_classified'))
+      ) ||
+      (
+        github.event_name == 'issues' &&
+        github.event.action == 'labeled' &&
+        github.event.label.name == 'approved' &&
+        github.actor == github.repository_owner
+      ) ||
+      (
+        github.event_name == 'issue_comment' &&
+        github.event.action == 'created' &&
+        contains(github.event.comment.body, '/approve') &&
+        contains(fromJSON('["OWNER", "COLLABORATOR", "MEMBER"]'), github.event.comment.author_association)
+      ) ||
+      github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
     steps:
@@ -31,14 +54,30 @@ jobs:
 
       - name: Apply suggestion to catalog
         env:
-          ISSUE_BODY: ${{ github.event.issue.body }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_ISSUE_NUM: ${{ inputs.issue_number }}
+          DEFAULT_ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            export ISSUE_BODY=$(gh api "repos/${{ github.repository }}/issues/${DISPATCH_ISSUE_NUM}" --jq '.body')
+          else
+            export ISSUE_BODY="$DEFAULT_ISSUE_BODY"
+          fi
           python scripts/apply_suggestion.py
 
       - name: Commit and push updated catalog
         env:
-          ISSUE_NUM: ${{ github.event.issue.number }}
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_ISSUE_NUM: ${{ inputs.issue_number }}
+          EVENT_ISSUE_NUM: ${{ github.event.issue.number }}
         run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            ISSUE_NUM="$DISPATCH_ISSUE_NUM"
+          else
+            ISSUE_NUM="$EVENT_ISSUE_NUM"
+          fi
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
@@ -54,7 +93,15 @@ jobs:
       - name: Close Issue with confirmation comment
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE_NUM: ${{ github.event.issue.number }}
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_ISSUE_NUM: ${{ inputs.issue_number }}
+          EVENT_ISSUE_NUM: ${{ github.event.issue.number }}
         run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            ISSUE_NUM="$DISPATCH_ISSUE_NUM"
+          else
+            ISSUE_NUM="$EVENT_ISSUE_NUM"
+          fi
+
           gh issue comment "$ISSUE_NUM" --body "✅ **Sugestão Aprovada!** As novas tags e título foram incorporados com sucesso ao catálogo oficial."
-          gh issue close "$ISSUE_NUM" --reason "completed"
+          gh issue close "$ISSUE_NUM" --reason "completed" || true
