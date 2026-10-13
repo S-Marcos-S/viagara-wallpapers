@@ -259,20 +259,37 @@
     },
     {
       "id": "tg_45711",
-      "name": "Wallpaper #45711",
+      "name": "Eren Yeager Titã de Ataque",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45711.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45711.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#15a745",
+      "category": "anime",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
-      ]
+        "Eren Yeager",
+        "Attack Titan",
+        "Titã de Ataque",
+        "Attack on Titan",
+        "Shingeki no Kyojin"
+      ],
+      "search_terms": [
+        "Eren Yeager",
+        "Attack Titan",
+        "Titã de Ataque",
+        "Attack on Titan",
+        "Shingeki no Kyojin",
+        "fogo verde",
+        "green flames",
+        "dark anime",
+        "rugido",
+        "roaring titan",
+        "chamas verdes",
+        "papel de parede oled"
+      ],
+      "classified_by": "gemini"
     },
     {
       "id": "tg_45710",
@@ -304,37 +321,71 @@
     },
     {
       "id": "tg_45709",
-      "name": "Wallpaper #45709",
+      "name": "Eren Yeager Grito com Raios",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45709.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45709.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#000000",
+      "category": "anime",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
-      ]
+        "eren yeager",
+        "attack on titan",
+        "shingeki no kyojin",
+        "grito",
+        "scream"
+      ],
+      "search_terms": [
+        "eren yeager",
+        "attack on titan",
+        "shingeki no kyojin",
+        "grito",
+        "scream",
+        "raios",
+        "lightning",
+        "preto e branco",
+        "black and white",
+        "dark anime",
+        "fúria",
+        "oled"
+      ],
+      "classified_by": "gemini"
     },
     {
       "id": "tg_45708",
-      "name": "Wallpaper #45708",
+      "name": "Eren Yeager Attack on Titan",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45708.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45708.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#0a0a0a",
+      "category": "anime",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
-      ]
+        "Eren Yeager",
+        "Attack on Titan",
+        "Shingeki no Kyojin",
+        "olho",
+        "eye"
+      ],
+      "search_terms": [
+        "Eren Yeager",
+        "Attack on Titan",
+        "Shingeki no Kyojin",
+        "olho",
+        "eye",
+        "titã",
+        "titan shifter",
+        "dark",
+        "preto e branco",
+        "black and white",
+        "glowing eye",
+        "anime"
+      ],
+      "classified_by": "gemini"
     },
     {
       "id": "tg_45707",
@@ -366,37 +417,63 @@
     },
     {
       "id": "tg_45706",
-      "name": "Wallpaper #45706",
+      "name": "OLED Wallpaper #45706",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45706.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45706.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#2b2b29",
+      "category": "oled",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
-      ]
+        "oled",
+        "dark",
+        "preto",
+        "minimalist",
+        "amoled"
+      ],
+      "search_terms": [
+        "oled",
+        "dark",
+        "preto",
+        "minimalist",
+        "amoled",
+        "fundo escuro",
+        "black",
+        "pure black"
+      ],
+      "classified_by": "simple_ai"
     },
     {
       "id": "tg_45699",
-      "name": "Wallpaper #45699",
+      "name": "OLED Wallpaper #45699",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45699.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45699.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#46638b",
+      "category": "oled",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
-      ]
+        "oled",
+        "dark",
+        "preto",
+        "minimalist",
+        "amoled"
+      ],
+      "search_terms": [
+        "oled",
+        "dark",
+        "preto",
+        "minimalist",
+        "amoled",
+        "fundo escuro",
+        "black",
+        "pure black"
+      ],
+      "classified_by": "simple_ai"
     },
     {
       "id": "tg_45698",
@@ -2880,6 +2957,96 @@
         "hd",
         "4k"
       ]
+    },
+    {
+      "id": "tg_45369",
+      "name": "Wallpaper #45369",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45369.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45369.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "0b070e40d577e6461afc9bbfbbab5baf"
+    },
+    {
+      "id": "tg_45368",
+      "name": "Wallpaper #45368",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45368.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45368.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "6f2aed7a73e24d4717a898db2cd8dbea"
+    },
+    {
+      "id": "tg_45367",
+      "name": "Wallpaper #45367",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45367.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45367.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "6ed36223edac67cb537d86fcf5bb481c"
+    },
+    {
+      "id": "tg_45366",
+      "name": "Wallpaper #45366",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45366.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45366.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "a8a0dabad1928d67f9f14b7366d5738d"
+    },
+    {
+      "id": "tg_45365",
+      "name": "Wallpaper #45365",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45365.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45365.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "2450dd10eb243ea9ef86ffaa4a9348f7"
     }
   ]
 }
