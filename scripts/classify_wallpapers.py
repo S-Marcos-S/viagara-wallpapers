@@ -327,18 +327,34 @@ def analyze_with_simple_ai(image_path: str, item: Dict[str, Any]) -> Dict[str, A
     }
 
 
+UPGRADE_SIMPLE_AI_RAW = os.environ.get("UPGRADE_SIMPLE_AI", "false").lower().strip()
+UPGRADE_SIMPLE_AI = UPGRADE_SIMPLE_AI_RAW in ("true", "1", "yes", "y")
+
+
 def should_skip_classification(item: Dict[str, Any]) -> bool:
-    if item.get("classified_by") in ("manual", "gemini"):
+    # 1. Manual user classifications are STRICTLY sacred and NEVER touched
+    if item.get("classified_by") == "manual" or item.get("custom_classified") is True:
         return True
-    if item.get("custom_classified") is True:
+
+    # 2. If already classified by Gemini, skip
+    if item.get("classified_by") == "gemini":
         return True
-    search_terms = item.get("search_terms")
-    if search_terms and len(search_terms) > 3:
-        return True
-    name = item.get("name", "")
-    is_generic = name.startswith("Wallpaper #") or name.startswith("Live Wallpaper #")
-    if not is_generic and len(item.get("tags", [])) > 2:
-        return True
+
+    # 3. If classified by simple_ai, skip unless upgrade is explicitly enabled
+    if item.get("classified_by") == "simple_ai":
+        if not UPGRADE_SIMPLE_AI or PROVIDER == "simple_ai":
+            return True
+
+    # 4. If search terms are already rich and not generic
+    if not UPGRADE_SIMPLE_AI:
+        search_terms = item.get("search_terms")
+        if search_terms and len(search_terms) > 3:
+            return True
+        name = item.get("name", "")
+        is_generic = name.startswith("Wallpaper #") or name.startswith("Live Wallpaper #")
+        if not is_generic and len(item.get("tags", [])) > 2:
+            return True
+
     return False
 
 

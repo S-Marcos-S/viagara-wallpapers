@@ -1,0 +1,77 @@
+name: Classify Existing Wallpapers
+run-name: "Classify Wallpapers (batch: ${{ inputs.batch_size }}, provider: ${{ inputs.ai_classifier }})"
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_size:
+        description: 'Quantidade de papéis de parede para classificar'
+        required: true
+        default: '30'
+        type: string
+      ai_classifier:
+        description: 'Classificador de Tags e Categorias'
+        required: true
+        default: 'both_with_fallback'
+        type: choice
+        options:
+          - 'both_with_fallback'
+          - 'gemini'
+          - 'simple_ai'
+      upgrade_simple:
+        description: 'Tentar aprimorar papéis de parede da Simple AI com Gemini'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  classify:
+    name: Classify Existing Catalog Wallpapers
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pillow
+          # Install lightweight CPU-only PyTorch & Torchvision for offline Simple AI
+          pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu || echo "Torch installation skipped or failed, fallback to PIL heuristics."
+
+      - name: Run classification on existing wallpapers
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CLASSIFY_PROVIDER: ${{ inputs.ai_classifier }}
+          MAX_CLASSIFY_PER_RUN: ${{ inputs.batch_size }}
+          UPGRADE_SIMPLE_AI: ${{ inputs.upgrade_simple }}
+        run: |
+          python scripts/classify_wallpapers.py
+
+      - name: Commit and push updated catalog
+        env:
+          BATCH_SIZE: ${{ inputs.batch_size }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -n "$(git status --porcelain wallpapers/catalog.json)" ]; then
+            git add wallpapers/catalog.json
+            git commit -m "chore(catalog): classify ${BATCH_SIZE} existing wallpapers [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+            echo "Successfully committed and pushed updated catalog."
+          else
+            echo "No changes detected in catalog.json."
+          fi

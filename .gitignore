@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+*.pyo
+.tmp
+.newly_added_ids.json
