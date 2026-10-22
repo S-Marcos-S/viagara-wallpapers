@@ -777,20 +777,37 @@
     },
     {
       "id": "tg_45803",
-      "name": "Wallpaper #45803",
+      "name": "Ondas Retrô Minimalistas",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45803.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45803.png",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#000000",
+      "category": "oled",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
-      ]
+        "ondas",
+        "curvas",
+        "linhas abstratas",
+        "fundo preto",
+        "laranja"
+      ],
+      "search_terms": [
+        "ondas",
+        "curvas",
+        "linhas abstratas",
+        "fundo preto",
+        "laranja",
+        "retro",
+        "minimalista",
+        "dark wallpaper",
+        "oled",
+        "amoled",
+        "abstract waves",
+        "minimalist"
+      ],
+      "classified_by": "gemini"
     },
     {
       "id": "tg_45802",
@@ -811,20 +828,37 @@
     },
     {
       "id": "tg_45801",
-      "name": "Wallpaper #45801",
+      "name": "Ondas Gradiente Minimalistas",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45801.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45801.png",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#0d1721",
+      "category": "abstract",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
-      ]
+        "ondas abstratas",
+        "abstract waves",
+        "minimalista",
+        "minimalist",
+        "gradiente"
+      ],
+      "search_terms": [
+        "ondas abstratas",
+        "abstract waves",
+        "minimalista",
+        "minimalist",
+        "gradiente",
+        "gradient",
+        "curvas fluidas",
+        "flowing curves",
+        "laranja e azul",
+        "orange and navy",
+        "sunset glow",
+        "pôr do sol"
+      ],
+      "classified_by": "gemini"
     },
     {
       "id": "tg_45794",
@@ -845,20 +879,37 @@
     },
     {
       "id": "tg_45793",
-      "name": "Wallpaper #45793",
+      "name": "Lua Colorida no Espaço",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45793.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45793.png",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#000000",
+      "category": "space",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
-      ]
+        "lua",
+        "moon",
+        "espaço",
+        "space",
+        "crateras"
+      ],
+      "search_terms": [
+        "lua",
+        "moon",
+        "espaço",
+        "space",
+        "crateras",
+        "craters",
+        "planeta",
+        "planet",
+        "astronomia",
+        "astronomy",
+        "oled",
+        "fundo preto"
+      ],
+      "classified_by": "gemini"
     },
     {
       "id": "tg_45792",
@@ -896,20 +947,37 @@
     },
     {
       "id": "tg_45790",
-      "name": "Wallpaper #45790",
+      "name": "Lua Cheia Dourada",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45790.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45790.png",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#e09829",
+      "category": "oled",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
-      ]
+        "lua",
+        "lua cheia",
+        "moon",
+        "full moon",
+        "crateras"
+      ],
+      "search_terms": [
+        "lua",
+        "lua cheia",
+        "moon",
+        "full moon",
+        "crateras",
+        "craters",
+        "dourado",
+        "golden moon",
+        "fundo preto",
+        "black background",
+        "oled",
+        "espaço"
+      ],
+      "classified_by": "gemini"
     },
     {
       "id": "tg_45789",
