@@ -1,13 +1,15 @@
 name: Classify Existing Wallpapers
-run-name: "Classify Wallpapers (batch: ${{ inputs.batch_size }}, provider: ${{ inputs.ai_classifier }})"
+run-name: "Classify Wallpapers (batch: ${{ inputs.batch_size || '50' }}, provider: ${{ inputs.ai_classifier || 'both_with_fallback' }})"
 
 on:
+  schedule:
+    - cron: '30 2,14 * * *'
   workflow_dispatch:
     inputs:
       batch_size:
         description: 'Quantidade de papéis de parede para classificar'
         required: true
-        default: '30'
+        default: '50'
         type: string
       ai_classifier:
         description: 'Classificador de Tags e Categorias'
@@ -19,9 +21,9 @@ on:
           - 'gemini'
           - 'simple_ai'
       upgrade_simple:
-        description: 'Tentar aprimorar papéis de parede da Simple AI com Gemini'
+        description: 'Aprimorar papéis de parede antigos (da Simple AI ou genéricos) com Gemini'
         required: false
-        default: false
+        default: true
         type: boolean
 
 permissions:
@@ -53,22 +55,22 @@ jobs:
       - name: Run classification on existing wallpapers
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          CLASSIFY_PROVIDER: ${{ inputs.ai_classifier }}
-          MAX_CLASSIFY_PER_RUN: ${{ inputs.batch_size }}
-          UPGRADE_SIMPLE_AI: ${{ inputs.upgrade_simple }}
+          CLASSIFY_PROVIDER: ${{ inputs.ai_classifier || 'both_with_fallback' }}
+          MAX_CLASSIFY_PER_RUN: ${{ inputs.batch_size || '50' }}
+          UPGRADE_SIMPLE_AI: ${{ inputs.upgrade_simple != false }}
         run: |
           python scripts/classify_wallpapers.py
 
       - name: Commit and push updated catalog
         env:
-          BATCH_SIZE: ${{ inputs.batch_size }}
+          BATCH_SIZE: ${{ inputs.batch_size || '50' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           if [ -n "$(git status --porcelain wallpapers/catalog.json)" ]; then
             git add wallpapers/catalog.json
-            git commit -m "chore(catalog): classify ${BATCH_SIZE} existing wallpapers [skip ci]"
+            git commit -m "chore(catalog): auto-classify ${BATCH_SIZE} wallpapers by Gemini AI [skip ci]"
             git pull --rebase origin main
             git push origin main
             echo "Successfully committed and pushed updated catalog."

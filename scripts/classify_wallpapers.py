@@ -2,20 +2,28 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """
 Unified Wallpaper Classifier supporting:
-1. Google Gemini Flash (Generative semantic AI for rich tags and character names)
-2. Simple AI (Local Computer Vision & MobileNetV3 - runs offline, zero API costs, zero rate limits)
-3. Both with Fallback (Attempts Gemini first; seamlessly falls back to Simple AI if quota/429 is hit)
+1. Google Gemini Flash (3.8 / 3.5 / 2.5 / latest with dynamic candidate resolution)
+2. Simple AI (Local Computer Vision & MobileNetV3 - runs offline, zero API costs)
+3. Both with Fallback (Attempts Gemini first; seamlessly falls back to Simple AI if quota is hit)
 """
 
 import os
 import sys
 import json
-import base64
 import time
-import urllib.request
-import urllib.error
+import io
 from typing import Dict, Any, List, Optional, Tuple
 from PIL import Image
+
+# Ensure scripts directory is on sys.path for local imports
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from classify_with_gemini import (
+    analyze_image_with_gemini,
+    fetch_image_bytes,
+    get_candidate_models,
+    STANDARD_CATEGORIES,
+)
 
 # Optional Torchvision for offline neural vision
 try:
@@ -29,27 +37,12 @@ except Exception:
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 PROVIDER = os.environ.get("CLASSIFY_PROVIDER", "both_with_fallback").lower().strip()
 MAX_PER_RUN = int(os.environ.get("MAX_CLASSIFY_PER_RUN", "50"))
+UPGRADE_SIMPLE_AI_RAW = os.environ.get("UPGRADE_SIMPLE_AI", "true").lower().strip()
+UPGRADE_SIMPLE_AI = UPGRADE_SIMPLE_AI_RAW in ("true", "1", "yes", "y")
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATALOG_PATH = os.path.join(BASE_DIR, "wallpapers", "catalog.json")
 THUMB_DIR = os.path.join(BASE_DIR, "wallpapers", "thumbnails")
-
-STANDARD_CATEGORIES = [
-    {"id": "all", "label": "Todos"},
-    {"id": "live", "label": "Live Wallpapers"},
-    {"id": "anime", "label": "Anime"},
-    {"id": "games", "label": "Jogos"},
-    {"id": "nature", "label": "Natureza"},
-    {"id": "space", "label": "Espaço"},
-    {"id": "cars", "label": "Carros"},
-    {"id": "city", "label": "Cidades"},
-    {"id": "animals", "label": "Animais"},
-    {"id": "oled", "label": "OLED"},
-    {"id": "minimal", "label": "Minimalista"},
-    {"id": "abstract", "label": "Abstrato"},
-    {"id": "cyberpunk", "label": "Cyberpunk"},
-    {"id": "fantasy", "label": "Fantasia"},
-]
 
 KEYWORD_CATEGORY_MAP = {
     "cars": ["car", "automobile", "truck", "motorcycle", "wheel", "racer", "jeep", "cab", "wagon", "convertible", "vehicle", "bus"],
@@ -63,142 +56,9 @@ KEYWORD_CATEGORY_MAP = {
     "abstract": ["pattern", "geometric", "spiral", "fractal", "abstract"],
 }
 
-GEMINI_PROMPT = """Você é um especialista em classificação e catalogação visual de papéis de parede mobile para um aplicativo Android.
-Analise detalhadamente a imagem fornecida e retorne APENAS um JSON válido no seguinte formato:
-
-{
-  "name": "Nome descritivo preciso (ex: Naruto Uzumaki, Pôr do Sol na Praia, Cyberpunk City, McLaren 720S, Goku Super Saiyajin)",
-  "category": "Uma das opções: anime, games, nature, space, cars, city, animals, oled, minimal, abstract, cyberpunk, fantasy (ou crie uma categoria curta em minúsculas se realmente não se encaixar em nenhuma)",
-  "primary_color": "#HEX (cor dominante da imagem)",
-  "search_terms": [
-    "lista de 6 a 12 palavras-chave e termos de pesquisa em português e inglês detalhando os elementos visuais exatos que aparecem na imagem, personagens, cores, objetos, ambiente, etc."
-  ]
-}
-
-Regras:
-1. Se a imagem contiver um personagem famoso de anime, mangá, quadrinho ou jogo, identifique o personagem pelo nome exato no campo "name" e adicione o anime/jogo nos search_terms.
-2. Seja detalhista nos search_terms (ex para montanha: "montanha", "céu azul", "neve", "pico", "nuvens", "natureza", "mountain", "blue sky").
-3. Responda SOMENTE o bloco JSON puro, sem markdown ```json``` ou texto explicativo antes/depois.
-"""
-
-_ACTIVE_FLASH_MODEL = None
 _TORCH_MODEL = None
 _TORCH_TRANSFORM = None
 _IMAGENET_CATEGORIES = None
-
-
-def get_active_flash_model(api_key: str) -> str:
-    global _ACTIVE_FLASH_MODEL
-    if _ACTIVE_FLASH_MODEL:
-        return _ACTIVE_FLASH_MODEL
-
-    try:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models?key={api_key}"
-        req = urllib.request.Request(url, headers={"User-Agent": "ViagaraClassifier/1.0"})
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-
-        available = [
-            m["name"].replace("models/", "")
-            for m in data.get("models", [])
-            if "generateContent" in m.get("supportedGenerationMethods", [])
-        ]
-
-        preferred = [
-            "gemini-3.8-flash",
-            "gemini-3.6-flash",
-            "gemini-3.5-flash-lite",
-            "gemini-flash-latest",
-        ]
-        for pref in preferred:
-            if pref in available:
-                _ACTIVE_FLASH_MODEL = pref
-                print(f"[Gemini] Selected active model: {_ACTIVE_FLASH_MODEL}")
-                return _ACTIVE_FLASH_MODEL
-
-        flash_candidates = [
-            m for m in available
-            if "flash" in m.lower()
-            and "omni" not in m.lower()
-            and "audio" not in m.lower()
-            and "live" not in m.lower()
-            and "preview" not in m.lower()
-        ]
-        if flash_candidates:
-            _ACTIVE_FLASH_MODEL = flash_candidates[0]
-            print(f"[Gemini] Selected candidate model: {_ACTIVE_FLASH_MODEL}")
-            return _ACTIVE_FLASH_MODEL
-    except Exception as e:
-        print(f"[Gemini] Dynamic model check warning: {e}")
-
-    _ACTIVE_FLASH_MODEL = "gemini-3.8-flash"
-    return _ACTIVE_FLASH_MODEL
-
-
-def analyze_with_gemini(image_path: str, api_key: str, max_retries: int = 2) -> Optional[Dict[str, Any]]:
-    if not os.path.exists(image_path) or not api_key:
-        return None
-
-    try:
-        with open(image_path, "rb") as f:
-            b64_img = base64.b64encode(f.read()).decode("utf-8")
-    except Exception as e:
-        print(f"Error reading {image_path}: {e}")
-        return None
-
-    model_name = get_active_flash_model(api_key)
-    payload = {
-        "contents": [
-            {
-                "parts": [
-                    {"text": GEMINI_PROMPT},
-                    {
-                        "inline_data": {
-                            "mime_type": "image/webp",
-                            "data": b64_img,
-                        }
-                    },
-                ]
-            }
-        ],
-        "generationConfig": {
-            "temperature": 0.2,
-            "response_mime_type": "application/json",
-        },
-    }
-
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
-
-    for attempt in range(max_retries):
-        try:
-            req = urllib.request.Request(
-                url,
-                data=json.dumps(payload).encode("utf-8"),
-                headers={"Content-Type": "application/json"},
-                method="POST",
-            )
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                resp_data = json.loads(resp.read().decode("utf-8"))
-
-            text = resp_data["candidates"][0]["content"]["parts"][0]["text"].strip()
-            if text.startswith("```json"):
-                text = text[7:]
-            if text.startswith("```"):
-                text = text[3:]
-            if text.endswith("```"):
-                text = text[:-3]
-            return json.loads(text.strip())
-        except urllib.error.HTTPError as e:
-            if e.code == 429:
-                print(f"[Gemini] Rate limit 429 on attempt {attempt+1}.")
-                time.sleep(8)
-            else:
-                return None
-        except Exception as e:
-            print(f"[Gemini] API error: {e}")
-            time.sleep(2)
-
-    return None
 
 
 def extract_dominant_color(img: Image.Image) -> str:
@@ -206,7 +66,6 @@ def extract_dominant_color(img: Image.Image) -> str:
         small = img.copy().convert("RGB").resize((48, 48), Image.Resampling.BOX)
         palette = small.quantize(colors=6, method=Image.Quantize.MEDIANCUT).getpalette()
         if palette and len(palette) >= 3:
-            # Pick the most vibrant non-black color or default to first
             for i in range(0, min(18, len(palette)), 3):
                 r, g, b = palette[i], palette[i + 1], palette[i + 2]
                 if (r + g + b) > 40:  # not pitch black
@@ -219,10 +78,13 @@ def extract_dominant_color(img: Image.Image) -> str:
 
 def is_oled_image(img: Image.Image) -> bool:
     try:
-        gray = img.copy().convert("L").resize((64, 64))
-        pixels = list(gray.getdata())
-        dark_pixels = sum(1 for p in pixels if p < 25)
-        return (dark_pixels / len(pixels)) >= 0.55
+        small = img.copy().convert("L").resize((64, 64), Image.Resampling.BOX)
+        if hasattr(small, "get_flattened_data"):
+            pixels = list(small.get_flattened_data())
+        else:
+            pixels = list(small.getdata())
+        dark_pixels = sum(1 for p in pixels if p < 15)
+        return (dark_pixels / len(pixels)) >= 0.60
     except Exception:
         return False
 
@@ -235,7 +97,8 @@ def get_torch_model():
     if _TORCH_MODEL is None:
         try:
             weights = MobileNet_V3_Small_Weights.DEFAULT
-            _TORCH_MODEL = mobilenet_v3_small(weights=weights).eval()
+            _TORCH_MODEL = mobilenet_v3_small(weights=weights)
+            _TORCH_MODEL.eval()
             _TORCH_TRANSFORM = weights.transforms()
             _IMAGENET_CATEGORIES = weights.meta["categories"]
             print("[Simple AI] MobileNetV3 neural vision model loaded successfully.")
@@ -246,24 +109,19 @@ def get_torch_model():
     return _TORCH_MODEL, _TORCH_TRANSFORM, _IMAGENET_CATEGORIES
 
 
-def analyze_with_simple_ai(image_path: str, item: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Offline local vision classification using:
-    - Dominant color extraction & OLED dark thresholding
-    - MobileNetV3 top-class detection (if torchvision available)
-    - Visual heuristic color & pattern mapping
-    """
-    if not os.path.exists(image_path):
+def analyze_with_simple_ai(image_bytes: bytes, item: Dict[str, Any]) -> Dict[str, Any]:
+    """Offline local vision classification using color heuristics and MobileNetV3."""
+    try:
+        with Image.open(io.BytesIO(image_bytes)) as pil_img:
+            pil_rgb = pil_img.convert("RGB")
+            color = extract_dominant_color(pil_rgb)
+            is_oled = is_oled_image(pil_rgb)
+    except Exception as e:
+        print(f"[Simple AI] Error processing image bytes: {e}")
         return {}
-
-    with Image.open(image_path) as pil_img:
-        pil_rgb = pil_img.convert("RGB")
-        color = extract_dominant_color(pil_rgb)
-        is_oled = is_oled_image(pil_rgb)
 
     is_video = item.get("type") == "video" or item.get("is_live", False)
 
-    # 1. Base category determination
     if is_video:
         category = "live"
         name = item["name"] if not item["name"].startswith("Wallpaper #") else f"Live Wallpaper #{item['id'].replace('tg_', '')}"
@@ -291,7 +149,6 @@ def analyze_with_simple_ai(image_path: str, item: Dict[str, Any]) -> Dict[str, A
                         cls_name = categories[top5_catid[i]].lower().replace("_", " ")
                         detected_labels.append(cls_name)
 
-                        # Match class against known category keyword lists
                         for cat_id, keywords in KEYWORD_CATEGORY_MAP.items():
                             if any(k in cls_name for k in keywords):
                                 detected_category = cat_id
@@ -304,7 +161,6 @@ def analyze_with_simple_ai(image_path: str, item: Dict[str, Any]) -> Dict[str, A
         category = detected_category
         clean_item_name = item["name"]
 
-        # Generate descriptive name if still generic
         if clean_item_name.startswith("Wallpaper #") and detected_labels:
             readable_label = detected_labels[0].capitalize()
             name = f"{readable_label} #{item['id'].replace('tg_', '')}"
@@ -322,37 +178,39 @@ def analyze_with_simple_ai(image_path: str, item: Dict[str, Any]) -> Dict[str, A
         "name": name,
         "category": category,
         "primary_color": color,
-        "tags": tags[:5],
-        "search_terms": search_terms[:10],
+        "tags": tags,
+        "search_terms": search_terms,
     }
 
 
-UPGRADE_SIMPLE_AI_RAW = os.environ.get("UPGRADE_SIMPLE_AI", "false").lower().strip()
-UPGRADE_SIMPLE_AI = UPGRADE_SIMPLE_AI_RAW in ("true", "1", "yes", "y")
-
-
 def should_skip_classification(item: Dict[str, Any]) -> bool:
-    # 1. Manual user classifications are STRICTLY sacred and NEVER touched
+    """Decide whether to classify an item or skip it."""
+    # 1. Manual user classifications are strictly preserved
     if item.get("classified_by") == "manual" or item.get("custom_classified") is True:
         return True
 
-    # 2. If already classified by Gemini, skip
+    name = item.get("name", "")
+    is_generic_name = name.startswith("Wallpaper #") or name.startswith("Live Wallpaper #")
+    is_generic_cat = item.get("category", "") in ("images", "unknown", "")
+
+    # Always classify if name or category is generic
+    if is_generic_name or is_generic_cat:
+        return False
+
+    # Skip if already classified by Gemini and has real name
     if item.get("classified_by") == "gemini":
         return True
 
-    # 3. If classified by simple_ai, skip unless upgrade is explicitly enabled
+    # If classified by Simple AI, skip unless upgrade is enabled
     if item.get("classified_by") == "simple_ai":
         if not UPGRADE_SIMPLE_AI or PROVIDER == "simple_ai":
             return True
+        return False
 
-    # 4. If search terms are already rich and not generic
+    # If already has rich search terms and not generic
     if not UPGRADE_SIMPLE_AI:
         search_terms = item.get("search_terms")
-        if search_terms and len(search_terms) > 3:
-            return True
-        name = item.get("name", "")
-        is_generic = name.startswith("Wallpaper #") or name.startswith("Live Wallpaper #")
-        if not is_generic and len(item.get("tags", [])) > 2:
+        if search_terms and len(search_terms) > 3 and len(item.get("tags", [])) > 2:
             return True
 
     return False
@@ -370,6 +228,7 @@ def main():
     print(f"=== Viagara Wallpaper Classifier ===")
     print(f"Provider: {PROVIDER}")
     print(f"Batch limit: {MAX_PER_RUN}")
+    print(f"Upgrade generic/simple AI: {UPGRADE_SIMPLE_AI}")
     print(f"Total wallpapers in catalog: {len(wallpapers)}")
 
     categories_dict = {c["id"]: c for c in STANDARD_CATEGORIES}
@@ -383,7 +242,7 @@ def main():
             with open(new_ids_file, "r", encoding="utf-8") as f:
                 priority_ids = set(json.load(f))
             os.remove(new_ids_file)
-            print(f"Prioritizing {len(priority_ids)} newly backfilled wallpapers for classification.")
+            print(f"Prioritizing {len(priority_ids)} newly backfilled wallpapers.")
         except Exception:
             pass
 
@@ -402,8 +261,9 @@ def main():
 
     for idx, item in enumerate(to_classify[:MAX_PER_RUN]):
         item_id = item["id"]
-        thumb_path = os.path.join(THUMB_DIR, f"{item_id}.webp")
-        if not os.path.exists(thumb_path):
+        image_bytes = fetch_image_bytes(item)
+        if not image_bytes:
+            print(f" -> Skipping {item_id}: could not load image bytes.")
             continue
 
         result = None
@@ -413,21 +273,21 @@ def main():
         if active_provider in ("gemini", "both_with_fallback"):
             if GEMINI_API_KEY:
                 print(f"[{idx+1}/{min(len(to_classify), MAX_PER_RUN)}] Classifying {item_id} with Gemini Flash...")
-                result = analyze_with_gemini(thumb_path, GEMINI_API_KEY)
+                result = analyze_image_with_gemini(image_bytes, GEMINI_API_KEY)
                 if result:
                     used_method = "gemini"
                     gemini_fail_count = 0
                 else:
                     gemini_fail_count += 1
-                    print(f" -> Gemini returned no response or quota reached (fails: {gemini_fail_count}).")
-                    if active_provider == "both_with_fallback" and gemini_fail_count >= 2:
+                    print(f" -> Gemini returned no response (fails: {gemini_fail_count}).")
+                    if active_provider == "both_with_fallback" and gemini_fail_count >= 3:
                         print("\n[Notice] Switching to Simple AI (Local Vision) fallback for remaining items...")
                         active_provider = "simple_ai"
 
         # Fallback or direct Simple AI
         if not result and (active_provider == "simple_ai" or active_provider == "both_with_fallback"):
             print(f"[{idx+1}/{min(len(to_classify), MAX_PER_RUN)}] Classifying {item_id} with Simple AI (Local Vision)...")
-            result = analyze_with_simple_ai(thumb_path, item)
+            result = analyze_with_simple_ai(image_bytes, item)
             if result:
                 used_method = "simple_ai"
 
@@ -456,7 +316,7 @@ def main():
             updated_count += 1
             print(f" -> [{used_method.upper()}] '{name}' | Categoria: {assigned_cat} | Cor: {color} | Tags: {', '.join(item['tags'][:4])}")
 
-            # Save progress progressively
+            # Progressive save
             catalog["categories"] = list(categories_dict.values())
             catalog["wallpapers"] = wallpapers
             with open(CATALOG_PATH, "w", encoding="utf-8") as f:
