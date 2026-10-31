@@ -57,7 +57,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           CLASSIFY_PROVIDER: ${{ inputs.ai_classifier || 'both_with_fallback' }}
           MAX_CLASSIFY_PER_RUN: ${{ inputs.batch_size || '50' }}
-          UPGRADE_SIMPLE_AI: ${{ inputs.upgrade_simple != false }}
+          UPGRADE_SIMPLE_AI: ${{ github.event_name == 'schedule' || inputs.upgrade_simple != false }}
         run: |
           python scripts/classify_wallpapers.py
 

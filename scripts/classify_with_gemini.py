@@ -297,6 +297,10 @@ def should_skip_classification(item: Dict[str, Any]) -> bool:
     if item.get("classified_by") == "gemini" and not is_generic and not is_generic_cat:
         return True
 
+    # Simple AI items should be upgraded by Gemini
+    if item.get("classified_by") == "simple_ai":
+        return False
+
     # If it has rich search terms and is not generic
     search_terms = item.get("search_terms")
     if search_terms and len(search_terms) > 3 and not is_generic and not is_generic_cat:
