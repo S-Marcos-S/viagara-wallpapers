@@ -2,8 +2,8 @@ name: Sync Telegram Wallpapers
 
 on:
   schedule:
-    # Executa duas vezes ao dia às 02:00 e 14:00 UTC (30 minutos antes da classificação às 02:30 e 14:30 UTC)
-    - cron: '0 2,14 * * *'
+    # Executa duas vezes ao dia: às 05:00 UTC (02:00 BRT - madrugada no Brasil) e às 14:00 UTC (30 min antes da análise às 14:30 UTC)
+    - cron: '0 5,14 * * *'
   workflow_dispatch: # Permite disparar manualmente pelo botão "Run workflow"
 
 permissions:
