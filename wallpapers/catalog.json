@@ -9715,5 +9715,22 @@
       ],
       "classified_by": "simple_ai"
     }
-  ]
+  ],
+  "latest_notification": {
+    "id": "notif_init_20261030",
+    "title": "Destaques Anime & Dark!",
+    "message": "Novos wallpapers incríveis adicionados à coleção",
+    "count": 7,
+    "wallpaper_ids": [
+      "tg_45992",
+      "tg_45991",
+      "tg_45990",
+      "tg_45989",
+      "tg_45982",
+      "tg_45981",
+      "tg_45980"
+    ],
+    "timestamp": 1793406099900,
+    "generated_by": "gemini"
+  }
 }

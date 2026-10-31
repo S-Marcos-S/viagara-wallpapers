@@ -30,6 +30,7 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATALOG_PATH = os.path.join(BASE_DIR, "wallpapers", "catalog.json")
 THUMB_DIR = os.path.join(BASE_DIR, "wallpapers", "thumbnails")
+NOTIFICATION_PATH = os.path.join(BASE_DIR, "wallpapers", "notification.json")
 
 STANDARD_CATEGORIES = [
     {"id": "all", "label": "Todos"},
@@ -284,6 +285,132 @@ def analyze_image_with_gemini(image_bytes: bytes, api_key: str, max_retries: int
     return None
 
 
+def generate_dynamic_notification(
+    classified_items: List[Dict[str, Any]],
+    api_key: str
+) -> Dict[str, Any]:
+    """
+    Asks Google Gemini to generate a short, vibrant, and engaging mobile push notification
+    highlighting the newest wallpapers added (e.g. superhero, anime, oled, nature, etc.).
+    Falls back to a standard payload if Gemini is unavailable or errors out.
+    """
+    now_ms = int(time.time() * 1000)
+    notif_id = f"notif_{int(time.time())}"
+    item_ids = [it["id"] for it in classified_items]
+    total_count = len(classified_items)
+
+    if not api_key or not classified_items:
+        return {
+            "id": notif_id,
+            "title": None,
+            "message": None,
+            "count": total_count,
+            "wallpaper_ids": item_ids,
+            "timestamp": now_ms,
+            "generated_by": "fallback",
+        }
+
+    summaries = []
+    for it in classified_items[:10]:
+        name = it.get("name", "Wallpaper")
+        cat = it.get("category", "")
+        tags = ", ".join(it.get("tags", [])[:3])
+        summaries.append(f"- {name} (Categoria: {cat}; Tags: {tags})")
+    items_text = "\n".join(summaries)
+
+    notif_prompt = f"""Você é o redator do aplicativo Android Viagara Launcher.
+Acabamos de adicionar {total_count} novos papéis de parede para celular:
+{items_text}
+
+Crie uma notificação para o usuário anunciando esses novos wallpapers.
+A notificação DEVE ser extremamente curta, animada, chamativa e em português (Brasil).
+Destaque o personagem mais famoso, o tema principal ou a característica mais marcante (ex: AMOLED/OLED, Anime, Marvel, Carros).
+
+Exemplos de formato esperado:
+Exemplo 1:
+{{"title": "Homem-Aranha em destaque!", "message": "{total_count} novas imagens do amigão da vizinhança"}}
+
+Exemplo 2:
+{{"title": "Novidades OLED na área!", "message": "{total_count} novos fundos pretos para sua tela AMOLED"}}
+
+Exemplo 3:
+{{"title": "Novo drop de Anime & Games!", "message": "Confira {total_count} wallpapers épicos adicionados"}}
+
+Regras:
+1. 'title' DEVE ter no máximo 35 caracteres.
+2. 'message' DEVE ter no máximo 60 caracteres.
+3. Retorne APENAS o JSON puro com 'title' e 'message', sem formatação markdown.
+"""
+
+    candidates = get_candidate_models(api_key)
+    for model_name in candidates:
+        try:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+            payload = {
+                "contents": [{"parts": [{"text": notif_prompt}]}],
+                "generationConfig": {
+                    "temperature": 0.7,
+                    "response_mime_type": "application/json",
+                },
+            }
+            req_data = json.dumps(payload).encode("utf-8")
+            req = urllib.request.Request(
+                url,
+                data=req_data,
+                headers={"Content-Type": "application/json", "User-Agent": "ViagaraClassifier/2.0"},
+            )
+            with urllib.request.urlopen(req, timeout=12) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                text = data["candidates"][0]["content"]["parts"][0]["text"]
+                parsed = clean_json_response(text)
+                if parsed and parsed.get("title") and parsed.get("message"):
+                    title = parsed["title"].strip()
+                    message = parsed["message"].strip()
+                    if len(title) > 40:
+                        title = title[:37] + "..."
+                    if len(message) > 70:
+                        message = message[:67] + "..."
+                    print(f"[Gemini Notification] Gerada com sucesso: \"{title}\" - \"{message}\"")
+                    return {
+                        "id": notif_id,
+                        "title": title,
+                        "message": message,
+                        "count": total_count,
+                        "wallpaper_ids": item_ids,
+                        "timestamp": now_ms,
+                        "generated_by": "gemini",
+                    }
+        except Exception as e:
+            print(f"[Gemini Notification] Erro ao gerar com modelo {model_name}: {e}")
+            continue
+
+    print(f"[Gemini Notification] Usando fallback nativo para {total_count} papéis de parede.")
+    return {
+        "id": notif_id,
+        "title": None,
+        "message": None,
+        "count": total_count,
+        "wallpaper_ids": item_ids,
+        "timestamp": now_ms,
+        "generated_by": "fallback",
+    }
+
+
+def save_notification(notification: Dict[str, Any], catalog: Dict[str, Any]):
+    """Saves notification to catalog.json and wallpapers/notification.json."""
+    catalog["latest_notification"] = notification
+    with open(CATALOG_PATH, "w", encoding="utf-8") as f:
+        json.dump(catalog, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    try:
+        with open(NOTIFICATION_PATH, "w", encoding="utf-8") as f:
+            json.dump(notification, f, indent=2, ensure_ascii=False)
+            f.write("\n")
+        print(f"[Notification] Salva com sucesso em {NOTIFICATION_PATH}")
+    except Exception as e:
+        print(f"[Notification] Warning: Could not save {NOTIFICATION_PATH}: {e}")
+
+
 def should_skip_classification(item: Dict[str, Any]) -> bool:
     """Check if item is already properly classified."""
     if item.get("classified_by") == "manual" or item.get("custom_classified") is True:
@@ -329,6 +456,7 @@ def main():
 
     MAX_PER_RUN = int(os.environ.get("MAX_CLASSIFY_PER_RUN", "30"))
     updated_count = 0
+    updated_items: List[Dict[str, Any]] = []
     consecutive_failures = 0
     total = len(wallpapers)
 
@@ -379,6 +507,7 @@ def main():
                 existing_cat_ids.add(assigned_cat)
 
             updated_count += 1
+            updated_items.append(item)
             print(f" -> '{name}' | Categoria: {assigned_cat} | Cor: {color} | Tags: {', '.join(item['tags'][:4])}")
 
             # Progressive save
@@ -403,6 +532,11 @@ def main():
     with open(CATALOG_PATH, "w", encoding="utf-8") as f:
         json.dump(catalog, f, indent=2, ensure_ascii=False)
         f.write("\n")
+
+    if updated_items:
+        print(f"\n[Notification] Gerando notificação dinâmica para {len(updated_items)} papéis de parede...")
+        notif = generate_dynamic_notification(updated_items, GEMINI_API_KEY)
+        save_notification(notif, catalog)
 
     print(f"\nSuccessfully categorized {updated_count} wallpapers with Gemini Flash!")
 

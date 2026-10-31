@@ -68,8 +68,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          if [ -n "$(git status --porcelain wallpapers/catalog.json)" ]; then
-            git add wallpapers/catalog.json
+          if [ -n "$(git status --porcelain wallpapers/catalog.json wallpapers/notification.json)" ]; then
+            git add wallpapers/catalog.json wallpapers/notification.json
             git commit -m "chore(catalog): auto-classify ${BATCH_SIZE} wallpapers by Gemini AI [skip ci]"
             git pull --rebase origin main
             git push origin main

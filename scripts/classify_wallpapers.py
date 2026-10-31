@@ -23,6 +23,8 @@ from classify_with_gemini import (
     fetch_image_bytes,
     get_candidate_models,
     STANDARD_CATEGORIES,
+    generate_dynamic_notification,
+    save_notification,
 )
 
 # Optional Torchvision for offline neural vision
@@ -246,9 +248,25 @@ def main():
         except Exception:
             pass
 
-    # Filter candidates
+    # Filter candidates with strict priority:
+    # 0: Explicit new IDs (.newly_added_ids.json)
+    # 1: Brand new / unclassified / generic name wallpapers
+    # 2: Existing Simple AI wallpapers to be upgraded by Gemini
     candidates = [w for w in wallpapers if not should_skip_classification(w)]
-    to_classify = sorted(candidates, key=lambda w: 0 if w.get("id") in priority_ids else 1)
+
+    def get_candidate_priority(item: Dict[str, Any]) -> int:
+        if item.get("id") in priority_ids:
+            return 0
+        name = item.get("name", "")
+        cat = item.get("category", "")
+        cb = item.get("classified_by")
+        if cb is None or cb == "" or name.startswith("Wallpaper #") or name.startswith("Live Wallpaper #") or cat in ("images", "unknown", ""):
+            return 1
+        if cb == "simple_ai":
+            return 2
+        return 3
+
+    to_classify = sorted(candidates, key=get_candidate_priority)
     print(f"Wallpapers needing classification: {len(to_classify)}")
 
     if not to_classify:
@@ -257,6 +275,7 @@ def main():
 
     active_provider = PROVIDER
     updated_count = 0
+    updated_items: List[Dict[str, Any]] = []
     gemini_fail_count = 0
 
     for idx, item in enumerate(to_classify[:MAX_PER_RUN]):
@@ -314,6 +333,7 @@ def main():
                 existing_cat_ids.add(assigned_cat)
 
             updated_count += 1
+            updated_items.append(item)
             print(f" -> [{used_method.upper()}] '{name}' | Categoria: {assigned_cat} | Cor: {color} | Tags: {', '.join(item['tags'][:4])}")
 
             # Progressive save
@@ -333,6 +353,11 @@ def main():
     with open(CATALOG_PATH, "w", encoding="utf-8") as f:
         json.dump(catalog, f, indent=2, ensure_ascii=False)
         f.write("\n")
+
+    if updated_items:
+        print(f"\n[Notification] Gerando notificação dinâmica para {len(updated_items)} papéis de parede...")
+        notif = generate_dynamic_notification(updated_items, GEMINI_API_KEY)
+        save_notification(notif, catalog)
 
     print(f"\nDone! Successfully classified {updated_count} wallpapers.")
 
