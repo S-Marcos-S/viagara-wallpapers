@@ -1,24 +1,15 @@
 {
-  "id": "notif_1793625714",
-  "title": "Hulk esmaga na sua tela!",
-  "message": "14 novos wallpapers incríveis da Marvel e abstratos",
-  "count": 14,
+  "id": "notif_1793709938",
+  "title": "Brilho OLED na tela!",
+  "message": "5 novos wallpapers neon para seu celular",
+  "count": 5,
   "wallpaper_ids": [
-    "tg_46036",
-    "tg_46035",
-    "tg_46034",
-    "tg_46033",
-    "tg_46032",
-    "tg_46031",
-    "tg_46023",
-    "tg_46022",
-    "tg_46021",
-    "tg_46020",
-    "tg_46015",
-    "tg_46014",
-    "tg_46013",
-    "tg_46012"
+    "tg_46047",
+    "tg_46046",
+    "tg_46045",
+    "tg_46044",
+    "tg_46043"
   ],
-  "timestamp": 1793625714666,
+  "timestamp": 1793709938972,
   "generated_by": "gemini"
 }
