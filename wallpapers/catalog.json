@@ -60,6 +60,608 @@
   ],
   "wallpapers": [
     {
+      "id": "tg_45353",
+      "name": "Linhas Verticais Azuis AMOLED",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45353.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45353.jpg",
+      "primary_color": "#0066ff",
+      "category": "oled",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "oled",
+        "dark",
+        "blue",
+        "abstract",
+        "minimal",
+        "amoled",
+        "vertical",
+        "lines"
+      ],
+      "content_hash": "a66cd2d3affd0937ab943d4f2f255e4e",
+      "search_terms": [
+        "linhas azuis",
+        "blue lines",
+        "fundo preto",
+        "black background",
+        "oled",
+        "amoled",
+        "abstrato",
+        "abstract",
+        "vertical stripes",
+        "listras verticais",
+        "minimalista",
+        "minimal",
+        "dark mode",
+        "neon blue"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45352",
+      "name": "Linhas Verticais Vermelhas Minimalistas",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45352.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45352.jpg",
+      "primary_color": "#d61c28",
+      "category": "oled",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "oled",
+        "dark",
+        "minimal",
+        "red",
+        "abstract",
+        "vermelho",
+        "minimalista"
+      ],
+      "content_hash": "d9fb7cda73e9ef525d1154dd94e52274",
+      "search_terms": [
+        "linhas verticais",
+        "vermelho",
+        "preto",
+        "fundo escuro",
+        "minimalista",
+        "abstrato",
+        "red lines",
+        "black background",
+        "vertical stripes",
+        "AMOLED",
+        "gradiente",
+        "dark mode"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45345",
+      "name": "Retrô Waves Minimalista",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45345.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45345.jpg",
+      "primary_color": "#0d1b2a",
+      "category": "minimal",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "minimal",
+        "oled",
+        "retro",
+        "abstract",
+        "dark",
+        "minimalista"
+      ],
+      "content_hash": "74ae179213401c34112fc933306a0c9a",
+      "search_terms": [
+        "minimalista",
+        "minimal",
+        "oled",
+        "ondas",
+        "waves",
+        "retro",
+        "vintage",
+        "abstrato",
+        "abstract",
+        "azul",
+        "blue",
+        "laranja",
+        "orange",
+        "dark",
+        "escuro"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45343",
+      "name": "Camadas Abstratas Coloridas OLED",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45343.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45343.jpg",
+      "primary_color": "#000000",
+      "category": "oled",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "oled",
+        "dark",
+        "abstract",
+        "gradient",
+        "colorful",
+        "minimal",
+        "abstrato",
+        "escuro"
+      ],
+      "content_hash": "8d6fa3dc1b2eb3923d5204f917f5b228",
+      "search_terms": [
+        "camadas",
+        "layers",
+        "retângulos arredondados",
+        "rounded rectangles",
+        "degradê",
+        "gradient",
+        "amarelo",
+        "yellow",
+        "roxo",
+        "purple",
+        "rosa",
+        "pink",
+        "preto",
+        "black",
+        "oled",
+        "minimalista"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45342",
+      "name": "Túnel Abstrato Roxo e Preto",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45342.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45342.jpg",
+      "primary_color": "#4a00e0",
+      "category": "abstract",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "abstract",
+        "minimal",
+        "purple",
+        "violet",
+        "tunnel",
+        "oled",
+        "gradient"
+      ],
+      "content_hash": "f4b5459fd9aa0443f5fcd63f4a302b13",
+      "search_terms": [
+        "abstract",
+        "abstrato",
+        "purple",
+        "roxo",
+        "violet",
+        "violeta",
+        "tunnel",
+        "túnel",
+        "gradient",
+        "degrade",
+        "minimalist",
+        "minimalista",
+        "geometric",
+        "geometrico"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45337",
+      "name": "Gradiente Abstrato Pôr do Sol",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45337.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45337.jpg",
+      "primary_color": "#a84358",
+      "category": "abstract",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "abstract",
+        "abstrato",
+        "gradient",
+        "gradiente",
+        "sunset",
+        "pôr do sol",
+        "colorful",
+        "minimal"
+      ],
+      "content_hash": "398bfab8a473e5b8957e4de7baa194d0",
+      "search_terms": [
+        "gradiente",
+        "abstrato",
+        "pôr do sol",
+        "sunset",
+        "gradient",
+        "cores suaves",
+        "rosa",
+        "laranja",
+        "roxo",
+        "pink",
+        "orange",
+        "purple",
+        "fundo suave",
+        "blur",
+        "minimalista"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45336",
+      "name": "Céu com Nuvens ao Pôr do Sol",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45336.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45336.jpg",
+      "primary_color": "#3b82a6",
+      "category": "nature",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "nature",
+        "natureza",
+        "sky",
+        "céu",
+        "clouds",
+        "nuvens",
+        "sunset",
+        "pôr do sol"
+      ],
+      "content_hash": "0fe05a4d0aee34fa3c39aef1b8c1f0a1",
+      "search_terms": [
+        "céu",
+        "sky",
+        "nuvens",
+        "clouds",
+        "pôr do sol",
+        "sunset",
+        "natureza",
+        "nature",
+        "azul",
+        "blue",
+        "rosa",
+        "pink",
+        "laranja",
+        "orange",
+        "atmosfera"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45335",
+      "name": "Nuvens Suaves ao Pôr do Sol",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45335.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45335.jpg",
+      "primary_color": "#8c9ba6",
+      "category": "nature",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "nature",
+        "natureza",
+        "clouds",
+        "nuvens",
+        "sky",
+        "céu",
+        "minimal",
+        "pastel"
+      ],
+      "content_hash": "a289d5a01d2b711ee2447672b80a44cf",
+      "search_terms": [
+        "nuvens",
+        "clouds",
+        "céu",
+        "sky",
+        "natureza",
+        "nature",
+        "pastel",
+        "suave",
+        "soft",
+        "atmosfera",
+        "atmosphere",
+        "brilho",
+        "glow",
+        "luz",
+        "light"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45334",
+      "name": "Nuvens Azuis Noturnas",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45334.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45334.jpg",
+      "primary_color": "#0a0c14",
+      "category": "oled",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "oled",
+        "dark",
+        "clouds",
+        "nuvens",
+        "blue",
+        "night",
+        "minimal"
+      ],
+      "content_hash": "1f4364e16f9f4f65a771044afa81ae8e",
+      "search_terms": [
+        "nuvens",
+        "clouds",
+        "céu noturno",
+        "night sky",
+        "azul",
+        "blue",
+        "preto",
+        "black",
+        "oled",
+        "dark",
+        "minimalista",
+        "natureza",
+        "nature"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45333",
+      "name": "Céu Estrelado Acima das Nuvens",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45333.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45333.jpg",
+      "primary_color": "#0d1b2a",
+      "category": "nature",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "nature",
+        "sky",
+        "clouds",
+        "stars",
+        "night",
+        "blue",
+        "oled",
+        "dark"
+      ],
+      "content_hash": "06d6b53dfa96640e54530c3e8226a469",
+      "search_terms": [
+        "nuvens",
+        "céu noturno",
+        "estrelas",
+        "noite",
+        "azul",
+        "horizonte",
+        "atmosfera",
+        "clouds",
+        "night sky",
+        "stars",
+        "blue sky",
+        "nature",
+        "space",
+        "landscape"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45332",
+      "name": "Mar de Nuvens com Céu Estrelado Roxo",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45332.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45332.jpg",
+      "primary_color": "#6B357B",
+      "category": "space",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "space",
+        "nature",
+        "clouds",
+        "stars",
+        "purple",
+        "sky",
+        "oled",
+        "dark"
+      ],
+      "content_hash": "e8e431b396f37a16d913577fcaeb13c6",
+      "search_terms": [
+        "mar de nuvens",
+        "céu estrelado",
+        "estrelas",
+        "nuvens roxas",
+        "horizonte",
+        "amanhecer",
+        "pôr do sol",
+        "espaço",
+        "clouds",
+        "stars",
+        "purple sky",
+        "space",
+        "horizon",
+        "night sky",
+        "aesthetic"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45325",
+      "name": "Dunas de Areia e Montanhas ao Amanhecer",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45325.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45325.png",
+      "primary_color": "#a49d94",
+      "category": "nature",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "nature",
+        "natureza",
+        "desert",
+        "deserto",
+        "mountains",
+        "montanhas",
+        "minimal",
+        "landscape"
+      ],
+      "content_hash": "114a6147f7db225c65d8294f4d8ef1a9",
+      "search_terms": [
+        "deserto",
+        "dunas de areia",
+        "montanhas",
+        "amanhecer",
+        "nascer do sol",
+        "paisagem natural",
+        "areia",
+        "céu claro",
+        "desert",
+        "sand dunes",
+        "mountains",
+        "sunrise",
+        "landscape",
+        "nature",
+        "minimalist"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45324",
+      "name": "Montanhas Nevadas e Dunas Brancas",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45324.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45324.png",
+      "primary_color": "#9cb2c1",
+      "category": "nature",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "nature",
+        "natureza",
+        "mountains",
+        "montanhas",
+        "snow",
+        "neve",
+        "minimal",
+        "landscape"
+      ],
+      "content_hash": "229d8010ecb60df8f4a69ec1fc23a01b",
+      "search_terms": [
+        "montanhas",
+        "mountains",
+        "neve",
+        "snow",
+        "dunas",
+        "dunes",
+        "paisagem",
+        "landscape",
+        "natureza",
+        "nature",
+        "azul claro",
+        "light blue",
+        "minimalista",
+        "minimal",
+        "céu limpo"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45323",
+      "name": "Dunas e Montanhas Noturnas",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45323.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45323.png",
+      "primary_color": "#1a1823",
+      "category": "oled",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "oled",
+        "dark",
+        "nature",
+        "night",
+        "mountains",
+        "dunes",
+        "minimal",
+        "stars"
+      ],
+      "content_hash": "3642fce5cce96ae52208a5aea149b78d",
+      "search_terms": [
+        "dunas",
+        "montanhes",
+        "noite",
+        "estrelas",
+        "deserto",
+        "escuro",
+        "oled",
+        "natureza",
+        "dunes",
+        "mountains",
+        "night",
+        "stars",
+        "desert",
+        "dark",
+        "minimalist"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45319",
+      "name": "Abstract Blue Curved Lines Dark",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45319.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45319.png",
+      "primary_color": "#050b14",
+      "category": "oled",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "oled",
+        "dark",
+        "abstract",
+        "blue",
+        "minimal",
+        "curves",
+        "wallpaper"
+      ],
+      "content_hash": "c029427e07fb9ab60dc3588bf0b7aba5",
+      "search_terms": [
+        "abstract",
+        "abstrato",
+        "blue",
+        "azul",
+        "dark",
+        "escuro",
+        "oled",
+        "curves",
+        "curvas",
+        "minimalist",
+        "minimalista",
+        "lines",
+        "linhas",
+        "glow",
+        "brilho"
+      ],
+      "classified_by": "gemini"
+    },
+    {
       "id": "tg_46146",
       "name": "Homem em Chamas Douradas",
       "author": "Wallpaper HD/4K (Amanda)",
@@ -95,7 +697,8 @@
         "oled",
         "amoled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "4045d2ab5035fe6c260f0a564d030d2b"
     },
     {
       "id": "tg_46145",
@@ -133,7 +736,8 @@
         "surreal art",
         "comic art"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "592a90349965301ae95b6b71b8bccaf9"
     },
     {
       "id": "tg_46144",
@@ -173,7 +777,8 @@
         "jaqueta",
         "ilustração dark"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1427a43dc74b8562998177de52456b7d"
     },
     {
       "id": "tg_46143",
@@ -212,7 +817,8 @@
         "manga style",
         "arte obscura"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "3777cfbfa523ced52eadbc555f2912cd"
     },
     {
       "id": "tg_46142",
@@ -251,7 +857,8 @@
         "amoled",
         "ilustração"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1e628b6a7d626a4e67337480305d0d2f"
     },
     {
       "id": "tg_46141",
@@ -287,7 +894,8 @@
         "fantasia sombria",
         "red aura"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "36eb54e1c395b43b6ad1ee032ed75945"
     },
     {
       "id": "tg_46140",
@@ -326,7 +934,8 @@
         "reading",
         "head exploding"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "01aecb6065340fe339b769b41e756d18"
     },
     {
       "id": "tg_46139",
@@ -366,7 +975,8 @@
         "amarelo",
         "yellow jacket"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "6d53a6919523b4c0c29136101c520658"
     },
     {
       "id": "tg_46121",
@@ -408,7 +1018,8 @@
         "superhero",
         "super-herói"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "dc33a9b57356add44649d7275507904e"
     },
     {
       "id": "tg_46120",
@@ -448,7 +1059,8 @@
         "miniature",
         "explosão"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "67b27557068fe8b47fa6eb0138d60974"
     },
     {
       "id": "tg_46119",
@@ -488,7 +1100,8 @@
         "rocks",
         "smoke"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "9e317bb736aa63744f09606582178918"
     },
     {
       "id": "tg_46118",
@@ -526,7 +1139,8 @@
         "anti-herói",
         "3d render"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "66e070343085d9aa75ad23b4fdbdc6c3"
     },
     {
       "id": "tg_46109",
@@ -566,7 +1180,8 @@
         "portrait",
         "athlete"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "57027d95d508751c63481c081bf922ff"
     },
     {
       "id": "tg_46108",
@@ -605,7 +1220,8 @@
         "fantasy",
         "fantasia"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "08f758c25fb1acb6ac77c34e9a794e9a"
     },
     {
       "id": "tg_46107",
@@ -645,7 +1261,8 @@
         "manchester united",
         "real madrid"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "0312e80981b9a4cf5ce0deeda36dbf1f"
     },
     {
       "id": "tg_46106",
@@ -685,7 +1302,8 @@
         "terno",
         "arma"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "cd5e60922291995b4cb3090794b7f2cf"
     },
     {
       "id": "tg_46105",
@@ -725,7 +1343,8 @@
         "atleta",
         "illustration"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "0d6dca73cd56bde2e1fd426b7bb50702"
     },
     {
       "id": "tg_46104",
@@ -764,7 +1383,8 @@
         "argentina",
         "camisa 10"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "faf9fb812fb5cbb770553403faa349fd"
     },
     {
       "id": "tg_46097",
@@ -804,7 +1424,8 @@
         "gradiente",
         "abstrato"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "2e41e7861c84f0435e0c2753ad07645a"
     },
     {
       "id": "tg_46096",
@@ -845,7 +1466,8 @@
         "smooth",
         "modern"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1292118c85bdaba6c98606bb05a78294"
     },
     {
       "id": "tg_46095",
@@ -885,7 +1507,8 @@
         "fluido",
         "ondas"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ae406628a41d4a2c4485673e3c87a4d8"
     },
     {
       "id": "tg_46094",
@@ -926,7 +1549,8 @@
         "fluid",
         "fluido"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "0da994a3f4b1f8e96b7c6548dcb4c2a6"
     },
     {
       "id": "tg_46093",
@@ -966,7 +1590,8 @@
         "curvas suaves",
         "dark mode"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c2fff901d326fd52363cc9371b86d2e8"
     },
     {
       "id": "tg_46092",
@@ -1009,7 +1634,8 @@
         "minimalista",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "0c38f0dcec9a371cb929e7dd3ec3f433"
     },
     {
       "id": "tg_46085",
@@ -1049,7 +1675,8 @@
         "minimalista",
         "amoled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "6368049ca648b4d5628f7dd9c395a75d"
     },
     {
       "id": "tg_46084",
@@ -1089,7 +1716,8 @@
         "liquid",
         "wallpaper"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "28ed9f0bb5bd4bd38346be9506c9135b"
     },
     {
       "id": "tg_46083",
@@ -1131,7 +1759,8 @@
         "marble",
         "marmorizado"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "f41a4440cf967fdea6200e8126e12fc9"
     },
     {
       "id": "tg_46082",
@@ -1171,7 +1800,8 @@
         "purple",
         "dark background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "f997812c104619805bc5f29f96bd465c"
     },
     {
       "id": "tg_46081",
@@ -1212,7 +1842,8 @@
         "waves",
         "ondas"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d7f0127ae3c95e400e2bb8a526e45518"
     },
     {
       "id": "tg_46080",
@@ -1253,7 +1884,8 @@
         "vibrant",
         "cores vibrantes"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "535a04a5217f23ee8aadc867ffff460e"
     },
     {
       "id": "tg_46073",
@@ -1293,7 +1925,8 @@
         "liquid art",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "05c0f06ef02fd503edf7c193d0ca74d9"
     },
     {
       "id": "tg_46072",
@@ -1333,7 +1966,8 @@
         "waves",
         "color blending"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "32d8a2165658782ff1eecfb844d04ca5"
     },
     {
       "id": "tg_46071",
@@ -1373,7 +2007,8 @@
         "minimal",
         "cores vibrantes"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "29267adf9a6c89177d0a1b82dee79975"
     },
     {
       "id": "tg_46070",
@@ -1413,7 +2048,8 @@
         "dark",
         "arte digital"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b989e5d733f7e4c29e5ba138f7d5b182"
     },
     {
       "id": "tg_46065",
@@ -1453,7 +2089,8 @@
         "soft",
         "modern"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "828c1ef4bd96d02659614ef2888869dd"
     },
     {
       "id": "tg_46064",
@@ -1493,7 +2130,8 @@
         "colors",
         "blur"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "691c13a7ec05e4943c1fe202bfcc8ba4"
     },
     {
       "id": "tg_46063",
@@ -1533,7 +2171,8 @@
         "smooth transition",
         "wallpaper"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c12ec2b17b3c9f9c61398a2050c1c17e"
     },
     {
       "id": "tg_46062",
@@ -1573,7 +2212,8 @@
         "minimalista",
         "background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "5300dd41ce2919738abfc1fd1f1c2a2b"
     },
     {
       "id": "tg_46061",
@@ -1613,7 +2253,8 @@
         "abstrato",
         "smooth gradient"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "90184c88a4857e222266941551c51149"
     },
     {
       "id": "tg_46047",
@@ -1652,7 +2293,8 @@
         "gradient",
         "degrade"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ecc460781dff3d07a7bb6f71f1d452ba"
     },
     {
       "id": "tg_46046",
@@ -1692,7 +2334,8 @@
         "red and blue",
         "oled wallpaper"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "072e0060dc2d692e21f8b9e623ab878f"
     },
     {
       "id": "tg_46045",
@@ -1729,7 +2372,8 @@
         "partículas",
         "fire trails"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "8f6ef204c35b6786e9bdaf608e2ea6ba"
     },
     {
       "id": "tg_46044",
@@ -1767,7 +2411,8 @@
         "sparkles",
         "oled wallpaper"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "00d1db689be8ed530396849f5ffcb334"
     },
     {
       "id": "tg_46043",
@@ -1807,7 +2452,8 @@
         "glow",
         "gradient"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "4a2e5e90eb811f0043e56acde1afaefc"
     },
     {
       "id": "tg_46036",
@@ -1846,7 +2492,8 @@
         "oled",
         "dark background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "93e23c690396e1e413e34325691cc23f"
     },
     {
       "id": "tg_46035",
@@ -1885,7 +2532,8 @@
         "raiva",
         "green monster"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ec81404f89ff7a30cfadd68a821bd1fe"
     },
     {
       "id": "tg_46034",
@@ -1924,7 +2572,8 @@
         "comics",
         "quadrinhos"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "41eec711f48c2f22d86de00153ada747"
     },
     {
       "id": "tg_46033",
@@ -1961,7 +2610,8 @@
         "musculoso",
         "green"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "22a6bbdee50556e4494761271065f6f8"
     },
     {
       "id": "tg_46032",
@@ -2000,7 +2650,8 @@
         "muscular",
         "comics"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "f3b218b42e435a149eca5b6ecf6b904f"
     },
     {
       "id": "tg_46031",
@@ -2040,7 +2691,8 @@
         "oled",
         "comics"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1bfd64c5af402d668a881c4fb894792c"
     },
     {
       "id": "tg_46023",
@@ -2079,7 +2731,8 @@
         "fluid",
         "dark background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "db17c4c7afcfa708aced958f9e5eede8"
     },
     {
       "id": "tg_46022",
@@ -2117,7 +2770,8 @@
         "macro",
         "caustics"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "fda1938e2131a4c085d0dd6bb80d5767"
     },
     {
       "id": "tg_46021",
@@ -2157,7 +2811,8 @@
         "3d render",
         "waves"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "772a134d3f9f1e0b2c4cee13382f9e7d"
     },
     {
       "id": "tg_46020",
@@ -2195,7 +2850,8 @@
         "coroa de água",
         "gold particles"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "5375bc25335d323bda8c6937cdc25595"
     },
     {
       "id": "tg_46015",
@@ -2233,7 +2889,8 @@
         "estrelas",
         "planeta vermelho"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "cea3fb42ef2b5f20ff200df22128d6ab"
     },
     {
       "id": "tg_46014",
@@ -2272,7 +2929,8 @@
         "craters",
         "universo"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "209a70367b8267104bd2c776e2388ec3"
     },
     {
       "id": "tg_46013",
@@ -2312,7 +2970,8 @@
         "dark background",
         "fundo preto"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1851f89e0fedf2123a955c5fa590049b"
     },
     {
       "id": "tg_46012",
@@ -2352,7 +3011,8 @@
         "dark",
         "lunar"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "27899b2241e0df2e85412ca4b8939e75"
     },
     {
       "id": "tg_46001",
@@ -2391,7 +3051,8 @@
         "minimalista",
         "yellow background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b30b39d18efec8993462c5b5af7d5ca4"
     },
     {
       "id": "tg_46000",
@@ -2431,7 +3092,8 @@
         "massinha",
         "3d model"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "2de38b9dfbe5baa6c9e5d045599ce4e8"
     },
     {
       "id": "tg_45999",
@@ -2470,7 +3132,8 @@
         "palmeiras",
         "fantasy island"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "bd0f550483282eea4ca195a115e17250"
     },
     {
       "id": "tg_45992",
@@ -2506,7 +3169,8 @@
         "emerald green",
         "verde esmeralda"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "241a9b5f4d2912a969d9674cedebbd5b"
     },
     {
       "id": "tg_45991",
@@ -2545,7 +3209,8 @@
         "liquid texture",
         "modern wallpaper"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "e46fae2387077852105d9a7c45036a87"
     },
     {
       "id": "tg_45990",
@@ -2582,7 +3247,8 @@
         "dark blue background",
         "minimalista"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "cc6f756993616894b0cd0eaf97127a25"
     },
     {
       "id": "tg_45989",
@@ -2620,7 +3286,8 @@
         "fluido",
         "dark theme"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "93eeb543ab31b9675e5210e7dc3ffa50"
     },
     {
       "id": "tg_45982",
@@ -2657,7 +3324,8 @@
         "oled wallpaper",
         "zenin clan"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "84c7c3481ed88db4105bf3e47bbe08ae"
     },
     {
       "id": "tg_45981",
@@ -2693,7 +3361,8 @@
         "dark anime",
         "fundo preto"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "446e2813aad633f06aef2ecca526c073"
     },
     {
       "id": "tg_45980",
@@ -2729,7 +3398,8 @@
         "feiticeiro",
         "camisa social"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "47b473f95bca5dfbca945abd8acf090a"
     },
     {
       "id": "tg_45979",
@@ -2769,7 +3439,8 @@
         "monstro",
         "black background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "6310bb165dac4a6f2740fa34b31a9efb"
     },
     {
       "id": "tg_45978",
@@ -2806,7 +3477,8 @@
         "magia",
         "sorcerer"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b2ba3ae78d711ba484f1fd3a034abf16"
     },
     {
       "id": "tg_45977",
@@ -2843,7 +3515,8 @@
         "vilão",
         "maldicao"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "322fb59f8de2c1baa864adba0b626e7c"
     },
     {
       "id": "tg_45970",
@@ -2881,7 +3554,8 @@
         "asas",
         "chifres"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d6bad60a14134d09fe35a9b52ba25acf"
     },
     {
       "id": "tg_45969",
@@ -2919,7 +3593,8 @@
         "amoled",
         "supreme devil"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ccbd0368152fb4ef062d729925f692f8"
     },
     {
       "id": "tg_45968",
@@ -2957,7 +3632,8 @@
         "red eyes",
         "olhos vermelhos"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "9347c522d9baebe4a2c9c70c81e37820"
     },
     {
       "id": "tg_45967",
@@ -2996,7 +3672,8 @@
         "white hair",
         "oled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "8cbe88b6a4958855265f47ffb5358a45"
     },
     {
       "id": "tg_45966",
@@ -3036,7 +3713,8 @@
         "manga",
         "golden"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "7d1b3b4d40123ec64697409f83756d51"
     },
     {
       "id": "tg_45965",
@@ -3075,7 +3753,8 @@
         "magic",
         "grimoire"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "433ace724a4946b29799761401c6fb0f"
     },
     {
       "id": "tg_45958",
@@ -3112,7 +3791,8 @@
         "mangá",
         "kimono"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "9bf535875b4ac081e60cc64bd11f0377"
     },
     {
       "id": "tg_45957",
@@ -3151,7 +3831,8 @@
         "evil",
         "vilão"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "923e4ac61ffb04ab1c17e27349d2f776"
     },
     {
       "id": "tg_45956",
@@ -3187,7 +3868,8 @@
         "manga art",
         "horror anime"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "4d9d2b457b0cd1075b60df5e53c4f1b7"
     },
     {
       "id": "tg_45955",
@@ -3227,7 +3909,8 @@
         "luta",
         "demônio"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "3702b705380bb4f15b30ef5def53eeb4"
     },
     {
       "id": "tg_45954",
@@ -3266,7 +3949,8 @@
         "staff",
         "yellow lightning"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "fbcb78873db6c72836891ea9b6fa75f5"
     },
     {
       "id": "tg_45953",
@@ -3306,7 +3990,8 @@
         "personagem de anime",
         "fundo preto"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "82d8b655376a801b2ed99328da612cde"
     },
     {
       "id": "tg_45952",
@@ -3346,7 +4031,8 @@
         "blood blade",
         "espada de sangue"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "91d448e1942fb018328e492e45171a28"
     },
     {
       "id": "tg_45938",
@@ -3385,7 +4071,8 @@
         "background",
         "fundo"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "264eb1896f8afe61499ae66f1c6c6eb6"
     },
     {
       "id": "tg_45937",
@@ -3425,7 +4112,8 @@
         "gradient",
         "minimalista"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ed571ff954f032bf4c5f4488ad94be76"
     },
     {
       "id": "tg_45936",
@@ -3462,7 +4150,8 @@
         "background",
         "papel de parede azul"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1edc6ade7fb2d29e930446f1ca45d235"
     },
     {
       "id": "tg_45935",
@@ -3501,7 +4190,8 @@
         "curvas",
         "curves"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b62ccab35dd25bffa12358da794e09ec"
     },
     {
       "id": "tg_45925",
@@ -3539,7 +4229,8 @@
         "purple aura",
         "game wallpaper"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b37e25697dfbbd065054e5fe112543dd"
     },
     {
       "id": "tg_45924",
@@ -3578,7 +4269,8 @@
         "dark",
         "personagem"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "13b995c806a8fc7b712e512f2c16bb7b"
     },
     {
       "id": "tg_45923",
@@ -3618,7 +4310,8 @@
         "gamer",
         "character"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "7f652f2ffabf24d4a7810e9efb69874b"
     },
     {
       "id": "tg_45922",
@@ -3657,7 +4350,8 @@
         "martial arts",
         "artes marciais"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "0787f514727278ec3567fb850cfc4fed"
     },
     {
       "id": "tg_45921",
@@ -3696,7 +4390,8 @@
         "lutas",
         "jogos"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "21f866508aa00bee5a2bb3e2433e1c06"
     },
     {
       "id": "tg_45920",
@@ -3735,7 +4430,8 @@
         "cosplay",
         "game character"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "85a9d6f0956ba5dba130701963181ca4"
     },
     {
       "id": "tg_45919",
@@ -3775,7 +4471,8 @@
         "meme",
         "louco"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "0efaa1ee4f91c6e82b2e8117afc12b4a"
     },
     {
       "id": "tg_45918",
@@ -3816,7 +4513,8 @@
         "guerreiro",
         "warrior"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a53da217edc26f05beefcfab514f4b48"
     },
     {
       "id": "tg_45917",
@@ -3855,7 +4553,8 @@
         "action",
         "cinematic"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "37a0d2b227cd8e1f3f50fb5813323014"
     },
     {
       "id": "tg_45916",
@@ -3892,7 +4591,8 @@
         "sports",
         "ringue"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a98d8bb7905b3e724002730e9c6e7fe1"
     },
     {
       "id": "tg_45915",
@@ -3930,7 +4630,8 @@
         "martial arts",
         "artes marciais"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ba3bbd5077a79f6c93c7acbe1e6934c6"
     },
     {
       "id": "tg_45914",
@@ -3969,7 +4670,8 @@
         "action",
         "pose"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "bd2da4df1da05f1a8203c0287560dfd6"
     },
     {
       "id": "tg_45913",
@@ -4007,7 +4709,8 @@
         "gamer",
         "retro gaming"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "6877a42a9d3894a1176f1f67966b885c"
     },
     {
       "id": "tg_45899",
@@ -4043,7 +4746,8 @@
         "black background",
         "fundo preto"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "acef1185f151fa9b1116e4185a00c9ba"
     },
     {
       "id": "tg_45898",
@@ -4081,7 +4785,8 @@
         "manga",
         "itadori yuji"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c0fe5758f9a3a9a8eec90ae44255ab6a"
     },
     {
       "id": "tg_45897",
@@ -4119,7 +4824,8 @@
         "comics",
         "mcu"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "bcfaa5e812e29e84101fd7f03e640fc7"
     },
     {
       "id": "tg_45896",
@@ -4159,7 +4865,8 @@
         "arte",
         "art"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "e234c14b8e7e12addd8c981143ded259"
     },
     {
       "id": "tg_45895",
@@ -4196,7 +4903,8 @@
         "personagem de jogo",
         "minimalista"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "36f3d12b72a82ac938ff07cfc1e5b45d"
     },
     {
       "id": "tg_45894",
@@ -4236,7 +4944,8 @@
         "fantasy",
         "dark"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "7e818e80d789a050db0f9131d73aaed4"
     },
     {
       "id": "tg_45887",
@@ -4274,7 +4983,8 @@
         "respiração do trovão",
         "thunder breathing"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "fea053f85f1e4a01276b17dab543a658"
     },
     {
       "id": "tg_45886",
@@ -4313,7 +5023,8 @@
         "otaku",
         "wallpaper mobile"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "93a7fa5d7c1412f2f25ae71a3ed799a5"
     },
     {
       "id": "tg_45885",
@@ -4352,7 +5063,8 @@
         "glowing eyes",
         "hashira"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1ff054770e84498092ebb7f470972a0c"
     },
     {
       "id": "tg_45884",
@@ -4393,7 +5105,8 @@
         "templo",
         "castelo infinito"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "48da841c6a01848323ba44d98495f669"
     },
     {
       "id": "tg_45883",
@@ -4431,7 +5144,8 @@
         "garoto anime",
         "fundo preto"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b9e8915e65a16f5aa7e19e0e64bc0217"
     },
     {
       "id": "tg_45882",
@@ -4470,7 +5184,8 @@
         "demon",
         "luta"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "4d3868ba8bd9c465f31f8e6af2985f40"
     },
     {
       "id": "tg_45881",
@@ -4511,7 +5226,8 @@
         "lua rosa",
         "fundo preto"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "726283b368b10b2409a11c8c888054f3"
     },
     {
       "id": "tg_45880",
@@ -4547,7 +5263,8 @@
         "hashira",
         "lightning breathing"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "f0aa5c326eb2f1c0ed553395848a8ce9"
     },
     {
       "id": "tg_45879",
@@ -4584,7 +5301,8 @@
         "glowing aura",
         "back view"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "7d8263906101313d23535718788214b9"
     },
     {
       "id": "tg_45869",
@@ -4626,7 +5344,8 @@
         "paisagem",
         "vetor"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "cd9f6b88c13804484f38ad45b66f8bfa"
     },
     {
       "id": "tg_45868",
@@ -4668,7 +5387,8 @@
         "trees",
         "minimal"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b5a40122ec465ae73c5de2fb3e981d1d"
     },
     {
       "id": "tg_45867",
@@ -4705,7 +5425,8 @@
         "minimal",
         "nature"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ef6378b67a820efaaed9d809163462a8"
     },
     {
       "id": "tg_45866",
@@ -4744,7 +5465,8 @@
         "paisagem urbana",
         "architecture"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "69317087bfdb6a876e569c1edfb8bd41"
     },
     {
       "id": "tg_45865",
@@ -4782,7 +5504,8 @@
         "desert",
         "curvas"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "f9ddb3d77be0031709888ca1c736c62e"
     },
     {
       "id": "tg_45864",
@@ -4821,7 +5544,8 @@
         "forest",
         "grayscale"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b837b0de37c757e503de5c178fbf7778"
     },
     {
       "id": "tg_45848",
@@ -4855,7 +5579,8 @@
         "modern wallpaper",
         "sombras suaves"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "20387b0d5abdefcb1d3c389ad8debfc9"
     },
     {
       "id": "tg_45847",
@@ -4889,7 +5614,8 @@
         "hills",
         "flat design"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "4c11a51fbd522013448bd7485d1def1e"
     },
     {
       "id": "tg_45846",
@@ -4923,7 +5649,8 @@
         "amarelo e marrom",
         "oled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "64f20837935abbf956fce969e92cee98"
     },
     {
       "id": "tg_45845",
@@ -4957,7 +5684,8 @@
         "fundo azul escuro",
         "dark blue background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "727e4b0028d66867e262fd634e0dcad9"
     },
     {
       "id": "tg_45844",
@@ -4991,7 +5719,8 @@
         "natureza",
         "azul"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "15079ac933517910598f93797fa672dc"
     },
     {
       "id": "tg_45843",
@@ -5025,7 +5754,8 @@
         "gradient",
         "fluido"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "423d3dda2a82ab0a9cf0c88688ef0add"
     },
     {
       "id": "tg_45836",
@@ -5059,7 +5789,8 @@
         "azul escuro",
         "cyan"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "10fa3b93459597060982daeb24fb3405"
     },
     {
       "id": "tg_45835",
@@ -5093,7 +5824,8 @@
         "fluido",
         "blur"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "8211d89f329eda380285f8ae12e1d5eb"
     },
     {
       "id": "tg_45834",
@@ -5129,7 +5861,8 @@
         "blue",
         "colorido"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "9c0ef3ed70c1564b8e1cddf8345a28e5"
     },
     {
       "id": "tg_45833",
@@ -5163,7 +5896,8 @@
         "fluido",
         "fluid"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "fe2e084631f9f9d1477fb09371dc6a4a"
     },
     {
       "id": "tg_45832",
@@ -5197,7 +5931,8 @@
         "ondas",
         "minimalista"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "430ca221b4c6e9b4ff1b0c3fc50ee966"
     },
     {
       "id": "tg_45831",
@@ -5231,7 +5966,8 @@
         "roxo",
         "purple"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "3e83efa74c40948d422bcd142b5f4e18"
     },
     {
       "id": "tg_45824",
@@ -5265,7 +6001,8 @@
         "space",
         "paisagem espacial"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "61e53029e8ab4cf87513fbfe97d85545"
     },
     {
       "id": "tg_45823",
@@ -5299,7 +6036,8 @@
         "night landscape",
         "stars"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1afbba4ee38a2aeef17971c2272c3287"
     },
     {
       "id": "tg_45822",
@@ -5333,7 +6071,8 @@
         "terracotta",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1d30a8deac6478591eb80b5fb0af223d"
     },
     {
       "id": "tg_45821",
@@ -5367,7 +6106,8 @@
         "paisagem",
         "golden hour"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "70fe7526eba0e658a9f534c2549a8ddd"
     },
     {
       "id": "tg_45820",
@@ -5401,7 +6141,8 @@
         "dark",
         "waterscape"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "73a724ccb61d9e5fb897e4ce2f2dfdb4"
     },
     {
       "id": "tg_45819",
@@ -5435,7 +6176,8 @@
         "night sky",
         "stars"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a0b7d2a03a5c4171520728108b92bcb8"
     },
     {
       "id": "tg_45806",
@@ -5469,7 +6211,8 @@
         "anos 70",
         "abstrato"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "5da064d4d501e71bd4069636ed7e8d3e"
     },
     {
       "id": "tg_45805",
@@ -5503,7 +6246,8 @@
         "abstrato",
         "azul escuro"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "4d3278eacbb579717a8733e5c85f32ef"
     },
     {
       "id": "tg_45804",
@@ -5537,7 +6281,8 @@
         "vermelho e laranja",
         "black background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "bb90fbb23e2ac89c2806a638a0fe01c7"
     },
     {
       "id": "tg_45803",
@@ -5571,7 +6316,8 @@
         "abstract waves",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "3d6767512db2e6bddd59d9ead846afbe"
     },
     {
       "id": "tg_45802",
@@ -5607,7 +6353,8 @@
         "black background",
         "design moderno"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b918f5a9e8647ce7c6dc14abb6cc4d7d"
     },
     {
       "id": "tg_45801",
@@ -5641,7 +6388,8 @@
         "sunset glow",
         "pôr do sol"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "3c3caafcea25a75535221c2ac95df7b6"
     },
     {
       "id": "tg_45794",
@@ -5681,7 +6429,8 @@
         "sistema solar",
         "solidao"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "9de720cf0e39ba6edb8bca5cd60c1f8c"
     },
     {
       "id": "tg_45793",
@@ -5715,7 +6464,8 @@
         "oled",
         "fundo preto"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "95a653276a168dab96340ccefab75fe5"
     },
     {
       "id": "tg_45792",
@@ -5755,7 +6505,8 @@
         "universo",
         "sistema solar"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "65680a76016e63241af9c83f038ba32d"
     },
     {
       "id": "tg_45791",
@@ -5795,7 +6546,8 @@
         "black background",
         "sistema solar"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "6b710483e750811e8e5423629ba3f331"
     },
     {
       "id": "tg_45790",
@@ -5829,7 +6581,8 @@
         "oled",
         "espaço"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "9f83e2fc501d456f01d7ca0b8b5a61f0"
     },
     {
       "id": "tg_45789",
@@ -5868,7 +6621,8 @@
         "fundo preto",
         "dark background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "89fe9b4b1a8fa5e236425f1780cd651a"
     },
     {
       "id": "tg_45782",
@@ -5909,7 +6663,8 @@
         "melancólico",
         "moody"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "7954b82730ee951b86608f95a5264b6f"
     },
     {
       "id": "tg_45781",
@@ -5950,7 +6705,8 @@
         "escuro",
         "oled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "dbbdf9c400764a4fee1d63f71307369c"
     },
     {
       "id": "tg_45780",
@@ -5990,7 +6746,8 @@
         "céu noturno",
         "night sky"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "59f1df185286105dfa1c5f7dcdddf6da"
     },
     {
       "id": "tg_45779",
@@ -6030,7 +6787,8 @@
         "minimalista",
         "melancólico"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ef1fbfc6e42f472ca1b11117b289a768"
     },
     {
       "id": "tg_45771",
@@ -6064,7 +6822,8 @@
         "estrelas",
         "night sky"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "880acd7aa69daecd1d56136f2e396cbc"
     },
     {
       "id": "tg_45770",
@@ -6102,7 +6861,8 @@
         "saiyan",
         "saiyajin"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "9a03a4972e66dbd50e08aaacfedd56be"
     },
     {
       "id": "tg_45769",
@@ -6136,7 +6896,8 @@
         "preto e roxo",
         "glow"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "2f3e5ea30c8d8314c9ef8c5016448360"
     },
     {
       "id": "tg_45768",
@@ -6174,7 +6935,8 @@
         "vintage anime",
         "bastão mágico"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "bae12a77ceb684b9d12fde44d680d71a"
     },
     {
       "id": "tg_45767",
@@ -6212,7 +6974,8 @@
         "bastão mágico",
         "power pole"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "4197cd40b7cba54d40500ae0335fa7b7"
     },
     {
       "id": "tg_45766",
@@ -6249,7 +7012,8 @@
         "vintage anime",
         "estrada"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d1aac932591b70c7348d731edd134bd2"
     },
     {
       "id": "tg_45765",
@@ -6288,7 +7052,8 @@
         "escuro",
         "goku sentado"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c300adc492eb8fbf883a14d7098e42c1"
     },
     {
       "id": "tg_45764",
@@ -6326,7 +7091,8 @@
         "retro anime",
         "dragonball classic"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c1076c449de6ae3cda38ad94358e82eb"
     },
     {
       "id": "tg_45763",
@@ -6365,7 +7131,8 @@
         "dbz wallpaper",
         "goku spirit bomb"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "66011264305a4c715f9c0c591e71037d"
     },
     {
       "id": "tg_45762",
@@ -6405,7 +7172,8 @@
         "vilão",
         "dbz"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "3dad9369bfdde575df8fbbdeb7ad5d9e"
     },
     {
       "id": "tg_45761",
@@ -6445,7 +7213,8 @@
         "laranja",
         "goku super saiyan"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "cac86b74bd83f08ff12aed656edb2b46"
     },
     {
       "id": "tg_45748",
@@ -6483,7 +7252,8 @@
         "fofo",
         "oled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b20a49cd5cfc079c45ab4bc785981505"
     },
     {
       "id": "tg_45747",
@@ -6520,7 +7290,8 @@
         "yellow",
         "nickelodeon"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "61d5fa377f9c3500a5e42fdd28e362d8"
     },
     {
       "id": "tg_45746",
@@ -6557,7 +7328,8 @@
         "ciência",
         "minimalista"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "291b751e7ddaf2d76b42c72b4aa32c09"
     },
     {
       "id": "tg_45745",
@@ -6594,7 +7366,8 @@
         "felino",
         "minimalist dark"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "4df1a3864206db9e8f506e83cb80d0f1"
     },
     {
       "id": "tg_45744",
@@ -6630,7 +7403,8 @@
         "minimalista",
         "dark mode"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "e63283d0ac6f07ded90fa9d7711e1644"
     },
     {
       "id": "tg_45743",
@@ -6670,7 +7444,8 @@
         "bruce banner",
         "herói"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1f935016d83fb42c3d2f37ac8e9c1c19"
     },
     {
       "id": "tg_45736",
@@ -6710,7 +7485,8 @@
         "landscape",
         "night sky"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "88bc0b6b3292c9fd5895b3b60b0d0dd6"
     },
     {
       "id": "tg_45735",
@@ -6749,7 +7525,8 @@
         "prédios",
         "retro game"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "792d9b9927bfe4cdd33dcaea548c66a3"
     },
     {
       "id": "tg_45734",
@@ -6789,7 +7566,8 @@
         "fantasy art",
         "gamer"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "6a275ebc7f1081a6256218b7e49f9113"
     },
     {
       "id": "tg_45733",
@@ -6828,7 +7606,8 @@
         "café",
         "plantas"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "4be6b252f25c2bab7307f36c00e68de9"
     },
     {
       "id": "tg_45732",
@@ -6866,7 +7645,8 @@
         "urban",
         "vaporwave"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "fff2ee55b357ebe59085198c4ec89ce6"
     },
     {
       "id": "tg_45731",
@@ -6905,7 +7685,8 @@
         "fofo",
         "cute"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "35974b2f8a3fe8ad1e547702b17378c0"
     },
     {
       "id": "tg_45723",
@@ -6943,7 +7724,8 @@
         "oled",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ea3705c5ddaa6d40c67da0f2609f4828"
     },
     {
       "id": "tg_45722",
@@ -6983,7 +7765,8 @@
         "vector art",
         "desenho"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "cfeb92085bef4388dcd6a145b2f3cbd7"
     },
     {
       "id": "tg_45721",
@@ -7024,7 +7807,8 @@
         "black hat",
         "classic art parody"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c58b983ddabc99e10e763b2fb82fb81b"
     },
     {
       "id": "tg_45720",
@@ -7064,7 +7848,8 @@
         "smoking",
         "aesthetic"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "cf500e97bf2eb3f543295e25f43dff03"
     },
     {
       "id": "tg_45719",
@@ -7104,7 +7889,8 @@
         "fundo escuro",
         "dark background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a2f639d7dd0546c81dde271e033e0301"
     },
     {
       "id": "tg_45718",
@@ -7143,7 +7929,8 @@
         "wealth",
         "cash"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "fc483985412bd3e6f7c07e3bfecdf0d8"
     },
     {
       "id": "tg_45711",
@@ -7177,7 +7964,8 @@
         "chamas verdes",
         "papel de parede oled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "21806b99fefbf319fe82d7282602bc77"
     },
     {
       "id": "tg_45710",
@@ -7205,7 +7993,8 @@
         "Eren"
       ],
       "classified_by": "manual",
-      "custom_classified": true
+      "custom_classified": true,
+      "content_hash": "80c6d9d58b63c927a12d96e667490f36"
     },
     {
       "id": "tg_45709",
@@ -7239,7 +8028,8 @@
         "fúria",
         "oled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "94c2f142e5bfdf461a045c667a080866"
     },
     {
       "id": "tg_45708",
@@ -7273,7 +8063,8 @@
         "glowing eye",
         "anime"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c4df395111417dc9438837f15c1c16d9"
     },
     {
       "id": "tg_45707",
@@ -7301,7 +8092,8 @@
         "Eren"
       ],
       "classified_by": "manual",
-      "custom_classified": true
+      "custom_classified": true,
+      "content_hash": "76f286b81cef880763a706c7b1614bd9"
     },
     {
       "id": "tg_45706",
@@ -7339,7 +8131,8 @@
         "raio",
         "perfil"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "62bb9dd4fd3ad3a21a2f889384b582c2"
     },
     {
       "id": "tg_45699",
@@ -7376,7 +8169,8 @@
         "manga",
         "sorcerer"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "583e2eb198550759564aeb6e30fc223b"
     },
     {
       "id": "tg_45698",
@@ -7412,7 +8206,8 @@
         "personagem de anime",
         "mangá"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "2b37fc31e23c72344438dd303e58722b"
     },
     {
       "id": "tg_45697",
@@ -7451,7 +8246,8 @@
         "gojo satoru",
         "anime boy"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "0fca625818de264a98d9c155b34d8fb7"
     },
     {
       "id": "tg_45696",
@@ -7491,7 +8287,8 @@
         "manga character",
         "jujutsu kaisen wallpaper"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a6c4dcbf1e0ca4cbc873e34655730810"
     },
     {
       "id": "tg_45695",
@@ -7529,7 +8326,8 @@
         "cabelo branco",
         "anime aesthetic"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "0454b22643dda11c6feb918d5efab79a"
     },
     {
       "id": "tg_45694",
@@ -7566,7 +8364,8 @@
         "oled wallpaper",
         "manga"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "20d3a5cc1fc6cb1d36150f3104cb55b4"
     },
     {
       "id": "tg_45678",
@@ -7604,7 +8403,8 @@
         "céu alaranjado",
         "orange sky"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d2cbb58974cc7d6953f392ea8c6ec678"
     },
     {
       "id": "tg_45677",
@@ -7642,7 +8442,8 @@
         "penhasco",
         "canyon"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b0fa50d005108b0f06318251304efd4f"
     },
     {
       "id": "tg_45676",
@@ -7674,7 +8475,8 @@
         "Nuvens"
       ],
       "classified_by": "manual",
-      "custom_classified": true
+      "custom_classified": true,
+      "content_hash": "099e181a3776116328cf24ad77bb337f"
     },
     {
       "id": "tg_45675",
@@ -7709,7 +8511,8 @@
         "animal selvagem",
         "espada japonesa"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "f091f09693bcdff3f3392ced42ed8cd0"
     },
     {
       "id": "tg_45674",
@@ -7748,7 +8551,8 @@
         "grande felino",
         "natureza"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b02fb0ec315e16c0f9b9ca0c094d5332"
     },
     {
       "id": "tg_45673",
@@ -7788,7 +8592,8 @@
         "luz do sol",
         "sunlight"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "19d2655a18bdbd0fabbf8a2c4f11acbe"
     },
     {
       "id": "tg_45672",
@@ -7828,7 +8633,8 @@
         "dark",
         "oled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "cc93a2425f747443e36f1fd87a228ea9"
     },
     {
       "id": "tg_45671",
@@ -7869,7 +8675,8 @@
         "cabeça",
         "olhar feroz"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d2e81249c89d20281782c3888421f6e3"
     },
     {
       "id": "tg_45670",
@@ -7908,7 +8715,8 @@
         "fundo preto",
         "minimalista escuro"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a30644387dfcbe25bb3f97fc990e6f90"
     },
     {
       "id": "tg_45660",
@@ -7947,7 +8755,8 @@
         "close up",
         "curiosos"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a8ca54b63b7cc3a05db42115a6504f6b"
     },
     {
       "id": "tg_45659",
@@ -7984,7 +8793,8 @@
         "smart dog",
         "cachorro inteligente"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "5e40c5c13428c188f140cdf5c14556e2"
     },
     {
       "id": "tg_45658",
@@ -8023,7 +8833,8 @@
         "black and white",
         "dark"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "e9444715c0f2d2fd539cad7cdb22b1e0"
     },
     {
       "id": "tg_45657",
@@ -8062,7 +8873,8 @@
         "paisagem fria",
         "natureza"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "2a273d702d475aa363e4b27bf136053c"
     },
     {
       "id": "tg_45656",
@@ -8101,7 +8913,8 @@
         "animais",
         "pets"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d14cf5f2dd987f7a6ed2856d9010693b"
     },
     {
       "id": "tg_45655",
@@ -8142,7 +8955,8 @@
         "engraçado",
         "funny"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "5a7bbf1882b2af4e174eceb3642a23a7"
     },
     {
       "id": "tg_45647",
@@ -8178,7 +8992,8 @@
         "pattern",
         "background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "226721bec453395a9536b0770dfb95b0"
     },
     {
       "id": "tg_45646",
@@ -8217,7 +9032,8 @@
         "minimalist",
         "amoled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "72d2412fc0ba3c98a96ed820edeaadef"
     },
     {
       "id": "tg_45645",
@@ -8257,7 +9073,8 @@
         "minimal",
         "wallpaper"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "fd8f67c23cbca1c7a32833bc520755c8"
     },
     {
       "id": "tg_45644",
@@ -8294,7 +9111,8 @@
         "textura",
         "blurry lines"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "e154f0b065f05986eb93b2025b23fadf"
     },
     {
       "id": "tg_45643",
@@ -8333,7 +9151,8 @@
         "moderno",
         "modern"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "9f927cc5967d47b249f1be752bc444d2"
     },
     {
       "id": "tg_45633",
@@ -8373,7 +9192,8 @@
         "water",
         "natureza"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c29f0f2a5923c4e5451ac1bcac301ca5"
     },
     {
       "id": "tg_45632",
@@ -8413,7 +9233,8 @@
         "amanhecer",
         "sunrise"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b1b7c52bf3c39952fb1bb4d0abd297e0"
     },
     {
       "id": "tg_45631",
@@ -8452,7 +9273,8 @@
         "natureza",
         "nature"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d9d19878ea8c43bbf0c0abdbcd133087"
     },
     {
       "id": "tg_45630",
@@ -8492,7 +9314,8 @@
         "purple landscape",
         "natureza"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "9e604edfa394324e54836da61edc56a0"
     },
     {
       "id": "tg_45629",
@@ -8537,7 +9360,8 @@
         "fog",
         "nature"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1a15969f76d33265dd1681b684dec0da"
     },
     {
       "id": "tg_45628",
@@ -8579,7 +9403,8 @@
         "espaço",
         "space"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "f2090a7860fb270e4b13176580a25b2b"
     },
     {
       "id": "tg_45619",
@@ -8618,7 +9443,8 @@
         "moderno",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "617dbdf37a1e3ec9c7006f601f2d7c31"
     },
     {
       "id": "tg_45618",
@@ -8658,7 +9484,8 @@
         "background",
         "minimalista"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "2eeaf95a75d31d4c515c665c4b9a2749"
     },
     {
       "id": "tg_45617",
@@ -8698,7 +9525,8 @@
         "suave",
         "smooth"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "3f3fbf75c75f82aaf665a70b886b6422"
     },
     {
       "id": "tg_45616",
@@ -8737,7 +9565,8 @@
         "papel de parede abstrato",
         "abstract wallpaper"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "533363efe07e0c612ec0ef752c8aaab1"
     },
     {
       "id": "tg_45615",
@@ -8774,7 +9603,8 @@
         "soft light",
         "modern design"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "590608da3a8f5348640d93e8d0eaf381"
     },
     {
       "id": "tg_45614",
@@ -8813,7 +9643,8 @@
         "moderno",
         "modern"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "02c4c105742022d1dd095e44263fa217"
     },
     {
       "id": "tg_45607",
@@ -8850,7 +9681,8 @@
         "desenho",
         "cartoon"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1d4814a7160806f5362e228f03276c9f"
     },
     {
       "id": "tg_45606",
@@ -8891,7 +9723,8 @@
         "céu",
         "sky"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c7fdc6cccfcb2bb32678935801087fe0"
     },
     {
       "id": "tg_45605",
@@ -8931,7 +9764,8 @@
         "dark",
         "oled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "83a9417ef0af5e78258c93223d0459dc"
     },
     {
       "id": "tg_45604",
@@ -8970,7 +9804,8 @@
         "minimal",
         "oled"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "cc301d48383de744f2f64625affacd89"
     },
     {
       "id": "tg_45603",
@@ -9011,7 +9846,8 @@
         "árvores",
         "trees"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "7607076765d85993c41b6d7eaefd74ba"
     },
     {
       "id": "tg_45602",
@@ -9051,7 +9887,8 @@
         "blue sky",
         "minimal"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "15c3544af651f2af6d70593c230a066c"
     },
     {
       "id": "tg_45601",
@@ -9091,7 +9928,8 @@
         "dark",
         "natureza"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1cafeb1d834c001492e1d36188c85a95"
     },
     {
       "id": "tg_45600",
@@ -9132,7 +9970,8 @@
         "azul",
         "blue"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d05ab03e78b36fb41a88ad77334088aa"
     },
     {
       "id": "tg_45599",
@@ -9173,7 +10012,8 @@
         "oled",
         "dark"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "4aef51fb342f8132cf0be91ae083a3f6"
     },
     {
       "id": "tg_45589",
@@ -9214,7 +10054,8 @@
         "vintage",
         "retro"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "5c7e00a27b9298595321d544c686f883"
     },
     {
       "id": "tg_45588",
@@ -9254,7 +10095,8 @@
         "car",
         "abstrato"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "6573590e9b6a0c9bc239f70e2943f10d"
     },
     {
       "id": "tg_45587",
@@ -9294,7 +10136,8 @@
         "purple landscape",
         "neon aesthetic"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "cb9d1acc08ed5ac9d69ea78f6a866216"
     },
     {
       "id": "tg_45586",
@@ -9335,7 +10178,8 @@
         "landscape",
         "monochrome"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "fc04be2641c8ba4697c7a7ac3258cb48"
     },
     {
       "id": "tg_45585",
@@ -9375,7 +10219,8 @@
         "sunset",
         "landscape"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a6f648c0f0c9e1d501563bcaaa3e739f"
     },
     {
       "id": "tg_45584",
@@ -9414,7 +10259,8 @@
         "planta",
         "plant"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "dc82b1237c26d77b48e9ccf5e7b98d2a"
     },
     {
       "id": "tg_45577",
@@ -9454,7 +10300,8 @@
         "astronomia",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "7b523c0a95d0f0a3e531e49a4bc645a5"
     },
     {
       "id": "tg_45576",
@@ -9492,7 +10339,8 @@
         "minimalista",
         "abstract"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "aecf46ef882a0257dd5dcec91f48883d"
     },
     {
       "id": "tg_45575",
@@ -9530,7 +10378,8 @@
         "formas",
         "arte digital"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "25ad22f7bd941ef42f238bb46eea5a12"
     },
     {
       "id": "tg_45574",
@@ -9568,7 +10417,8 @@
         "minimalista",
         "minimal"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "3173cc665236eb8218790837f1485467"
     },
     {
       "id": "tg_45573",
@@ -9607,7 +10457,8 @@
         "simples",
         "simple"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ec7816dc2d23ba55000365330f2651c6"
     },
     {
       "id": "tg_45572",
@@ -9648,7 +10499,8 @@
         "esfera",
         "sphere"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "492dd356a0661aaeeed8ef877abe0991"
     },
     {
       "id": "tg_45565",
@@ -9688,7 +10540,8 @@
         "fantasia",
         "dark fantasy"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b0d013a81144dacc88fdd0699ea79eeb"
     },
     {
       "id": "tg_45564",
@@ -9727,7 +10580,8 @@
         "criatura mitológica",
         "epic"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "247aa74ac4722c8c56605ca511146a8a"
     },
     {
       "id": "tg_45563",
@@ -9768,7 +10622,8 @@
         "céu",
         "sky"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "71fb0459a5ff9e90cb4a38f526387312"
     },
     {
       "id": "tg_45562",
@@ -9808,7 +10663,8 @@
         "caveiras",
         "skulls"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "98b2d09362b5d95357ceeb75c554399c"
     },
     {
       "id": "tg_45561",
@@ -9848,7 +10704,8 @@
         "luz e sombra",
         "magia"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "82a5038d61bcbd14c22c1b6313989165"
     },
     {
       "id": "tg_45560",
@@ -9888,7 +10745,8 @@
         "oled",
         "wallpaper"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ec10b6875f5bdf0e2dd9c0ea8324af83"
     },
     {
       "id": "tg_45553",
@@ -9928,7 +10786,8 @@
         "mythology",
         "guerreiro celestial"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a84efc8179e45a827530c644d2b3a1b2"
     },
     {
       "id": "tg_45552",
@@ -9967,7 +10826,8 @@
         "anjo sombrio",
         "criatura alada"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "2840780c8ad914019d8a8e5305412d89"
     },
     {
       "id": "tg_45551",
@@ -10006,7 +10866,8 @@
         "dark aesthetic",
         "minimalist dark"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d1ab8077cbdc4bf0d1d445e27660fbb6"
     },
     {
       "id": "tg_45550",
@@ -10045,7 +10906,8 @@
         "amoled wallpaper",
         "noite escura"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "57e0355d77788d7c94acd28ec5d25f63"
     },
     {
       "id": "tg_45549",
@@ -10081,7 +10943,8 @@
         "hachura",
         "surreal"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b8237dda56980159364cb478807a45fc"
     },
     {
       "id": "tg_45542",
@@ -10117,7 +10980,8 @@
         "fluid art",
         "dark background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ea18cda0af4d48656c86252c8076646b"
     },
     {
       "id": "tg_45541",
@@ -10152,7 +11016,8 @@
         "ondas abstratas",
         "elegante"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "727231422eab601126c755747e1d1bfe"
     },
     {
       "id": "tg_45540",
@@ -10191,7 +11056,8 @@
         "oled",
         "texture"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "8e3ffd5a3da7f31c63e35be4d97f1824"
     },
     {
       "id": "tg_45539",
@@ -10230,7 +11096,8 @@
         "marble",
         "texture"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "389003fb3792e879dd7fa8a34b6a1948"
     },
     {
       "id": "tg_45528",
@@ -10268,7 +11135,8 @@
         "storm",
         "tempestade"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "670f784690c77ce2515059fb94d31c50"
     },
     {
       "id": "tg_45527",
@@ -10308,7 +11176,8 @@
         "storm",
         "tempestade"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "14769f533f945e176584767c1bf3d1b4"
     },
     {
       "id": "tg_45526",
@@ -10347,7 +11216,8 @@
         "abstract 3d",
         "dark background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "22956966b159b1149940df052bb9b97f"
     },
     {
       "id": "tg_45525",
@@ -10385,7 +11255,8 @@
         "oled wallpaper",
         "papel de parede escuro"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "af0f3dda0bdd47e7e6b254768fcd9811"
     },
     {
       "id": "tg_45524",
@@ -10426,7 +11297,8 @@
         "espaço",
         "amigos"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "e7a8b3dc12766140ffdd86d8ba46a17b"
     },
     {
       "id": "tg_45523",
@@ -10465,7 +11337,8 @@
         "characters",
         "personagens"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "53446744ac1d260f27ab250e66c21f73"
     },
     {
       "id": "tg_45522",
@@ -10505,7 +11378,8 @@
         "vermelho",
         "red"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "621bf74bea88736e81257fe40239c46e"
     },
     {
       "id": "tg_45521",
@@ -10544,7 +11418,8 @@
         "stellar",
         "mystical"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "610c574e36414501cc8df84495747484"
     },
     {
       "id": "tg_45520",
@@ -10584,7 +11459,8 @@
         "eyelashes",
         "abstrato"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "15651d6e72606c6857dfc02483f5b680"
     },
     {
       "id": "tg_45519",
@@ -10626,7 +11502,8 @@
         "dark",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "caed6af6dc3add7223f5effd87e79513"
     },
     {
       "id": "tg_45518",
@@ -10667,7 +11544,8 @@
         "natureza",
         "close up"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "f58d0da3cf385eb5fe24690c4d4c05c5"
     },
     {
       "id": "tg_45517",
@@ -10708,7 +11586,8 @@
         "eyes",
         "dark background"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c2e2133e8dc7b09a047ef7068e0e5ab8"
     },
     {
       "id": "tg_45516",
@@ -10748,7 +11627,8 @@
         "wildlife",
         "natureza"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "ee8797f1dad8ccc206701678b731d6f9"
     },
     {
       "id": "tg_45515",
@@ -10789,7 +11669,8 @@
         "blue eyes",
         "big cat"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "70038529281e6160a14d279d23645dc3"
     },
     {
       "id": "tg_45514",
@@ -10831,7 +11712,8 @@
         "cars",
         "carros"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "99743bf26ed4551435cddc612222787b"
     },
     {
       "id": "tg_45513",
@@ -10870,7 +11752,8 @@
         "back view",
         "de costas"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "81d2d03bc276255a88ecf831999f9b64"
     },
     {
       "id": "tg_45512",
@@ -10910,7 +11793,8 @@
         "public transport",
         "transporte público"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "db3e3627af0dac4c31e47993572c22c6"
     },
     {
       "id": "tg_45511",
@@ -10952,7 +11836,8 @@
         "action",
         "playstation"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "794b0f486c1d4d6345630e0d8266ae85"
     },
     {
       "id": "tg_45510",
@@ -10990,7 +11875,8 @@
         "motion blur",
         "new york"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "f1b5391a1fc06a074a8dadcf2a942615"
     },
     {
       "id": "tg_45509",
@@ -11029,7 +11915,8 @@
         "vermelho",
         "luta"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "0d801843ad1c5e16eb37c71137000ee6"
     },
     {
       "id": "tg_45502",
@@ -11068,7 +11955,8 @@
         "azul",
         "blue"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "05fd81dd1adc394199ffff083e2c7481"
     },
     {
       "id": "tg_45501",
@@ -11105,7 +11993,8 @@
         "glowing",
         "light trails"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "7cc461b9153b17a8d0c31c33a09a5b02"
     },
     {
       "id": "tg_45500",
@@ -11145,7 +12034,8 @@
         "liquid",
         "líquido"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "923eabce9911dacb4e61992618cbdb9a"
     },
     {
       "id": "tg_45499",
@@ -11183,7 +12073,8 @@
         "amoled background",
         "rainbow lights"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "492dd356a0661aaeeed8ef877abe0991"
     },
     {
       "id": "tg_45498",
@@ -11222,7 +12113,8 @@
         "blue",
         "purple"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "78a3a1215be6c30d84f7c0f04ad54fe7"
     },
     {
       "id": "tg_45497",
@@ -11258,7 +12150,8 @@
         "ios wallpaper",
         "minimalista"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "cdd8de532d4c7277906deadbb6754223"
     },
     {
       "id": "tg_45485",
@@ -11298,7 +12191,8 @@
         "personagens de anime",
         "batalha"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c3252229a4677e8c275f268751f84bc9"
     },
     {
       "id": "tg_45484",
@@ -11335,7 +12229,8 @@
         "herói",
         "mangá"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d3b74a3c43cd153cd7303646d145e5c0"
     },
     {
       "id": "tg_45483",
@@ -11375,7 +12270,8 @@
         "minimalist anime",
         "luffy smiling"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "8a0bbb3177e7a0b94d29e262b5e84e54"
     },
     {
       "id": "tg_45482",
@@ -11414,7 +12310,8 @@
         "mangá",
         "shonen"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "87b917e86019bd52adc367ea23261ff2"
     },
     {
       "id": "tg_45481",
@@ -11454,7 +12351,8 @@
         "moon",
         "aesthetic"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1dfdb95431ad2571837a26b7402e7b23"
     },
     {
       "id": "tg_45480",
@@ -11493,7 +12391,8 @@
         "warrior",
         "manga"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "445706b7ea3a39a0f3f9d58e328c86a8"
     },
     {
       "id": "tg_45471",
@@ -11533,7 +12432,8 @@
         "oled",
         "curvas"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c926e76fe96c9149a5eb7abae48ab749"
     },
     {
       "id": "tg_45470",
@@ -11572,7 +12472,8 @@
         "minimalista",
         "papel de parede celular"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d166bbef92f8c4a209dc9eab1f34e88e"
     },
     {
       "id": "tg_45469",
@@ -11610,7 +12511,8 @@
         "elegância",
         "curvas luminosas"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "266f07a666e9a1f354b7b3ed85f46eec"
     },
     {
       "id": "tg_45468",
@@ -11647,7 +12549,8 @@
         "oled dark",
         "fluid design"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "5795ac4e49bda3757debc8812e082c1d"
     },
     {
       "id": "tg_45467",
@@ -11688,7 +12591,8 @@
         "minimal",
         "3d render"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "3fadce982cd54bcdb3f01a0e105e9bec"
     },
     {
       "id": "tg_45466",
@@ -11727,7 +12631,8 @@
         "glow",
         "rainbow"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "c9654dcb11e36caaa8d51d81ad58d83d"
     },
     {
       "id": "tg_45454",
@@ -11767,7 +12672,8 @@
         "hills",
         "névoa"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "146cae00433a349ec5bbb8280560d4ff"
     },
     {
       "id": "tg_45453",
@@ -11811,7 +12717,8 @@
         "pink",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "2e9adb64cb2c7ba91fd38b81c067b747"
     },
     {
       "id": "tg_45452",
@@ -11851,7 +12758,8 @@
         "field",
         "natureza"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "3f6571f334dbfe103d851ddd5e5deeec"
     },
     {
       "id": "tg_45451",
@@ -11892,7 +12800,8 @@
         "natureza surreal",
         "paisagem"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d68e255798fb1e4a2a9d01a1c5c8ee64"
     },
     {
       "id": "tg_45450",
@@ -11931,7 +12840,8 @@
         "céu bege",
         "beige sky"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b2320d8762233f3e1a3847a14ffee4b7"
     },
     {
       "id": "tg_45449",
@@ -11971,7 +12881,8 @@
         "hills",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "6b615bb62f88380560929dd36f52fd67"
     },
     {
       "id": "tg_45436",
@@ -12010,7 +12921,8 @@
         "filme",
         "animation"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "47f6fa8b100b184a21aeb1bf74484c5d"
     },
     {
       "id": "tg_45435",
@@ -12047,7 +12959,8 @@
         "cute",
         "personagem"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "fa392b6f69937f1d72fc0d860e6a770a"
     },
     {
       "id": "tg_45434",
@@ -12087,7 +13000,8 @@
         "eyes",
         "óculos"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "2f078126a1570ac14cac14dd41d1a6e2"
     },
     {
       "id": "tg_45433",
@@ -12128,7 +13042,8 @@
         "azul",
         "blue"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b0ef312be2b706b7a089b353b69e9dbb"
     },
     {
       "id": "tg_45432",
@@ -12164,7 +13079,8 @@
         "personagem",
         "filme"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "672f6cabd97c5fc994070cf66eaf4414"
     },
     {
       "id": "tg_45426",
@@ -12204,7 +13120,8 @@
         "solidão",
         "solitude"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "62abe157e6dbfc6b0546aa6d901fc7d8"
     },
     {
       "id": "tg_45425",
@@ -12245,7 +13162,8 @@
         "oled",
         "dark"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a2d469ef45361e8c16b42b9047d23b9f"
     },
     {
       "id": "tg_45424",
@@ -12285,7 +13203,8 @@
         "noite",
         "night"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "87f261c89c85c07b4eb6d5e7d51319b4"
     },
     {
       "id": "tg_45423",
@@ -12323,7 +13242,8 @@
         "fire glow",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a1a02b27c96982731e5181d59652206d"
     },
     {
       "id": "tg_45422",
@@ -12362,7 +13282,8 @@
         "estrelas",
         "stars"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "1226856449938691b37cb8d60a17b96b"
     },
     {
       "id": "tg_45421",
@@ -12401,7 +13322,8 @@
         "dark",
         "astronomia"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "6445c02acc06ba981a7da8d32fa77a83"
     },
     {
       "id": "tg_45413",
@@ -12444,7 +13366,8 @@
         "gold",
         "black"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "f24e9908a42fab0d0df0a0a9bd426ec6"
     },
     {
       "id": "tg_45412",
@@ -12484,7 +13407,8 @@
         "fantasy",
         "guerreiro divino"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "e60d9882c519bea08d7c20338060e27a"
     },
     {
       "id": "tg_45411",
@@ -12524,7 +13448,8 @@
         "marrom",
         "beige"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "aceadb65e0ae4226156ede5d34c37ede"
     },
     {
       "id": "tg_45410",
@@ -12565,7 +13490,8 @@
         "antiguidade",
         "ancient"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "b753042794c97322b247da21cbcc9653"
     },
     {
       "id": "tg_45409",
@@ -12605,7 +13531,8 @@
         "egyptian mythology",
         "arte egipcia"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "e13222ec5253e016a6f221eb027e2c84"
     },
     {
       "id": "tg_45408",
@@ -12644,7 +13571,8 @@
         "mythology",
         "oled wallpaper"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "96319d58d7ebad629bd02b2e4dd0415c"
     },
     {
       "id": "tg_45407",
@@ -12683,7 +13611,8 @@
         "luxury",
         "historical"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "4eb42a39e8cf5a6ddbaa81a2d0c8d232"
     },
     {
       "id": "tg_45406",
@@ -12722,7 +13651,8 @@
         "historical monument",
         "architecture"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "7421b7d0e77ed39476aca6f78027280e"
     },
     {
       "id": "tg_45405",
@@ -12763,7 +13693,8 @@
         "espaço",
         "space"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "68c246ad6dbcf20c5a98937934a5ed65"
     },
     {
       "id": "tg_45395",
@@ -12803,7 +13734,8 @@
         "blue sky",
         "arquitetura"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "52f5c7805d1515ee2532a9c2e9d234e6"
     },
     {
       "id": "tg_45394",
@@ -12843,7 +13775,8 @@
         "espaço",
         "space"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "d2ae9fc12bcd628c9d2f63485402b22f"
     },
     {
       "id": "tg_45393",
@@ -12882,7 +13815,8 @@
         "arquitetura",
         "landmark"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "0c9ee051525cae50fd307a857a437b0f"
     },
     {
       "id": "tg_45392",
@@ -12922,7 +13856,8 @@
         "usa",
         "landmark"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "a9a317263e1a3155a12347e23a01a844"
     },
     {
       "id": "tg_45391",
@@ -12962,7 +13897,8 @@
         "blue sky",
         "minimalist"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "7b54968d7b5cec9a638614ba79882d59"
     },
     {
       "id": "tg_45390",
@@ -13002,7 +13938,8 @@
         "nature",
         "entardecer"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "27c84e602841828b034e6db558fb053c"
     },
     {
       "id": "tg_45389",
@@ -13042,7 +13979,8 @@
         "landscape",
         "natureza"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "99c58e9779a1bc42900e82671c907abb"
     },
     {
       "id": "tg_45388",
@@ -13082,7 +14020,8 @@
         "reflection",
         "night landscape"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "771fc8546a90662f79a5caed5b9c3ca2"
     },
     {
       "id": "tg_45387",
@@ -13123,7 +14062,8 @@
         "paisagem",
         "landscape"
       ],
-      "classified_by": "gemini"
+      "classified_by": "gemini",
+      "content_hash": "14a7a9ca8d3a5d3fa82ae3ed9a6e3105"
     },
     {
       "id": "tg_45369",
@@ -13533,21 +14473,29 @@
     }
   ],
   "latest_notification": {
-    "id": "notif_1793969610",
-    "title": "Wallpapers OLED pegando fogo! 🔥",
-    "message": "Confira 8 novos fundos escuros e surreais para sua tela!",
-    "count": 8,
+    "id": "notif_1793974500",
+    "title": "15 Wallpapers OLED & Minimal! ✨",
+    "message": "Renove sua tela com fundos AMOLED incríveis!",
+    "count": 15,
     "wallpaper_ids": [
-      "tg_46146",
-      "tg_46145",
-      "tg_46144",
-      "tg_46143",
-      "tg_46142",
-      "tg_46141",
-      "tg_46140",
-      "tg_46139"
+      "tg_45353",
+      "tg_45352",
+      "tg_45345",
+      "tg_45343",
+      "tg_45342",
+      "tg_45337",
+      "tg_45336",
+      "tg_45335",
+      "tg_45334",
+      "tg_45333",
+      "tg_45332",
+      "tg_45325",
+      "tg_45324",
+      "tg_45323",
+      "tg_45319"
     ],
-    "timestamp": 1793969610525,
+    "timestamp": 1793974500997,
     "generated_by": "gemini"
-  }
+  },
+  "backfill_cursor_id": 45319
 }

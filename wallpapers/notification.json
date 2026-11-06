@@ -1,18 +1,25 @@
 {
-  "id": "notif_1793969610",
-  "title": "Wallpapers OLED pegando fogo! 🔥",
-  "message": "Confira 8 novos fundos escuros e surreais para sua tela!",
-  "count": 8,
+  "id": "notif_1793974500",
+  "title": "15 Wallpapers OLED & Minimal! ✨",
+  "message": "Renove sua tela com fundos AMOLED incríveis!",
+  "count": 15,
   "wallpaper_ids": [
-    "tg_46146",
-    "tg_46145",
-    "tg_46144",
-    "tg_46143",
-    "tg_46142",
-    "tg_46141",
-    "tg_46140",
-    "tg_46139"
+    "tg_45353",
+    "tg_45352",
+    "tg_45345",
+    "tg_45343",
+    "tg_45342",
+    "tg_45337",
+    "tg_45336",
+    "tg_45335",
+    "tg_45334",
+    "tg_45333",
+    "tg_45332",
+    "tg_45325",
+    "tg_45324",
+    "tg_45323",
+    "tg_45319"
   ],
-  "timestamp": 1793969610525,
+  "timestamp": 1793974500997,
   "generated_by": "gemini"
 }
