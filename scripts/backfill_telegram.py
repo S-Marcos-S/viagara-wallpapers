@@ -3,7 +3,8 @@
 """
 Script to backfill historical full-quality wallpapers from @amandinhawallpaper Telegram channel.
 Allows downloading a customizable number of older wallpapers, strictly skipping posts from today,
-and preventing any duplicate items (by message ID and content hash).
+preventing duplicate items (by message ID and cryptographic content hash MD5),
+and advancing the historical backfill cursor.
 """
 
 import os
@@ -35,6 +36,8 @@ CHANNEL_USERNAME = os.environ.get("CHANNEL_USERNAME", "amandinhawallpaper")
 TARGET_COUNT = int(os.environ.get("BACKFILL_COUNT", "30"))
 SKIP_TODAY_RAW = os.environ.get("SKIP_TODAY", "true").lower()
 SKIP_TODAY = SKIP_TODAY_RAW in ("true", "1", "yes", "y")
+PREPEND_BACKFILLED_RAW = os.environ.get("PREPEND_BACKFILLED", "true").lower()
+PREPEND_BACKFILLED = PREPEND_BACKFILLED_RAW in ("true", "1", "yes", "y")
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WALLPAPERS_DIR = os.path.join(BASE_DIR, "wallpapers")
@@ -54,6 +57,28 @@ def calculate_file_md5(file_path: str) -> str:
         for chunk in iter(lambda: f.read(65536), b""):
             hasher.update(chunk)
     return hasher.hexdigest()
+
+
+def populate_missing_hashes(catalog: Dict[str, Any]) -> int:
+    """Populates content_hash for catalog items if the file is available in FULL_DIR."""
+    populated = 0
+    for item in catalog.get("wallpapers", []):
+        if item.get("content_hash"):
+            continue
+        item_id = item.get("id", "")
+        if not item_id:
+            continue
+        for ext in ("jpg", "png", "mp4", "jpeg"):
+            path = os.path.join(FULL_DIR, f"{item_id}.{ext}")
+            if os.path.exists(path):
+                try:
+                    ch = calculate_file_md5(path)
+                    item["content_hash"] = ch
+                    populated += 1
+                except Exception as e:
+                    print(f"Warning: could not calculate hash for {path}: {e}")
+                break
+    return populated
 
 
 def generate_image_thumbnail(source_path: str, thumb_path: str, max_h: int = 1080) -> bool:
@@ -119,11 +144,26 @@ async def main():
             "wallpapers": [],
         }
 
+    # Populate any missing hashes for existing wallpapers if files are present locally
+    populated = populate_missing_hashes(catalog)
+    if populated > 0:
+        print(f"Populated content_hash for {populated} existing wallpapers.")
+
     existing_wallpapers = catalog.get("wallpapers", [])
     existing_ids: Set[str] = {w["id"] for w in existing_wallpapers}
     existing_hashes: Set[str] = {w.get("content_hash") for w in existing_wallpapers if w.get("content_hash")}
 
-    print(f"Current catalog size: {len(existing_wallpapers)} wallpapers")
+    numeric_ids = [
+        int(w["id"][3:])
+        for w in existing_wallpapers
+        if w.get("id", "").startswith("tg_") and w.get("id", "")[3:].isdigit()
+    ]
+    min_catalog_id = min(numeric_ids) if numeric_ids else None
+    cursor_id = catalog.get("backfill_cursor_id") or min_catalog_id
+
+    print(f"Current catalog size: {len(existing_wallpapers)} wallpapers ({len(existing_hashes)} hashes)")
+    if cursor_id:
+        print(f"Starting backfill offset at message #{cursor_id}")
 
     today_utc = datetime.now(timezone.utc).date()
     print(f"Today UTC Date: {today_utc}")
@@ -141,8 +181,16 @@ async def main():
 
     print(f"Scanning channel history (looking for {TARGET_COUNT} new uncataloged wallpapers)...")
 
-    async for msg in client.iter_messages(entity, limit=MAX_SCAN_LIMIT):
+    iter_kwargs: Dict[str, Any] = {"limit": MAX_SCAN_LIMIT}
+    if cursor_id:
+        iter_kwargs["offset_id"] = cursor_id
+
+    oldest_scanned_id = cursor_id or 0
+
+    async for msg in client.iter_messages(entity, **iter_kwargs):
         scanned_messages += 1
+        if oldest_scanned_id == 0 or msg.id < oldest_scanned_id:
+            oldest_scanned_id = msg.id
 
         if not msg.media or not isinstance(msg.media, MessageMediaDocument):
             continue
@@ -158,7 +206,6 @@ async def main():
         msg_date_utc = msg_date.astimezone(timezone.utc).date()
 
         if SKIP_TODAY and msg_date_utc == today_utc:
-            # Skip messages posted today
             continue
 
         doc = msg.media.document
@@ -217,7 +264,7 @@ async def main():
             print(f"Failed to download media for msg #{msg.id}")
             continue
 
-        # Check content hash to avoid duplicate files
+        # Check cryptographic content hash (MD5) to avoid duplicate files
         content_hash = calculate_file_md5(full_path)
         if content_hash in existing_hashes:
             print(f"Duplicate content detected by hash ({content_hash}). Skipping msg #{msg.id}")
@@ -269,23 +316,34 @@ async def main():
 
     await client.disconnect()
 
+    if oldest_scanned_id > 0:
+        catalog["backfill_cursor_id"] = oldest_scanned_id
+        print(f"Updated backfill cursor in catalog to #{oldest_scanned_id}")
+
     if not new_items:
         print("\nNo new wallpapers were downloaded during this backfill run.")
+        if populated > 0 or oldest_scanned_id > 0:
+            with open(CATALOG_PATH, "w", encoding="utf-8") as f:
+                json.dump(catalog, f, indent=2, ensure_ascii=False)
+                f.write("\n")
         return
 
-    # Combine with catalog and sort consistently by message ID (newest first)
-    all_wallpapers = new_items + existing_wallpapers
+    # If prepend is set, put them at the top so launcher users see them as new; otherwise sort
+    if PREPEND_BACKFILLED:
+        catalog["wallpapers"] = new_items + existing_wallpapers
+    else:
+        all_wallpapers = new_items + existing_wallpapers
 
-    def get_sort_key(item: Dict[str, Any]) -> int:
-        item_id = item.get("id", "")
-        if item_id.startswith("tg_"):
-            num_part = item_id[3:]
-            if num_part.isdigit():
-                return int(num_part)
-        return 0
+        def get_sort_key(item: Dict[str, Any]) -> int:
+            item_id = item.get("id", "")
+            if item_id.startswith("tg_"):
+                num_part = item_id[3:]
+                if num_part.isdigit():
+                    return int(num_part)
+            return 0
 
-    all_wallpapers.sort(key=get_sort_key, reverse=True)
-    catalog["wallpapers"] = all_wallpapers
+        all_wallpapers.sort(key=get_sort_key, reverse=True)
+        catalog["wallpapers"] = all_wallpapers
 
     # Save newly added item IDs for priority classification
     new_ids = [item["id"] for item in new_items]
@@ -301,7 +359,7 @@ async def main():
         f.write("\n")
 
     print(f"\nDone! Added {len(new_items)} new historical wallpapers to catalog.json.")
-    print(f"Total catalog size is now: {len(all_wallpapers)} wallpapers.")
+    print(f"Total catalog size is now: {len(catalog['wallpapers'])} wallpapers.")
 
 
 if __name__ == "__main__":
