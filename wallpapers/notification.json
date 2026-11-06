@@ -1,11 +1,18 @@
 {
-  "id": "notif_1793913038",
-  "title": "Novo wallpaper Dark Sunset! 🌅",
-  "message": "Confira 1 novo degradê escuro para sua tela ✨",
-  "count": 1,
+  "id": "notif_1793969610",
+  "title": "Wallpapers OLED pegando fogo! 🔥",
+  "message": "Confira 8 novos fundos escuros e surreais para sua tela!",
+  "count": 8,
   "wallpaper_ids": [
-    "tg_46061"
+    "tg_46146",
+    "tg_46145",
+    "tg_46144",
+    "tg_46143",
+    "tg_46142",
+    "tg_46141",
+    "tg_46140",
+    "tg_46139"
   ],
-  "timestamp": 1793913038531,
+  "timestamp": 1793969610525,
   "generated_by": "gemini"
 }
