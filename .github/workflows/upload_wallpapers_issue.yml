@@ -180,26 +180,15 @@ jobs:
         run: |
           python scripts/wallpaper_stats.py
 
-      - name: Commit e Push dos Novos Arquivos
+      - name: Commit e Push dos Novos Arquivos (Resiliente a Conflitos)
         if: steps.process_wallpapers.outputs.new_count > 0
         env:
           ISSUE_NUM: ${{ steps.context.outputs.issue_number }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          if [ -n "$(git status --porcelain wallpapers/ README.md)" ]; then
-            git add wallpapers/ README.md
-            git commit -m "feat(wallpapers): add wallpapers from issue #${ISSUE_NUM} [skip ci]"
-            git pull --rebase origin main
-            git push origin main
-            echo "Papéis de parede salvos e enviados ao repositório com sucesso!"
-          else
-            echo "Nenhuma alteração detectada para commit."
-          fi
+          python scripts/safe_git_push.py
 
       - name: Comentar e Fechar a Issue
-        if: always()
+        if: success()
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_NUM: ${{ steps.context.outputs.issue_number }}
@@ -216,3 +205,11 @@ jobs:
             gh issue edit "$ISSUE_NUM" --add-label "aprovado" || true
             gh issue close "$ISSUE_NUM" --reason "completed"
           fi
+
+      - name: Reportar Erro na Issue se Houver Falha
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUM: ${{ steps.context.outputs.issue_number }}
+        run: |
+          gh issue comment "$ISSUE_NUM" --body "⚠️ **Atenção:** Ocorreu uma instabilidade ao salvar os arquivos no repositório. O mantenedor pode reprocessar este envio comentando \`/approve\` novamente." || true

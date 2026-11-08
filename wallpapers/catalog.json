@@ -60,6 +60,27 @@
   ],
   "wallpapers": [
     {
+      "id": "wp_i8_1",
+      "name": "Wallpaper #wp_i8_1",
+      "author": "S-Marcos-S",
+      "author_url": "https://github.com/S-Marcos-S",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/wp_i8_1.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/wp_i8_1.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "search_terms": [],
+      "content_hash": "c71d7d16040355cf65de40c0d4c53e2e",
+      "classified_by": null,
+      "resolution": "2736x3648"
+    },
+    {
       "id": "tg_45285",
       "name": "Homem-Aranha (Tom Holland)",
       "author": "Wallpaper HD/4K (Amanda)",
