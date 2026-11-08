@@ -60,6 +60,90 @@
   ],
   "wallpapers": [
     {
+      "id": "wp_i9_2",
+      "name": "Rosas Brancas ao Entardecer",
+      "author": "S-Marcos-S",
+      "author_url": "https://github.com/S-Marcos-S",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/wp_i9_2.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/wp_i9_2.jpg",
+      "primary_color": "#7B8893",
+      "category": "nature",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "nature",
+        "natureza",
+        "flowers",
+        "flores",
+        "white roses",
+        "rosas brancas",
+        "sky",
+        "sunset"
+      ],
+      "search_terms": [
+        "rosas brancas",
+        "white roses",
+        "flores",
+        "flowers",
+        "céu nublado",
+        "cloudy sky",
+        "entardecer",
+        "sunset",
+        "natureza",
+        "nature",
+        "plantas",
+        "plants",
+        "folhas",
+        "leaves",
+        "galho"
+      ],
+      "content_hash": "3c7b0f2084bd1245263df2ff714666a1",
+      "classified_by": "gemini",
+      "resolution": "3072x4096"
+    },
+    {
+      "id": "wp_i9_1",
+      "name": "Paisagem Natural Nublada",
+      "author": "S-Marcos-S",
+      "author_url": "https://github.com/S-Marcos-S",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/wp_i9_1.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/wp_i9_1.jpg",
+      "primary_color": "#78868F",
+      "category": "nature",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "nature",
+        "natureza",
+        "trees",
+        "árvores",
+        "sky",
+        "céu",
+        "clouds",
+        "nuvens"
+      ],
+      "search_terms": [
+        "natureza",
+        "nature",
+        "árvores",
+        "trees",
+        "coqueiro",
+        "palmeira",
+        "palm tree",
+        "céu nublado",
+        "cloudy sky",
+        "nuvens",
+        "clouds",
+        "vegetação",
+        "floresta",
+        "dia cinzento",
+        "paisagem"
+      ],
+      "content_hash": "5f7e876cb0c86c0b8d305f4f9f28c238",
+      "classified_by": "gemini",
+      "resolution": "4096x3072"
+    },
+    {
       "id": "wp_i8_1",
       "name": "Gotas de Chuva em Folhas Verdes",
       "author": "S-Marcos-S",
@@ -15683,14 +15767,15 @@
     }
   ],
   "latest_notification": {
-    "id": "notif_1794153657",
-    "title": "Natureza verde na tela!",
-    "message": "Confira 1 novo papel de parede de folhas e chuva",
-    "count": 1,
+    "id": "notif_1794155405",
+    "title": "Natureza em alta na tela!",
+    "message": "2 novos wallpapers de tirar o fôlego",
+    "count": 2,
     "wallpaper_ids": [
-      "wp_i8_1"
+      "wp_i9_2",
+      "wp_i9_1"
     ],
-    "timestamp": 1794153657276,
+    "timestamp": 1794155405782,
     "generated_by": "gemini"
   },
   "backfill_cursor_id": 45263
