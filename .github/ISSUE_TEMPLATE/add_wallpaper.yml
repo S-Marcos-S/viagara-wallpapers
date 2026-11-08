@@ -1,0 +1,37 @@
+name: 🖼️ Enviar Papéis de Parede
+description: Selecione fotos da galeria para adicionar ao catálogo do Viagara Launcher
+title: "[Wallpaper]: "
+labels: ["wallpaper-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 🌌 Adicionar Papéis de Parede ao Catálogo
+        Anexe as imagens da sua galeria abaixo:
+        - 📱 **Seleção Múltipla Livre:** você pode selecionar quantas fotos quiser de uma só vez.
+        - 💎 **Qualidade Máxima:** resolução original 100% preservada (sem compressão).
+        - 🤖 **Classificação IA:** o **Google Gemini** identifica personagens, categorias, cores e tags de busca automaticamente.
+  - type: textarea
+    id: images
+    attributes:
+      label: Imagens do Celular / Galeria
+      description: Toque no ícone de anexo ou imagem para selecionar as fotos da galeria do seu celular.
+      placeholder: "Anexe suas fotos aqui..."
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: Autor / Créditos (Opcional)
+      description: "Nome do artista, canal ou créditos (deixe em branco para usar seu perfil do GitHub)."
+      placeholder: "Ex: Amanda, Unsplash, @artista"
+    validations:
+      required: false
+  - type: input
+    id: title
+    attributes:
+      label: Título do Papel de Parede (Opcional)
+      description: "Título desejado (se deixar em branco, o Gemini definirá o título baseado no que vê na imagem)."
+      placeholder: "Ex: Homem em Chamas Douradas"
+    validations:
+      required: false

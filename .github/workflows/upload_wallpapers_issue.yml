@@ -1,0 +1,218 @@
+name: Process Wallpapers from Issue
+run-name: "🖼️ Wallpaper Issue #${{ github.event.issue.number || github.event.comment.issue_url || inputs.issue_number }} (${{ github.event_name }})"
+
+on:
+  issues:
+    types: [opened, labeled]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Número da Issue para processar'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  # =========================================================================
+  # JOB 1: Triagem de Sugestões de Terceiros (Comunidade)
+  # =========================================================================
+  triage:
+    name: Triagem / Moderação da Issue
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'issues' &&
+      github.event.action == 'opened' &&
+      github.actor != github.repository_owner &&
+      github.event.issue.author_association != 'OWNER' &&
+      (
+        contains(github.event.issue.body, 'user-attachments') ||
+        contains(github.event.issue.body, 'http') ||
+        contains(github.event.issue.title, '[Wallpaper]') ||
+        contains(github.event.issue.title, 'Papel de Parede')
+      )
+    steps:
+      - name: Marcar para moderação e responder autor
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUM: ${{ github.event.issue.number }}
+          USER_LOGIN: ${{ github.event.issue.user.login }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          gh issue edit "$ISSUE_NUM" --add-label "aguardando-aprovacao" || true
+          gh issue comment "$ISSUE_NUM" --body "👋 Olá @$USER_LOGIN! Muito obrigado por sugerir papéis de parede para o repositório do **Viagara Launcher**!
+
+          🛡️ **Moderação Ativa (Modelo 2):** Como você não é o mantenedor oficial deste repositório, esta sugestão foi colocada na fila de moderação para garantir a segurança e a qualidade do catálogo.
+
+          Assim que @$OWNER revisar suas imagens e comentar \`/approve\` (ou \`/aprovar\`), o robô irá:
+          1. 📥 Baixar as imagens em **resolução original máxima** (sem compressão).
+          2. 🖼️ Gerar miniaturas proporcionais para o catálogo.
+          3. ✨ Classificar título, categoria e tags de busca usando **Google Gemini Flash**.
+          4. 📱 Disponibilizar os novos papéis de parede diretamente no launcher!"
+
+  # =========================================================================
+  # JOB 2: Rejeição de Sugestões
+  # =========================================================================
+  reject:
+    name: Rejeitar Sugestão
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'issue_comment' &&
+      github.event.action == 'created' &&
+      (contains(github.event.comment.body, '/reject') || contains(github.event.comment.body, '/rejeitar')) &&
+      (
+        github.actor == github.repository_owner ||
+        contains(fromJSON('["OWNER", "COLLABORATOR", "MEMBER"]'), github.event.comment.author_association)
+      )
+    steps:
+      - name: Fechar Issue recusada
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUM: ${{ github.event.issue.number }}
+          ACTOR: ${{ github.actor }}
+        run: |
+          gh issue comment "$ISSUE_NUM" --body "❌ **Sugestão recusada** por @$ACTOR. Esta Issue foi encerrada sem alterações no repositório."
+          gh issue edit "$ISSUE_NUM" --remove-label "aguardando-aprovacao" || true
+          gh issue edit "$ISSUE_NUM" --add-label "rejeitado" || true
+          gh issue close "$ISSUE_NUM" --reason "not_planned"
+
+  # =========================================================================
+  # JOB 3: Processamento dos Papéis de Parede (Aprovado ou Dono)
+  # =========================================================================
+  process:
+    name: Processar Papéis de Parede
+    runs-on: ubuntu-latest
+    if: >
+      (
+        github.event_name == 'issues' &&
+        github.event.action == 'opened' &&
+        (github.actor == github.repository_owner || github.event.issue.author_association == 'OWNER') &&
+        (
+          contains(github.event.issue.body, 'user-attachments') ||
+          contains(github.event.issue.body, 'http') ||
+          contains(github.event.issue.title, '[Wallpaper]') ||
+          contains(github.event.issue.title, 'Papel de Parede')
+        )
+      ) ||
+      (
+        github.event_name == 'issue_comment' &&
+        github.event.action == 'created' &&
+        (contains(github.event.comment.body, '/approve') || contains(github.event.comment.body, '/aprovar')) &&
+        (
+          github.actor == github.repository_owner ||
+          contains(fromJSON('["OWNER", "COLLABORATOR", "MEMBER"]'), github.event.comment.author_association)
+        )
+      ) ||
+      (
+        github.event_name == 'issues' &&
+        github.event.action == 'labeled' &&
+        github.event.label.name == 'approved' &&
+        github.actor == github.repository_owner
+      ) ||
+      github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pillow opencv-python-headless requests
+
+      - name: Obter dados da Issue
+        id: context
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_ISSUE_NUM: ${{ inputs.issue_number }}
+          EVENT_ISSUE_NUM: ${{ github.event.issue.number }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            ISSUE_NUM="$DISPATCH_ISSUE_NUM"
+          else
+            ISSUE_NUM="$EVENT_ISSUE_NUM"
+          fi
+          echo "issue_number=$ISSUE_NUM" >> $GITHUB_OUTPUT
+
+          # Fetch full issue data via GitHub API
+          gh api "repos/${{ github.repository }}/issues/${ISSUE_NUM}" > issue_data.json
+          
+          # Reage com olhos 👀 para indicar que o processamento começou
+          gh api "repos/${{ github.repository }}/issues/${ISSUE_NUM}/reactions" -f content="eyes" || true
+
+      - name: Baixar imagens e registrar no catálogo
+        id: process_wallpapers
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ steps.context.outputs.issue_number }}
+          ISSUE_DATA_FILE: "issue_data.json"
+        run: |
+          python scripts/process_issue_wallpapers.py
+
+      - name: Classificar novos papéis de parede com Gemini AI
+        if: steps.process_wallpapers.outputs.new_count > 0
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python scripts/classify_with_gemini.py
+
+      - name: Atualizar Estatísticas do Repositório no README
+        if: steps.process_wallpapers.outputs.new_count > 0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/wallpaper_stats.py
+
+      - name: Commit e Push dos Novos Arquivos
+        if: steps.process_wallpapers.outputs.new_count > 0
+        env:
+          ISSUE_NUM: ${{ steps.context.outputs.issue_number }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -n "$(git status --porcelain wallpapers/ README.md)" ]; then
+            git add wallpapers/ README.md
+            git commit -m "feat(wallpapers): add wallpapers from issue #${ISSUE_NUM} [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+            echo "Papéis de parede salvos e enviados ao repositório com sucesso!"
+          else
+            echo "Nenhuma alteração detectada para commit."
+          fi
+
+      - name: Comentar e Fechar a Issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUM: ${{ steps.context.outputs.issue_number }}
+          NEW_COUNT: ${{ steps.process_wallpapers.outputs.new_count }}
+        run: |
+          if [ -f "issue_summary.md" ]; then
+            gh issue comment "$ISSUE_NUM" --body-file issue_summary.md
+          else
+            gh issue comment "$ISSUE_NUM" --body "✅ **Papéis de parede processados com sucesso!**"
+          fi
+
+          if [ "$NEW_COUNT" -gt 0 ]; then
+            gh issue edit "$ISSUE_NUM" --remove-label "aguardando-aprovacao" || true
+            gh issue edit "$ISSUE_NUM" --add-label "aprovado" || true
+            gh issue close "$ISSUE_NUM" --reason "completed"
+          fi

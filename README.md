@@ -54,3 +54,32 @@ Os papéis de parede são curados, sincronizados e categorizados automaticamente
 | `Cars` | **1** | 0.3% |
 
 <!-- END_WALLPAPER_STATS -->
+
+---
+
+## 📱 Como Enviar Papéis de Parede Direto do Celular (Galeria)
+
+Você pode enviar imagens e live wallpapers diretamente da galeria do seu celular utilizando o sistema de **Issues**:
+
+1. Abra a aba **Issues** deste repositório no aplicativo do GitHub para celular ou no navegador.
+2. Toque em **"New Issue"** e escolha o modelo **🖼️ Enviar Papéis de Parede**.
+3. No campo de imagens, toque no ícone de anexo e selecione **quantas fotos quiser da galeria**.
+4. Toque em **Enviar (Submit)**.
+
+### 🛡️ Sistema de Moderação Inteligente (Modelo 2)
+
+- **Proprietário / Administrador (`@S-Marcos-S`):**
+  - O processamento é **imediato e automático**.
+  - O robô baixa as imagens em **resolução original máxima (100% de qualidade sem perda)**, gera as miniaturas WebP otimizadas para o launcher, aciona o **Google Gemini Flash** para categorizar e gerar tags, comita no repositório e fecha a Issue com o relatório.
+- **Comunidade / Outros Usuários:**
+  - A Issue recebe o rótulo `aguardando-aprovacao`.
+  - O conteúdo é revisado pelo mantenedor.
+  - Para aprovar, basta comentar `/approve` (ou `/aprovar`) na Issue.
+  - Para recusar, basta comentar `/reject` (ou `/rejeitar`).
+
+### 💎 Fidelidade e Experiência no Viagara Launcher
+
+- **Zero Compressão:** Os arquivos originais em `wallpapers/full/` são preservados sem alterações de resolução ou qualidade.
+- **Enquadramento Perfeito (Crop & Pan):** No launcher, os papéis de parede podem ser movidos e ampliados (*pinch-to-zoom*) livremente sobre suas proporções originais.
+- **Miniaturas Proporcionais:** Exibição com foco central nos cards do catálogo sem distorções visuais ou esticamentos.
+
