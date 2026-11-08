@@ -60,6 +60,86 @@
   ],
   "wallpapers": [
     {
+      "id": "wp_i10_2",
+      "name": "Pôr do Sol na Rua Molhada",
+      "author": "S-Marcos-S",
+      "author_url": "https://github.com/S-Marcos-S",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/wp_i10_2.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/wp_i10_2.jpg",
+      "primary_color": "#d96b43",
+      "category": "nature",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "nature",
+        "sunset",
+        "pôr do sol",
+        "sky",
+        "street",
+        "rua",
+        "cidade",
+        "clouds"
+      ],
+      "search_terms": [
+        "pôr do sol",
+        "sunset",
+        "rua molhada",
+        "wet street",
+        "céu alaranjado",
+        "orange sky",
+        "nuvens",
+        "clouds",
+        "cidade pequena",
+        "small town",
+        "reflexo",
+        "reflection",
+        "poste de luz",
+        "street light",
+        "natureza",
+        "paisagem urbana"
+      ],
+      "content_hash": "309c68e9049e15a491a295a84635a273",
+      "classified_by": "gemini",
+      "resolution": "3072x4096"
+    },
+    {
+      "id": "wp_i10_1",
+      "name": "Rosas Brancas com Fundo Desfocado",
+      "author": "S-Marcos-S",
+      "author_url": "https://github.com/S-Marcos-S",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/wp_i10_1.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/wp_i10_1.jpg",
+      "primary_color": "#E5E5E5",
+      "category": "nature",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "nature",
+        "flores",
+        "roses",
+        "white",
+        "floral",
+        "plant"
+      ],
+      "search_terms": [
+        "rosas brancas",
+        "flores",
+        "white roses",
+        "flowers",
+        "natureza",
+        "nature",
+        "botânica",
+        "plantas",
+        "folhas verdes",
+        "fundo desfocado",
+        "bokeh",
+        "floral"
+      ],
+      "content_hash": "7c155d53d0d3642a4974f11c57c1565f",
+      "classified_by": "gemini",
+      "resolution": "3072x4096"
+    },
+    {
       "id": "wp_i9_2",
       "name": "Rosas Brancas ao Entardecer",
       "author": "S-Marcos-S",
@@ -15767,15 +15847,15 @@
     }
   ],
   "latest_notification": {
-    "id": "notif_1794155405",
-    "title": "Natureza em alta na tela!",
-    "message": "2 novos wallpapers de tirar o fôlego",
+    "id": "notif_1794157032",
+    "title": "Natureza em alta no Viagara!",
+    "message": "2 novos wallpapers incríveis para sua tela",
     "count": 2,
     "wallpaper_ids": [
-      "wp_i9_2",
-      "wp_i9_1"
+      "wp_i10_2",
+      "wp_i10_1"
     ],
-    "timestamp": 1794155405782,
+    "timestamp": 1794157032243,
     "generated_by": "gemini"
   },
   "backfill_cursor_id": 45263
