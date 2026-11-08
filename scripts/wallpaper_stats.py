@@ -102,17 +102,18 @@ def fetch_sizes_from_github_api(repo: str, branch: str = "main") -> Dict[str, An
     }
 
 
-def get_storage_stats() -> Dict[str, Any]:
+def get_storage_stats(catalog: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     # 1. Try local disk first
     full_bytes, full_count = calculate_local_dir_size(FULL_DIR)
     thumb_bytes, thumb_count = calculate_local_dir_size(THUMB_DIR)
     total_bytes, total_count = calculate_local_dir_size(BASE_DIR)
 
-    # 2. If local files are empty (sparse checkout), fallback to GitHub API
-    if full_count == 0 or full_bytes == 0:
-        print("Notice: Local directory appears sparse or empty. Querying GitHub Git Trees API...")
+    # 2. If local files are empty or sparse (fewer files on disk than catalog wallpapers), fallback to GitHub API
+    total_in_catalog = len(catalog.get("wallpapers", [])) if catalog else 0
+    if (total_in_catalog > 0 and full_count < total_in_catalog) or full_count == 0 or full_bytes == 0:
+        print(f"Notice: Local directory is sparse ({full_count}/{total_in_catalog} files). Querying GitHub Git Trees API for exact repository sizes...")
         api_stats = fetch_sizes_from_github_api(DEFAULT_REPO, DEFAULT_BRANCH)
-        if api_stats:
+        if api_stats and api_stats.get("full_count", 0) > 0:
             return api_stats
 
     return {
@@ -299,7 +300,7 @@ def main():
     print("=== Generating Daily Wallpaper Repository Statistics ===")
     catalog = load_catalog()
     catalog_stats = analyze_catalog(catalog)
-    storage_stats = get_storage_stats()
+    storage_stats = get_storage_stats(catalog)
 
     stats_md = generate_stats_markdown(storage_stats, catalog_stats)
 

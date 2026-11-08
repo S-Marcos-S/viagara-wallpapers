@@ -9,24 +9,24 @@ Os papéis de parede são curados, sincronizados e categorizados automaticamente
 <!-- START_WALLPAPER_STATS -->
 ## 📊 Painel de Estatísticas Diárias do Repositório
 
-> 🕒 **Última atualização:** 08/11/2026 às 12:55 (Horário de Brasília) (`2026-11-08 15:55 UTC`)
+> 🕒 **Última atualização:** 08/11/2026 às 13:03 (Horário de Brasília) (`2026-11-08 16:03 UTC`)
 
 ### 💾 Armazenamento e Consumo em Disco
 
 | Diretório / Recurso | Tamanho em Gigabytes | Tamanho em Megabytes | Arquivos |
 | :--- | :---: | :---: | :---: |
-| 📁 **Wallpapers em Alta Resolução (`wallpapers/full/`)** | **0.003 GB** | 2.7 MB | 1 |
-| 🖼️ **Miniaturas Otimizadas (`wallpapers/thumbnails/`)** | **0.000 GB** | 0.1 MB | 1 |
-| 📦 **Total do Repositório** | **0.509 GB** | **521.2 MB** | 186 |
+| 📁 **Wallpapers em Alta Resolução (`wallpapers/full/`)** | **1.243 GB** | 1273.3 MB | 394 |
+| 🖼️ **Miniaturas Otimizadas (`wallpapers/thumbnails/`)** | **0.012 GB** | 12.5 MB | 394 |
+| 📦 **Total do Repositório** | **1.256 GB** | **1286.4 MB** | 808 |
 
 ### 🤖 Status das Descrições e Classificação por IA
 
 | Método de Descrição | Quantidade | Porcentagem | Barra de Progresso |
 | :--- | :---: | :---: | :--- |
-| ✨ **IA Avançada (Google Gemini)** | **390** | **99.0%** | `███████████████████░` |
+| ✨ **IA Avançada (Google Gemini)** | **391** | **99.2%** | `███████████████████░` |
 | 🤖 **IA Simples (MobileNetV3 / Local)** | **0** | **0.0%** | `░░░░░░░░░░░░░░░░░░░░` |
 | ✍️ **Curadoria Manual (Humana)** | **3** | **0.8%** | `░░░░░░░░░░░░░░░░░░░░` |
-| ⏳ **Pendentes / Sem Descrição** | **1** | **0.3%** | `░░░░░░░░░░░░░░░░░░░░` |
+| ⏳ **Pendentes / Sem Descrição** | **0** | **0.0%** | `░░░░░░░░░░░░░░░░░░░░` |
 | 🎯 **Total Geral no Catálogo** | **394** | **100%** | |
 
 ### 🎬 Tipos de Papéis de Parede
@@ -41,7 +41,7 @@ Os papéis de parede são curados, sincronizados e categorizados automaticamente
 | `Oled` | **83** | 21.1% |
 | `Abstract` | **65** | 16.5% |
 | `Anime` | **58** | 14.7% |
-| `Nature` | **40** | 10.2% |
+| `Nature` | **41** | 10.4% |
 | `Fantasy` | **29** | 7.4% |
 | `Games` | **27** | 6.9% |
 | `Space` | **21** | 5.3% |
@@ -50,7 +50,7 @@ Os papéis de parede são curados, sincronizados e categorizados automaticamente
 | `Live` | **14** | 3.6% |
 | `City` | **8** | 2.0% |
 | `Cars` | **8** | 2.0% |
-| `Images` | **4** | 1.0% |
+| `Images` | **3** | 0.8% |
 | `Cyberpunk` | **2** | 0.5% |
 
 <!-- END_WALLPAPER_STATS -->
