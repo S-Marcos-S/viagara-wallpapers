@@ -15,7 +15,7 @@ import sys
 import urllib.request
 import urllib.error
 from datetime import datetime, timezone, timedelta
-from typing import Dict, Any, Tuple
+from typing import Dict, Any, Tuple, Optional
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CATALOG_PATH = os.path.join(BASE_DIR, "wallpapers", "catalog.json")
