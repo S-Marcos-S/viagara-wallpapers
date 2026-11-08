@@ -1,25 +1,11 @@
 {
-  "id": "notif_1794152327",
-  "title": "Homem-Aranha e Supercars!",
-  "message": "15 novos wallpapers épicos esperando por você",
-  "count": 15,
+  "id": "notif_1794153657",
+  "title": "Natureza verde na tela!",
+  "message": "Confira 1 novo papel de parede de folhas e chuva",
+  "count": 1,
   "wallpaper_ids": [
-    "tg_45285",
-    "tg_45284",
-    "tg_45283",
-    "tg_45282",
-    "tg_45281",
-    "tg_45280",
-    "tg_45279",
-    "tg_45278",
-    "tg_45269",
-    "tg_45268",
-    "tg_45267",
-    "tg_45266",
-    "tg_45265",
-    "tg_45264",
-    "tg_45263"
+    "wp_i8_1"
   ],
-  "timestamp": 1794152327767,
+  "timestamp": 1794153657276,
   "generated_by": "gemini"
 }

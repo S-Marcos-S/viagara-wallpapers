@@ -61,23 +61,42 @@
   "wallpapers": [
     {
       "id": "wp_i8_1",
-      "name": "Wallpaper #wp_i8_1",
+      "name": "Gotas de Chuva em Folhas Verdes",
       "author": "S-Marcos-S",
       "author_url": "https://github.com/S-Marcos-S",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/wp_i8_1.webp",
       "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/wp_i8_1.jpg",
-      "primary_color": "#121212",
-      "category": "images",
+      "primary_color": "#4A7C2D",
+      "category": "nature",
       "type": "image",
       "is_live": false,
       "tags": [
-        "image",
-        "hd",
-        "4k"
+        "nature",
+        "natureza",
+        "leaves",
+        "folhas",
+        "rain",
+        "chuva",
+        "macro",
+        "green"
       ],
-      "search_terms": [],
+      "search_terms": [
+        "folha verde",
+        "gota de chuva",
+        "orvalho",
+        "galho de árvore",
+        "macro fotografia",
+        "natureza",
+        "green leaves",
+        "raindrops",
+        "dew drops",
+        "tree branch",
+        "plant",
+        "macro photography",
+        "freshness"
+      ],
       "content_hash": "c71d7d16040355cf65de40c0d4c53e2e",
-      "classified_by": null,
+      "classified_by": "gemini",
       "resolution": "2736x3648"
     },
     {
@@ -15664,28 +15683,14 @@
     }
   ],
   "latest_notification": {
-    "id": "notif_1794152327",
-    "title": "Homem-Aranha e Supercars!",
-    "message": "15 novos wallpapers épicos esperando por você",
-    "count": 15,
+    "id": "notif_1794153657",
+    "title": "Natureza verde na tela!",
+    "message": "Confira 1 novo papel de parede de folhas e chuva",
+    "count": 1,
     "wallpaper_ids": [
-      "tg_45285",
-      "tg_45284",
-      "tg_45283",
-      "tg_45282",
-      "tg_45281",
-      "tg_45280",
-      "tg_45279",
-      "tg_45278",
-      "tg_45269",
-      "tg_45268",
-      "tg_45267",
-      "tg_45266",
-      "tg_45265",
-      "tg_45264",
-      "tg_45263"
+      "wp_i8_1"
     ],
-    "timestamp": 1794152327767,
+    "timestamp": 1794153657276,
     "generated_by": "gemini"
   },
   "backfill_cursor_id": 45263
