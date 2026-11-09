@@ -9,7 +9,7 @@ Os papéis de parede são curados, sincronizados e categorizados automaticamente
 <!-- START_WALLPAPER_STATS -->
 ## 📊 Painel de Estatísticas Diárias do Repositório
 
-> 🕒 **Última atualização:** 08/11/2026 às 13:57 (Horário de Brasília) (`2026-11-08 16:57 UTC`)
+> 🕒 **Última atualização:** 09/11/2026 às 09:40 (Horário de Brasília) (`2026-11-09 12:40 UTC`)
 
 ### 💾 Armazenamento e Consumo em Disco
 
@@ -17,7 +17,7 @@ Os papéis de parede são curados, sincronizados e categorizados automaticamente
 | :--- | :---: | :---: | :---: |
 | 📁 **Wallpapers em Alta Resolução (`wallpapers/full/`)** | **1.261 GB** | 1291.6 MB | 398 |
 | 🖼️ **Miniaturas Otimizadas (`wallpapers/thumbnails/`)** | **0.013 GB** | 12.8 MB | 398 |
-| 📦 **Total do Repositório** | **2.519 GB** | **2579.6 MB** | 848 |
+| 📦 **Total do Repositório** | **2.529 GB** | **2589.6 MB** | 846 |
 
 ### 🤖 Status das Descrições e Classificação por IA
 
