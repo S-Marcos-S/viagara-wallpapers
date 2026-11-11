@@ -239,7 +239,7 @@ object WallpaperDownloadManager {
                     connectTimeout = 15000
                     readTimeout = 30000
                     instanceFollowRedirects = false
-                    setRequestProperty("User-Agent", "Mozilla/5.0 ViagaraLauncher/${BuildConfig.VERSION_NAME}")
+                    setRequestProperty("User-Agent", "Mozilla/5.0 WallpapersFOSS/${BuildConfig.VERSION_NAME}")
                     setRequestProperty("Accept", "*/*")
                 }
                 val code = connection.responseCode

@@ -296,7 +296,7 @@ fun SettingsScreen(
                         runCatching {
                             val intent = Intent(
                                 Intent.ACTION_VIEW,
-                                Uri.parse("https://github.com/S-Marcos-S/viagara-wallpapers")
+                                Uri.parse("https://github.com/S-Marcos-S/wallpapers-foss")
                             )
                             context.startActivity(intent)
                         }

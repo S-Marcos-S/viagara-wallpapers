@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Viagara Wallpapers"
+rootProject.name = "Wallpapers FOSS"
 include(":app")

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Viagara Wallpapers</string>
+    <string name="app_name">Wallpapers FOSS</string>
 
     <!-- Wallpaper Picker -->
     <string name="wallpaper_picker_title">Wallpapers</string>
@@ -94,7 +94,7 @@
     <string name="settings_beta_tester_title">Beta Releases</string>
     <string name="settings_beta_tester_desc">Receive test updates and experimental releases before public stable rollout</string>
     <string name="settings_section_about">About</string>
-    <string name="settings_app_name">Viagara Wallpapers</string>
+    <string name="settings_app_name">Wallpapers FOSS</string>
     <string name="settings_source_code">Source Code</string>
     <string name="settings_source_code_desc">View repository and contribute on GitHub</string>
 
@@ -118,7 +118,7 @@
     <string name="action_show_less">Show less</string>
 
     <string name="update_notification_channel_name">App updates</string>
-    <string name="update_notification_channel_desc">Alerts for new versions of Viagara Wallpapers</string>
-    <string name="update_notification_title">Viagara Wallpapers %1$s available</string>
+    <string name="update_notification_channel_desc">Alerts for new versions of Wallpapers FOSS</string>
+    <string name="update_notification_title">Wallpapers FOSS %1$s available</string>
     <string name="update_notification_text">Tap to see what\'s new and update</string>
 </resources>

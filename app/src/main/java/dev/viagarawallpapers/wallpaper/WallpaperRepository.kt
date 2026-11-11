@@ -65,7 +65,7 @@ data class WallpaperItem(
 object WallpaperRepository {
 
     private const val REMOTE_CATALOG_URL =
-        "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/catalog.json"
+        "https://raw.githubusercontent.com/S-Marcos-S/wallpapers-foss/main/wallpapers/catalog.json"
 
     private val _wallpaperUpdateTick = kotlinx.coroutines.flow.MutableStateFlow(0L)
     val wallpaperUpdateTick: kotlinx.coroutines.flow.StateFlow<Long> = _wallpaperUpdateTick
@@ -679,7 +679,7 @@ object WallpaperRepository {
             withContext(Dispatchers.Main) {
                 val encodedTitle = URLEncoder.encode(title, "UTF-8")
                 val encodedBody = URLEncoder.encode(body, "UTF-8")
-                val issueUrl = "https://github.com/S-Marcos-S/viagara-wallpapers/issues/new?title=$encodedTitle&body=$encodedBody&labels=wallpaper-suggestion"
+                val issueUrl = "https://github.com/S-Marcos-S/wallpapers-foss/issues/new?title=$encodedTitle&body=$encodedBody&labels=wallpaper-suggestion"
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(issueUrl)).apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }

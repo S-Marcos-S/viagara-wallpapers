@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Viagara Wallpapers</string>
+    <string name="app_name">Wallpapers FOSS</string>
 
     <!-- Wallpaper Picker -->
     <string name="wallpaper_picker_title">Papéis de Parede</string>
@@ -94,7 +94,7 @@
     <string name="settings_beta_tester_title">Participar de Versões Beta</string>
     <string name="settings_beta_tester_desc">Receba compilações de teste e novidades experimentais antes do lançamento público</string>
     <string name="settings_section_about">Sobre</string>
-    <string name="settings_app_name">Viagara Wallpapers</string>
+    <string name="settings_app_name">Wallpapers FOSS</string>
     <string name="settings_source_code">Código Fonte</string>
     <string name="settings_source_code_desc">Ver repositório e contribuir no GitHub</string>
 
@@ -118,7 +118,7 @@
     <string name="action_show_less">Mostrar menos</string>
 
     <string name="update_notification_channel_name">Atualizações do aplicativo</string>
-    <string name="update_notification_channel_desc">Avisos sobre novas versões disponíveis do Viagara Wallpapers</string>
-    <string name="update_notification_title">Viagara Wallpapers %1$s disponível</string>
+    <string name="update_notification_channel_desc">Avisos sobre novas versões disponíveis do Wallpapers FOSS</string>
+    <string name="update_notification_title">Wallpapers FOSS %1$s disponível</string>
     <string name="update_notification_text">Toque para ver o que há de novo e atualizar</string>
 </resources>

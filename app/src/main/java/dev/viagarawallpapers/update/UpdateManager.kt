@@ -61,7 +61,7 @@ data class UpdateInfo(
 }
 
 object UpdateManager {
-    private const val UPDATE_NOTIFICATION_CHANNEL_ID = "viagara_wallpapers_updates"
+    private const val UPDATE_NOTIFICATION_CHANNEL_ID = "wallpapers_foss_updates"
     private const val UPDATE_NOTIFICATION_ID = 5253
     private const val PREFS_NAME = "wallpapers_update_prefs"
     private const val KEY_DOWNLOADED_APK_URI = "downloaded_apk_uri"
@@ -69,7 +69,7 @@ object UpdateManager {
     private const val KEY_DOWNLOADED_VERSION_NAME = "downloaded_version_name"
     private const val KEY_BETA_TESTER_ENABLED = "beta_tester_enabled"
 
-    private const val GITHUB_REPO = "S-Marcos-S/viagara-wallpapers"
+    private const val GITHUB_REPO = "S-Marcos-S/wallpapers-foss"
     private const val RELEASES_API_URL = "https://api.github.com/repos/$GITHUB_REPO/releases?per_page=5"
     private const val FALLBACK_RELEASES_API_URL = "https://api.github.com/repos/$GITHUB_REPO/releases/tags/latest"
 
@@ -256,7 +256,7 @@ object UpdateManager {
             conn = url.openConnection() as HttpURLConnection
             conn.connectTimeout = 8_000
             conn.readTimeout = 8_000
-            conn.setRequestProperty("User-Agent", "Viagara-Wallpapers/${BuildConfig.VERSION_NAME}")
+            conn.setRequestProperty("User-Agent", "Wallpapers-FOSS/${BuildConfig.VERSION_NAME}")
             conn.setRequestProperty("Accept", "application/vnd.github.v3+json")
             if (conn.responseCode in 200..299) {
                 conn.inputStream.bufferedReader().use { it.readText() }
@@ -291,7 +291,7 @@ object UpdateManager {
                 }
 
                 val fileLength = connection.contentLength.toLong()
-                val cacheFile = File(appCtx.cacheDir, "viagara-wallpapers-update.apk")
+                val cacheFile = File(appCtx.cacheDir, "wallpapers-foss-update.apk")
                 if (cacheFile.exists()) cacheFile.delete()
 
                 input = connection.inputStream
@@ -392,7 +392,7 @@ object UpdateManager {
         updateScope.launch(Dispatchers.IO) {
             try {
                 val appCtx = context.applicationContext
-                val cacheFile = File(appCtx.cacheDir, "viagara-wallpapers-update.apk")
+                val cacheFile = File(appCtx.cacheDir, "wallpapers-foss-update.apk")
                 if (cacheFile.exists()) cacheFile.delete()
                 val prefs = appCtx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
                 prefs.edit().clear().apply()
