@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">Viagara Wallpapers</string>
+
+    <!-- Wallpaper Picker -->
+    <string name="wallpaper_picker_title">Wallpapers</string>
+    <string name="wallpaper_picker_gallery">Photos &amp; Gallery</string>
+    <string name="wallpaper_picker_gallery_desc">Pick an image from your device or Google Photos</string>
+    <string name="wallpaper_picker_curated">Official Collection</string>
+    <string name="wallpaper_picker_empty">No wallpapers available right now.</string>
+    <string name="wallpaper_search_hint">Search by title, tags or ID…</string>
+    <string name="wallpaper_search_no_results">No wallpapers found for “%1$s”</string>
+    <string name="wallpaper_search_clear">Clear search</string>
+    <string name="wallpaper_action_classify">Tags &amp; Title</string>
+    <string name="wallpaper_classify_dialog_title">Classify Wallpaper</string>
+    <string name="wallpaper_classify_dialog_desc">Propose a title and tags for moderation on GitHub</string>
+    <string name="wallpaper_classify_title_label">Image Title</string>
+    <string name="wallpaper_classify_tag_label">Add Tag</string>
+    <string name="wallpaper_classify_tag_hint">Type a tag…</string>
+    <string name="wallpaper_classify_tag_add">Add</string>
+    <string name="wallpaper_classify_tags_added">Added Tags (%1$d)</string>
+    <string name="wallpaper_classify_no_tags">No tags added yet</string>
+    <string name="wallpaper_classify_save">Save &amp; Submit</string>
+    <string name="wallpaper_classify_submitting">Submitting proposal…</string>
+    <string name="wallpaper_classify_success">Proposal submitted for review on GitHub!</string>
+    <string name="wallpaper_classify_saved_locally">Changes saved locally and opening review…</string>
+    <string name="wallpaper_apply_title">Apply Wallpaper</string>
+    <string name="wallpaper_apply_home">Home screen</string>
+    <string name="wallpaper_apply_lock">Lock screen</string>
+    <string name="wallpaper_apply_both">Both</string>
+    <string name="wallpaper_apply_live">Apply Live Wallpaper</string>
+    <string name="wallpaper_applied_success">Wallpaper applied successfully!</string>
+    <string name="wallpaper_apply_error">Failed to apply wallpaper.</string>
+    <string name="wallpaper_applying">Applying wallpaper…</string>
+    <string name="wallpaper_loading">Loading wallpaper…</string>
+    <string name="wallpaper_hint_pinch_pan">Pinch to zoom • Drag to frame</string>
+    <string name="wallpaper_action_reset_crop">Reset</string>
+    <string name="wallpaper_columns_desc">Toggle wallpaper columns (currently %1$d)</string>
+
+    <!-- Wallpaper Categories -->
+    <string name="wallpaper_category_all">All</string>
+    <string name="wallpaper_category_oled">OLED</string>
+    <string name="wallpaper_category_minimal">Minimal</string>
+    <string name="wallpaper_category_abstract">Abstract</string>
+    <string name="wallpaper_category_space">Space</string>
+    <string name="wallpaper_category_nature">Nature</string>
+    <string name="wallpaper_category_anime">Anime</string>
+    <string name="wallpaper_category_games">Games</string>
+    <string name="wallpaper_category_cyberpunk">Cyberpunk</string>
+    <string name="wallpaper_category_city">Cities</string>
+    <string name="wallpaper_category_cars">Cars</string>
+    <string name="wallpaper_category_animals">Animals</string>
+    <string name="wallpaper_category_fantasy">Fantasy</string>
+
+    <!-- Daily Wallpaper & Notifications -->
+    <string name="wallpaper_notification_channel_name">Wallpapers</string>
+    <string name="wallpaper_notification_channel_desc">Notifications about new wallpapers added to the catalog</string>
+    <string name="wallpaper_new_notification_title">New wallpapers available!</string>
+    <string name="wallpaper_new_notification_single">1 new wallpaper has been added to the catalog.</string>
+    <string name="wallpaper_new_notification_multiple">%1$d new wallpapers have been added to the catalog.</string>
+    <string name="daily_wallpaper_title">Daily Wallpaper</string>
+    <string name="daily_wallpaper_desc">Automatically change wallpaper every day</string>
+    <string name="daily_wallpaper_prompt">Liked the wallpaper?</string>
+    <string name="daily_wallpaper_like">Like (add to favorites)</string>
+    <string name="daily_wallpaper_dislike">Dislike (next wallpaper)</string>
+    <string name="daily_wallpaper_liked_feedback">Saved to favorites</string>
+    <string name="daily_wallpaper_disliked_feedback">Wallpaper dismissed</string>
+
+    <!-- Downloads -->
+    <string name="wallpaper_download">Download</string>
+    <string name="wallpaper_downloading">Downloading…</string>
+    <string name="wallpaper_download_success">Wallpaper downloaded to gallery</string>
+    <string name="wallpaper_download_error">Download failed</string>
+    <string name="wallpaper_download_already_queued">Download already queued</string>
+    <string name="wallpaper_download_starting">Starting download of %1$s…</string>
+    <string name="wallpaper_download_failed">Failed to download %1$s</string>
+    <string name="wallpaper_download_channel_name">Wallpaper Downloads</string>
+    <string name="wallpaper_download_channel_desc">Notifications about wallpaper downloads</string>
+    <string name="wallpaper_downloading_single">Downloading wallpaper…</string>
+    <string name="wallpaper_downloading_multiple">Downloading wallpapers (%1$d left)…</string>
+    <string name="wallpaper_download_completed_title">Download completed</string>
+    <string name="wallpaper_download_completed_single">Wallpaper “%1$s” saved to gallery</string>
+    <string name="wallpaper_download_completed_multiple">%1$d wallpapers saved to gallery</string>
+
+    <!-- Common UI -->
+    <string name="action_back">Back</string>
+    <string name="action_close">Close</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_copy">Copy</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+
+    <!-- Settings & Updates -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_section_updates">Updates</string>
+    <string name="settings_beta_tester_title">Beta Releases</string>
+    <string name="settings_beta_tester_desc">Receive test updates and experimental releases before public stable rollout</string>
+    <string name="settings_section_about">About</string>
+    <string name="settings_app_name">Viagara Wallpapers</string>
+    <string name="settings_source_code">Source Code</string>
+    <string name="settings_source_code_desc">View repository and contribute on GitHub</string>
+
+    <string name="update_beta_badge">BETA</string>
+    <string name="update_available_title">Update Available</string>
+    <string name="update_checking">Checking for updates…</string>
+    <string name="update_up_to_date">App is up to date</string>
+    <string name="update_current_version">Current version</string>
+    <string name="update_version_label">Version</string>
+    <string name="update_installing_root">Installing via Superuser…</string>
+    <string name="update_download_failed">Download failed</string>
+    <string name="update_toast_root_success">Updated successfully via Root!</string>
+    <string name="update_toast_root_failed">Root install failed: %1$s</string>
+
+    <string name="action_download_update">Download Update</string>
+    <string name="action_check_updates">Check Updates</string>
+    <string name="action_install">Install</string>
+    <string name="action_install_root">Install (Root)</string>
+    <string name="action_retry">Retry</string>
+    <string name="action_show_more">Show more</string>
+    <string name="action_show_less">Show less</string>
+
+    <string name="update_notification_channel_name">App updates</string>
+    <string name="update_notification_channel_desc">Alerts for new versions of Viagara Wallpapers</string>
+    <string name="update_notification_title">Viagara Wallpapers %1$s available</string>
+    <string name="update_notification_text">Tap to see what\'s new and update</string>
+</resources>

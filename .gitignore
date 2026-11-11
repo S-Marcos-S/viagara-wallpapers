@@ -1,5 +1,34 @@
+# Python / Scripts cache
 __pycache__/
 *.pyc
 *.pyo
 .tmp
 .newly_added_ids.json
+
+# Gradle / Android build output
+build/
+.gradle/
+.kotlin/
+*.apk
+*.aab
+dist/
+
+# Local machine configuration — never commit
+local.properties
+keystore.properties
+*.keystore
+*.jks
+build-*.sh
+
+# Gemini instructions / notes — never commit
+GEMINI.md
+gemini.md
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

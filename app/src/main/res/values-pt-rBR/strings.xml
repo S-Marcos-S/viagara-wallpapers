@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">Viagara Wallpapers</string>
+
+    <!-- Wallpaper Picker -->
+    <string name="wallpaper_picker_title">Papéis de Parede</string>
+    <string name="wallpaper_picker_gallery">Fotos e Galeria</string>
+    <string name="wallpaper_picker_gallery_desc">Escolha uma imagem do seu dispositivo ou Google Fotos</string>
+    <string name="wallpaper_picker_curated">Coleção Oficial</string>
+    <string name="wallpaper_picker_empty">Nenhum papel de parede disponível no momento.</string>
+    <string name="wallpaper_search_hint">Buscar por título, tags ou ID…</string>
+    <string name="wallpaper_search_no_results">Nenhum papel de parede encontrado para “%1$s”</string>
+    <string name="wallpaper_search_clear">Limpar busca</string>
+    <string name="wallpaper_action_classify">Tags e Título</string>
+    <string name="wallpaper_classify_dialog_title">Classificar Wallpaper</string>
+    <string name="wallpaper_classify_dialog_desc">Proponha um título e tags para moderação no GitHub</string>
+    <string name="wallpaper_classify_title_label">Título da Imagem</string>
+    <string name="wallpaper_classify_tag_label">Adicionar Tag</string>
+    <string name="wallpaper_classify_tag_hint">Digite uma tag…</string>
+    <string name="wallpaper_classify_tag_add">Adicionar</string>
+    <string name="wallpaper_classify_tags_added">Tags Adicionadas (%1$d)</string>
+    <string name="wallpaper_classify_no_tags">Nenhuma tag adicionada ainda</string>
+    <string name="wallpaper_classify_save">Salvar e Enviar</string>
+    <string name="wallpaper_classify_submitting">Enviando proposta…</string>
+    <string name="wallpaper_classify_success">Proposta enviada para moderação no GitHub!</string>
+    <string name="wallpaper_classify_saved_locally">Alterações salvas localmente e abrindo revisão…</string>
+    <string name="wallpaper_apply_title">Aplicar Papel de Parede</string>
+    <string name="wallpaper_apply_home">Tela inicial</string>
+    <string name="wallpaper_apply_lock">Tela de bloqueio</string>
+    <string name="wallpaper_apply_both">Ambas as telas</string>
+    <string name="wallpaper_apply_live">Aplicar Live Wallpaper</string>
+    <string name="wallpaper_applied_success">Papel de parede aplicado com sucesso!</string>
+    <string name="wallpaper_apply_error">Falha ao aplicar papel de parede.</string>
+    <string name="wallpaper_applying">Aplicando papel de parede…</string>
+    <string name="wallpaper_loading">Carregando papel de parede…</string>
+    <string name="wallpaper_hint_pinch_pan">Movimento de pinça para zoom • Arraste para enquadrar</string>
+    <string name="wallpaper_action_reset_crop">Redefinir</string>
+    <string name="wallpaper_columns_desc">Alternar colunas de wallpapers (atualmente %1$d)</string>
+
+    <!-- Wallpaper Categories -->
+    <string name="wallpaper_category_all">Todos</string>
+    <string name="wallpaper_category_oled">OLED</string>
+    <string name="wallpaper_category_minimal">Minimalista</string>
+    <string name="wallpaper_category_abstract">Abstrato</string>
+    <string name="wallpaper_category_space">Espaço</string>
+    <string name="wallpaper_category_nature">Natureza</string>
+    <string name="wallpaper_category_anime">Anime</string>
+    <string name="wallpaper_category_games">Jogos</string>
+    <string name="wallpaper_category_cyberpunk">Cyberpunk</string>
+    <string name="wallpaper_category_city">Cidades</string>
+    <string name="wallpaper_category_cars">Carros</string>
+    <string name="wallpaper_category_animals">Animais</string>
+    <string name="wallpaper_category_fantasy">Fantasia</string>
+
+    <!-- Daily Wallpaper & Notifications -->
+    <string name="wallpaper_notification_channel_name">Papéis de Parede</string>
+    <string name="wallpaper_notification_channel_desc">Notificações sobre novos papéis de parede adicionados ao catálogo</string>
+    <string name="wallpaper_new_notification_title">Novos papéis de parede disponíveis!</string>
+    <string name="wallpaper_new_notification_single">1 novo papel de parede foi adicionado ao catálogo.</string>
+    <string name="wallpaper_new_notification_multiple">%1$d novos papéis de parede foram adicionados ao catálogo.</string>
+    <string name="daily_wallpaper_title">Papel de Parede Diário</string>
+    <string name="daily_wallpaper_desc">Troca automaticamente o papel de parede todos os dias</string>
+    <string name="daily_wallpaper_prompt">Gostou do papel de parede?</string>
+    <string name="daily_wallpaper_like">Gostei (favoritar)</string>
+    <string name="daily_wallpaper_dislike">Não gostei (trocar)</string>
+    <string name="daily_wallpaper_liked_feedback">Adicionado aos favoritos</string>
+    <string name="daily_wallpaper_disliked_feedback">Papel de parede trocado</string>
+
+    <!-- Downloads -->
+    <string name="wallpaper_download">Baixar</string>
+    <string name="wallpaper_downloading">Baixando…</string>
+    <string name="wallpaper_download_success">Papel de parede salvo na galeria</string>
+    <string name="wallpaper_download_error">Falha ao baixar imagem</string>
+    <string name="wallpaper_download_already_queued">Download já está na fila</string>
+    <string name="wallpaper_download_starting">Iniciando download de %1$s…</string>
+    <string name="wallpaper_download_failed">Falha ao baixar %1$s</string>
+    <string name="wallpaper_download_channel_name">Downloads de Wallpapers</string>
+    <string name="wallpaper_download_channel_desc">Notificações de download de papéis de parede</string>
+    <string name="wallpaper_downloading_single">Baixando papel de parede…</string>
+    <string name="wallpaper_downloading_multiple">Baixando papéis de parede (%1$d restantes)…</string>
+    <string name="wallpaper_download_completed_title">Download concluído</string>
+    <string name="wallpaper_download_completed_single">Papel de parede “%1$s” salvo na galeria</string>
+    <string name="wallpaper_download_completed_multiple">%1$d papéis de parede salvos na galeria</string>
+
+    <!-- Common UI -->
+    <string name="action_back">Voltar</string>
+    <string name="action_close">Fechar</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_copy">Copiar</string>
+    <string name="copied_to_clipboard">Copiado para a área de transferência</string>
+
+    <!-- Settings & Updates -->
+    <string name="settings_title">Configurações</string>
+    <string name="settings_section_updates">Atualizações</string>
+    <string name="settings_beta_tester_title">Participar de Versões Beta</string>
+    <string name="settings_beta_tester_desc">Receba compilações de teste e novidades experimentais antes do lançamento público</string>
+    <string name="settings_section_about">Sobre</string>
+    <string name="settings_app_name">Viagara Wallpapers</string>
+    <string name="settings_source_code">Código Fonte</string>
+    <string name="settings_source_code_desc">Ver repositório e contribuir no GitHub</string>
+
+    <string name="update_beta_badge">BETA</string>
+    <string name="update_available_title">Atualização disponível</string>
+    <string name="update_checking">Verificando novas versões…</string>
+    <string name="update_up_to_date">Aplicativo atualizado</string>
+    <string name="update_current_version">Versão instalada</string>
+    <string name="update_version_label">Versão</string>
+    <string name="update_installing_root">Instalando via Superusuário…</string>
+    <string name="update_download_failed">Falha no download</string>
+    <string name="update_toast_root_success">Atualizado com sucesso via Root!</string>
+    <string name="update_toast_root_failed">Falha na instalação via Root: %1$s</string>
+
+    <string name="action_download_update">Baixar atualização</string>
+    <string name="action_check_updates">Buscar atualizações</string>
+    <string name="action_install">Instalar</string>
+    <string name="action_install_root">Instalar (Root)</string>
+    <string name="action_retry">Tentar novamente</string>
+    <string name="action_show_more">Mostrar mais</string>
+    <string name="action_show_less">Mostrar menos</string>
+
+    <string name="update_notification_channel_name">Atualizações do aplicativo</string>
+    <string name="update_notification_channel_desc">Avisos sobre novas versões disponíveis do Viagara Wallpapers</string>
+    <string name="update_notification_title">Viagara Wallpapers %1$s disponível</string>
+    <string name="update_notification_text">Toque para ver o que há de novo e atualizar</string>
+</resources>

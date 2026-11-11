@@ -1,0 +1,691 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+package dev.viagarawallpapers.wallpaper
+
+import android.annotation.SuppressLint
+import android.app.WallpaperManager
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.Matrix
+import android.graphics.Paint
+import android.os.Build
+import android.content.Intent
+import android.net.Uri
+import dev.viagarawallpapers.util.WindowSizeUtil
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.File
+import java.io.FileOutputStream
+import java.net.HttpURLConnection
+import java.net.URL
+import java.net.URLEncoder
+import java.security.MessageDigest
+
+data class WallpaperCategory(
+    val id: String,
+    val label: String,
+)
+
+data class WallpaperNotificationInfo(
+    val id: String,
+    val title: String? = null,
+    val message: String? = null,
+    val count: Int = 0,
+    val wallpaperIds: List<String> = emptyList(),
+    val timestamp: Long = 0L,
+    val generatedBy: String = "fallback",
+)
+
+data class WallpaperCatalog(
+    val categories: List<WallpaperCategory>,
+    val wallpapers: List<WallpaperItem>,
+    val latestNotification: WallpaperNotificationInfo? = null,
+)
+
+data class WallpaperItem(
+    val id: String,
+    val name: String,
+    val author: String,
+    val authorUrl: String? = null,
+    val thumbnailUrl: String,
+    val fullUrl: String,
+    val primaryColorHex: String = "#1E1E1E",
+    val category: String = "images",
+    val type: String = "image",
+    val isLive: Boolean = false,
+    val tags: List<String> = emptyList(),
+    val searchTerms: List<String> = emptyList(),
+)
+
+object WallpaperRepository {
+
+    private const val REMOTE_CATALOG_URL =
+        "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/catalog.json"
+
+    private val _wallpaperUpdateTick = kotlinx.coroutines.flow.MutableStateFlow(0L)
+    val wallpaperUpdateTick: kotlinx.coroutines.flow.StateFlow<Long> = _wallpaperUpdateTick
+
+    private val _currentPrimaryColor = kotlinx.coroutines.flow.MutableStateFlow<Int?>(null)
+    val currentPrimaryColor: kotlinx.coroutines.flow.StateFlow<Int?> = _currentPrimaryColor
+
+    fun notifyWallpaperChanged() {
+        _wallpaperUpdateTick.value = System.currentTimeMillis()
+    }
+
+    private const val PREFS_WALLPAPERS = "wallpaper_prefs"
+    private const val KEY_FAVORITE_WALLPAPER_IDS = "favorite_wallpaper_ids"
+    private const val KEY_DISLIKED_WALLPAPER_IDS = "disliked_wallpaper_ids"
+
+    private val _favoriteIds = kotlinx.coroutines.flow.MutableStateFlow<Set<String>>(emptySet())
+    val favoriteIds: kotlinx.coroutines.flow.StateFlow<Set<String>> = _favoriteIds
+
+    private val _dislikedIds = kotlinx.coroutines.flow.MutableStateFlow<Set<String>>(emptySet())
+    val dislikedIds: kotlinx.coroutines.flow.StateFlow<Set<String>> = _dislikedIds
+
+    fun initFavorites(context: Context) {
+        val prefs = context.applicationContext.getSharedPreferences(PREFS_WALLPAPERS, Context.MODE_PRIVATE)
+        val saved = prefs.getStringSet(KEY_FAVORITE_WALLPAPER_IDS, emptySet()) ?: emptySet()
+        val merged = HashSet<String>(_favoriteIds.value).apply {
+            addAll(saved)
+        }
+        _favoriteIds.value = merged.toSet()
+    }
+
+    fun initDisliked(context: Context) {
+        val prefs = context.applicationContext.getSharedPreferences(PREFS_WALLPAPERS, Context.MODE_PRIVATE)
+        val saved = prefs.getStringSet(KEY_DISLIKED_WALLPAPER_IDS, emptySet()) ?: emptySet()
+        val merged = HashSet<String>(_dislikedIds.value).apply {
+            addAll(saved)
+        }
+        _dislikedIds.value = merged.toSet()
+    }
+
+    fun isFavorite(id: String): Boolean = _favoriteIds.value.contains(id.trim())
+
+    fun isDisliked(id: String): Boolean = _dislikedIds.value.contains(id.trim())
+
+    fun toggleFavorite(context: Context, id: String): Boolean {
+        val targetId = id.trim()
+        if (targetId.isBlank()) return false
+        val prefs = context.applicationContext.getSharedPreferences(PREFS_WALLPAPERS, Context.MODE_PRIVATE)
+        val saved = prefs.getStringSet(KEY_FAVORITE_WALLPAPER_IDS, emptySet()) ?: emptySet()
+        val newSet = HashSet<String>(_favoriteIds.value).apply {
+            addAll(saved)
+        }
+        val nowFavorite = if (newSet.contains(targetId)) {
+            newSet.remove(targetId)
+            false
+        } else {
+            newSet.add(targetId)
+            removeDisliked(context, targetId)
+            true
+        }
+        prefs.edit().putStringSet(KEY_FAVORITE_WALLPAPER_IDS, HashSet(newSet)).commit()
+        _favoriteIds.value = newSet.toSet()
+        return nowFavorite
+    }
+
+    fun addFavorite(context: Context, id: String): Boolean {
+        val targetId = id.trim()
+        if (targetId.isBlank()) return false
+        removeDisliked(context, targetId)
+        val prefs = context.applicationContext.getSharedPreferences(PREFS_WALLPAPERS, Context.MODE_PRIVATE)
+        val saved = prefs.getStringSet(KEY_FAVORITE_WALLPAPER_IDS, emptySet()) ?: emptySet()
+        val newSet = HashSet<String>(_favoriteIds.value).apply {
+            addAll(saved)
+            add(targetId)
+        }
+        val success = prefs.edit().putStringSet(KEY_FAVORITE_WALLPAPER_IDS, HashSet(newSet)).commit()
+        _favoriteIds.value = newSet.toSet()
+        return success
+    }
+
+    fun removeFavorite(context: Context, id: String): Boolean {
+        val targetId = id.trim()
+        if (targetId.isBlank()) return false
+        val prefs = context.applicationContext.getSharedPreferences(PREFS_WALLPAPERS, Context.MODE_PRIVATE)
+        val saved = prefs.getStringSet(KEY_FAVORITE_WALLPAPER_IDS, emptySet()) ?: emptySet()
+        val newSet = HashSet<String>(_favoriteIds.value).apply {
+            addAll(saved)
+            remove(targetId)
+        }
+        val success = prefs.edit().putStringSet(KEY_FAVORITE_WALLPAPER_IDS, HashSet(newSet)).commit()
+        _favoriteIds.value = newSet.toSet()
+        return success
+    }
+
+    fun addDisliked(context: Context, id: String): Boolean {
+        val targetId = id.trim()
+        if (targetId.isBlank()) return false
+        removeFavorite(context, targetId)
+        val prefs = context.applicationContext.getSharedPreferences(PREFS_WALLPAPERS, Context.MODE_PRIVATE)
+        val saved = prefs.getStringSet(KEY_DISLIKED_WALLPAPER_IDS, emptySet()) ?: emptySet()
+        val newSet = HashSet<String>(_dislikedIds.value).apply {
+            addAll(saved)
+            add(targetId)
+        }
+        val success = prefs.edit().putStringSet(KEY_DISLIKED_WALLPAPER_IDS, HashSet(newSet)).commit()
+        _dislikedIds.value = newSet.toSet()
+        return success
+    }
+
+    fun removeDisliked(context: Context, id: String): Boolean {
+        val targetId = id.trim()
+        if (targetId.isBlank()) return false
+        val prefs = context.applicationContext.getSharedPreferences(PREFS_WALLPAPERS, Context.MODE_PRIVATE)
+        val saved = prefs.getStringSet(KEY_DISLIKED_WALLPAPER_IDS, emptySet()) ?: emptySet()
+        val newSet = HashSet<String>(_dislikedIds.value).apply {
+            addAll(saved)
+            remove(targetId)
+        }
+        val success = prefs.edit().putStringSet(KEY_DISLIKED_WALLPAPER_IDS, HashSet(newSet)).commit()
+        _dislikedIds.value = newSet.toSet()
+        return success
+    }
+
+    fun getDislikedIds(context: Context): Set<String> {
+        val prefs = context.applicationContext.getSharedPreferences(PREFS_WALLPAPERS, Context.MODE_PRIVATE)
+        val saved = prefs.getStringSet(KEY_DISLIKED_WALLPAPER_IDS, emptySet()) ?: emptySet()
+        val merged = HashSet<String>(_dislikedIds.value).apply {
+            addAll(saved)
+        }
+        _dislikedIds.value = merged.toSet()
+        return _dislikedIds.value
+    }
+
+    val DEFAULT_CATEGORIES = listOf(
+        WallpaperCategory("all", "Todos"),
+        WallpaperCategory("favorites", "Favoritos"),
+        WallpaperCategory("oled", "OLED"),
+        WallpaperCategory("anime", "Anime"),
+        WallpaperCategory("games", "Jogos"),
+        WallpaperCategory("minimal", "Minimalista"),
+        WallpaperCategory("abstract", "Abstrato"),
+        WallpaperCategory("nature", "Natureza"),
+        WallpaperCategory("space", "Espaço"),
+        WallpaperCategory("cyberpunk", "Cyberpunk"),
+        WallpaperCategory("city", "Cidades"),
+        WallpaperCategory("cars", "Carros"),
+        WallpaperCategory("animals", "Animais"),
+        WallpaperCategory("fantasy", "Fantasia"),
+    )
+
+    private fun cacheDir(context: Context): File {
+        val dir = File(context.cacheDir, "wallpaper_cache")
+        if (!dir.exists()) dir.mkdirs()
+        return dir
+    }
+
+    private fun urlHash(url: String): String {
+        val bytes = MessageDigest.getInstance("MD5").digest(url.toByteArray())
+        return bytes.joinToString("") { "%02x".format(it) }
+    }
+
+    fun getCachedFile(context: Context, url: String): File? {
+        val file = File(cacheDir(context), urlHash(url))
+        return if (file.exists() && file.length() > 0) file else null
+    }
+
+    suspend fun loadCatalog(context: Context): WallpaperCatalog = withContext(Dispatchers.IO) {
+        val catalogFile = File(cacheDir(context), "catalog.json")
+
+        // Try downloading remote catalog
+        val remoteJson = runCatching {
+            val urlWithBuster = "$REMOTE_CATALOG_URL?t=${System.currentTimeMillis()}"
+            val conn = (URL(urlWithBuster).openConnection() as HttpURLConnection).apply {
+                connectTimeout = 6000
+                readTimeout = 6000
+                requestMethod = "GET"
+                setRequestProperty("Cache-Control", "no-cache")
+                setRequestProperty("Pragma", "no-cache")
+            }
+            if (conn.responseCode == 200) {
+                conn.inputStream.bufferedReader().use { it.readText() }
+            } else null
+        }.getOrNull()
+
+        if (!remoteJson.isNullOrBlank()) {
+            runCatching { catalogFile.writeText(remoteJson) }
+        }
+
+        val jsonText = when {
+            !remoteJson.isNullOrBlank() -> remoteJson
+            catalogFile.exists() -> runCatching { catalogFile.readText() }.getOrNull()
+            else -> runCatching {
+                context.assets.open("wallpapers/catalog.json").bufferedReader().use { it.readText() }
+            }.getOrNull()
+        } ?: return@withContext WallpaperCatalog(DEFAULT_CATEGORIES, emptyList())
+
+        val catalog = parseCatalogJson(jsonText)
+        WallpaperNotificationManager.checkAndNotifyNewWallpapers(context, catalog)
+        catalog
+    }
+
+    private var lastWallpaperCheckTimeMs = 0L
+    private const val WALLPAPER_CHECK_INTERVAL_MS = 2 * 60 * 60 * 1000L // 2 hours
+
+    fun checkForNewWallpapers(context: Context, coroutineScope: kotlinx.coroutines.CoroutineScope, force: Boolean = false) {
+        val now = System.currentTimeMillis()
+        if (!force && now - lastWallpaperCheckTimeMs < WALLPAPER_CHECK_INTERVAL_MS) {
+            return
+        }
+        lastWallpaperCheckTimeMs = now
+        coroutineScope.launch(Dispatchers.IO) {
+            loadCatalog(context)
+        }
+    }
+
+    private fun parseCatalogJson(jsonText: String): WallpaperCatalog {
+        return runCatching {
+            val root = JSONObject(jsonText)
+
+            val categories = mutableListOf<WallpaperCategory>()
+            val catArray = root.optJSONArray("categories")
+            if (catArray != null && catArray.length() > 0) {
+                for (i in 0 until catArray.length()) {
+                    val obj = catArray.getJSONObject(i)
+                    categories.add(
+                        WallpaperCategory(
+                            id = obj.getString("id"),
+                            label = obj.optString("label", obj.getString("id")),
+                        )
+                    )
+                }
+            }
+            if (categories.isEmpty() || categories.none { it.id.equals("all", ignoreCase = true) }) {
+                categories.add(0, WallpaperCategory("all", "Todos"))
+            }
+            if (categories.none { it.id.equals("favorites", ignoreCase = true) }) {
+                val allIdx = categories.indexOfFirst { it.id.equals("all", ignoreCase = true) }
+                categories.add(if (allIdx != -1) allIdx + 1 else 0, WallpaperCategory("favorites", "Favoritos"))
+            }
+
+            val array = root.optJSONArray("wallpapers") ?: return WallpaperCatalog(categories, emptyList())
+            val list = mutableListOf<WallpaperItem>()
+            for (i in 0 until array.length()) {
+                val obj = array.getJSONObject(i)
+                val tagsArray = obj.optJSONArray("tags")
+                val tags = mutableListOf<String>()
+                if (tagsArray != null) {
+                    for (t in 0 until tagsArray.length()) {
+                        tags.add(tagsArray.getString(t))
+                    }
+                }
+
+                val searchTermsArray = obj.optJSONArray("search_terms")
+                val searchTerms = mutableListOf<String>()
+                if (searchTermsArray != null) {
+                    for (t in 0 until searchTermsArray.length()) {
+                        searchTerms.add(searchTermsArray.getString(t))
+                    }
+                }
+
+                val itemType = obj.optString("type", if (obj.optBoolean("is_live", false)) "video" else "image")
+                val isLive = obj.optBoolean("is_live", itemType == "video")
+
+                list.add(
+                    WallpaperItem(
+                        id = obj.getString("id"),
+                        name = obj.getString("name"),
+                        author = obj.optString("author", "Wallpaper HD/4K (Amanda)"),
+                        authorUrl = obj.optString("author_url", "https://t.me/amandinhawallpaper").takeIf { it.isNotBlank() },
+                        thumbnailUrl = obj.getString("thumbnail_url"),
+                        fullUrl = obj.getString("full_url"),
+                        primaryColorHex = obj.optString("primary_color", "#1E1E1E"),
+                        category = obj.optString("category", if (isLive) "live" else "images"),
+                        type = itemType,
+                        isLive = isLive,
+                        tags = tags,
+                        searchTerms = searchTerms,
+                    )
+                )
+            }
+
+            val notifObj = root.optJSONObject("latest_notification")
+            val latestNotification = notifObj?.let { notif ->
+                val idsArray = notif.optJSONArray("wallpaper_ids")
+                val notifIds = mutableListOf<String>()
+                if (idsArray != null) {
+                    for (i in 0 until idsArray.length()) {
+                        notifIds.add(idsArray.getString(i))
+                    }
+                }
+                val rawTitle = notif.optString("title", "").trim()
+                val rawMessage = notif.optString("message", "").trim()
+                WallpaperNotificationInfo(
+                    id = notif.optString("id", ""),
+                    title = rawTitle.takeIf { it.isNotBlank() },
+                    message = rawMessage.takeIf { it.isNotBlank() },
+                    count = notif.optInt("count", notifIds.size),
+                    wallpaperIds = notifIds,
+                    timestamp = notif.optLong("timestamp", 0L),
+                    generatedBy = notif.optString("generated_by", "fallback"),
+                )
+            }
+
+            WallpaperCatalog(categories, list, latestNotification)
+        }.getOrDefault(WallpaperCatalog(DEFAULT_CATEGORIES, emptyList()))
+    }
+
+    suspend fun getCachedOrDownloadFile(context: Context, url: String): File? = withContext(Dispatchers.IO) {
+        val hash = urlHash(url)
+        val file = File(cacheDir(context), hash)
+
+        if (file.exists() && file.length() > 0) {
+            return@withContext file
+        }
+
+        runCatching {
+            val conn = (URL(url).openConnection() as HttpURLConnection).apply {
+                connectTimeout = 10000
+                readTimeout = 25000
+                requestMethod = "GET"
+            }
+            if (conn.responseCode == 200) {
+                val tempFile = File(cacheDir(context), "${hash}.tmp")
+                conn.inputStream.use { input ->
+                    FileOutputStream(tempFile).use { output ->
+                        input.copyTo(output)
+                    }
+                }
+                if (tempFile.exists() && tempFile.length() > 0) {
+                    tempFile.renameTo(file)
+                    file
+                } else null
+            } else null
+        }.getOrNull()
+    }
+
+    suspend fun getCachedOrDownloadBitmap(context: Context, url: String): Bitmap? = withContext(Dispatchers.IO) {
+        val file = getCachedOrDownloadFile(context, url) ?: return@withContext null
+        runCatching { BitmapFactory.decodeFile(file.absolutePath) }.getOrNull()
+    }
+
+    fun isBitmapFramedToDisplay(
+        context: Context,
+        bitmap: Bitmap,
+        viewportWidth: Float = 0f,
+        viewportHeight: Float = 0f,
+    ): Boolean {
+        if (bitmap.isRecycled || bitmap.width <= 0 || bitmap.height <= 0) return false
+        val (screenW, screenH) = if (viewportWidth > 0f && viewportHeight > 0f) {
+            Pair(viewportWidth, viewportHeight)
+        } else {
+            WindowSizeUtil.getRealWindowSize(context)
+        }
+        if (screenW <= 0f || screenH <= 0f) return true
+
+        val screenAspect = screenW / screenH
+        val bmpAspect = bitmap.width.toFloat() / bitmap.height.toFloat()
+        return kotlin.math.abs(screenAspect - bmpAspect) < 0.015f
+    }
+
+    fun frameBitmapToDisplay(
+        context: Context,
+        src: Bitmap,
+        scale: Float = 1f,
+        offsetX: Float = 0f,
+        offsetY: Float = 0f,
+        viewportWidth: Float = 0f,
+        viewportHeight: Float = 0f,
+    ): Bitmap {
+        if (src.isRecycled) return src
+        val (screenW, screenH) = if (viewportWidth > 0f && viewportHeight > 0f) {
+            Pair(viewportWidth, viewportHeight)
+        } else {
+            WindowSizeUtil.getRealWindowSize(context)
+        }
+        if (screenW <= 0f || screenH <= 0f) return src
+
+        val viewW = screenW
+        val viewH = screenH
+        val bmpW = src.width.toFloat()
+        val bmpH = src.height.toFloat()
+        if (bmpW <= 0f || bmpH <= 0f) return src
+
+        // If the bitmap is already framed to screen aspect ratio and no user transform is applied, return src directly
+        if (scale == 1f && offsetX == 0f && offsetY == 0f) {
+            val screenAspect = viewW / viewH
+            val bmpAspect = bmpW / bmpH
+            if (kotlin.math.abs(screenAspect - bmpAspect) < 0.015f && bmpH >= 1920f) {
+                return src
+            }
+        }
+
+        return runCatching {
+            val baseScale = maxOf(viewW / bmpW, viewH / bmpH)
+            val totalScale = baseScale * scale
+
+            val cx = viewW / 2f + offsetX
+            val cy = viewH / 2f + offsetY
+
+            val targetH = maxOf(screenH.toInt(), src.height).coerceAtMost(3840)
+            val targetW = ((targetH.toFloat() / viewH) * viewW).toInt().coerceAtLeast(1)
+
+            val resultBmp = Bitmap.createBitmap(targetW, targetH, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(resultBmp)
+            val matrix = Matrix()
+
+            val normFactor = targetH.toFloat() / viewH
+            matrix.postTranslate(-bmpW / 2f, -bmpH / 2f)
+            matrix.postScale(totalScale * normFactor, totalScale * normFactor)
+            matrix.postTranslate(cx * normFactor, cy * normFactor)
+
+            val paint = Paint(Paint.FILTER_BITMAP_FLAG or Paint.ANTI_ALIAS_FLAG)
+            canvas.drawBitmap(src, matrix, paint)
+            resultBmp
+        }.getOrDefault(src)
+    }
+
+    @SuppressLint("MissingPermission")
+    suspend fun applyWallpaper(
+        context: Context,
+        item: WallpaperItem,
+        flags: Int,
+    ): Result<Unit> = withContext(Dispatchers.IO) {
+        val bitmap = getCachedOrDownloadBitmap(context, item.fullUrl)
+            ?: return@withContext Result.failure(IllegalStateException("Could not download wallpaper bitmap"))
+        val framedBitmap = frameBitmapToDisplay(context, bitmap)
+        val result = applyWallpaper(context, item, framedBitmap, flags)
+        if (framedBitmap !== bitmap && !bitmap.isRecycled) {
+            bitmap.recycle()
+        }
+        result
+    }
+
+    @SuppressLint("MissingPermission")
+    suspend fun applyWallpaper(
+        context: Context,
+        item: WallpaperItem,
+        bitmap: Bitmap,
+        flags: Int,
+    ): Result<Unit> = withContext(Dispatchers.IO) {
+        runCatching {
+            val effectiveBitmap = bitmap
+            val wm = WallpaperManager.getInstance(context)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                try {
+                    wm.setBitmap(effectiveBitmap, null, true, flags)
+                } catch (e: Exception) {
+                    if (flags != WallpaperManager.FLAG_SYSTEM) {
+                        wm.setBitmap(effectiveBitmap, null, true, WallpaperManager.FLAG_SYSTEM)
+                    } else {
+                        throw e
+                    }
+                }
+            } else {
+                wm.setBitmap(effectiveBitmap)
+            }
+
+            // Immediately extract primary color from the applied wallpaper
+            val extractedColor: Int? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+                runCatching {
+                    android.app.WallpaperColors.fromBitmap(effectiveBitmap)?.primaryColor?.toArgb()
+                }.getOrNull()
+            } else null ?: runCatching {
+                android.graphics.Color.parseColor(item.primaryColorHex)
+            }.getOrNull()
+
+            if (extractedColor != null) {
+                _currentPrimaryColor.value = extractedColor
+            }
+
+            DailyWallpaperManager.onWallpaperApplied(context, item.id)
+            notifyWallpaperChanged()
+            Unit
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    suspend fun applyWallpaper(context: Context, fullUrl: String, flags: Int): Result<Unit> = withContext(Dispatchers.IO) {
+        runCatching {
+            val rawBitmap = getCachedOrDownloadBitmap(context, fullUrl)
+                ?: throw IllegalStateException("Could not download wallpaper bitmap")
+            val bitmap = frameBitmapToDisplay(context, rawBitmap)
+
+            val wm = WallpaperManager.getInstance(context)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                try {
+                    wm.setBitmap(bitmap, null, true, flags)
+                } catch (e: Exception) {
+                    if (flags != WallpaperManager.FLAG_SYSTEM) {
+                        wm.setBitmap(bitmap, null, true, WallpaperManager.FLAG_SYSTEM)
+                    } else {
+                        throw e
+                    }
+                }
+            } else {
+                wm.setBitmap(bitmap)
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+                runCatching {
+                    android.app.WallpaperColors.fromBitmap(bitmap)?.primaryColor?.toArgb()?.let {
+                        _currentPrimaryColor.value = it
+                    }
+                }
+            }
+
+            if (bitmap !== rawBitmap && !rawBitmap.isRecycled) {
+                rawBitmap.recycle()
+            }
+
+            notifyWallpaperChanged()
+            Unit
+        }
+    }
+
+    suspend fun updateLocalCatalogItem(
+        context: Context,
+        itemId: String,
+        newTitle: String,
+        newTags: List<String>,
+    ) = withContext(Dispatchers.IO) {
+        val file = File(cacheDir(context), "wallpaper_catalog.json")
+        if (!file.exists()) return@withContext
+
+        runCatching {
+            val jsonText = file.readText()
+            val root = JSONObject(jsonText)
+            val wallpapers = root.optJSONArray("wallpapers") ?: return@withContext
+
+            for (i in 0 until wallpapers.length()) {
+                val itemObj = wallpapers.getJSONObject(i)
+                if (itemObj.optString("id") == itemId) {
+                    if (newTitle.isNotBlank()) {
+                        itemObj.put("name", newTitle.trim())
+                    }
+                    val existingTags = mutableListOf<String>()
+                    val tagsArr = itemObj.optJSONArray("tags")
+                    if (tagsArr != null) {
+                        for (t in 0 until tagsArr.length()) {
+                            existingTags.add(tagsArr.getString(t))
+                        }
+                    }
+                    val existingSearch = mutableListOf<String>()
+                    val searchArr = itemObj.optJSONArray("search_terms")
+                    if (searchArr != null) {
+                        for (s in 0 until searchArr.length()) {
+                            existingSearch.add(searchArr.getString(s))
+                        }
+                    }
+
+                    for (tag in newTags) {
+                        val cleaned = tag.trim()
+                        if (cleaned.isNotBlank()) {
+                            if (existingTags.none { it.equals(cleaned, ignoreCase = true) }) {
+                                existingTags.add(cleaned)
+                            }
+                            if (existingSearch.none { it.equals(cleaned, ignoreCase = true) }) {
+                                existingSearch.add(cleaned)
+                            }
+                        }
+                    }
+
+                    itemObj.put("tags", JSONArray(existingTags))
+                    itemObj.put("search_terms", JSONArray(existingSearch))
+                    itemObj.put("classified_by", "manual")
+                    itemObj.put("custom_classified", true)
+                    break
+                }
+            }
+
+            file.writeText(root.toString(2))
+            notifyWallpaperChanged()
+        }
+    }
+
+    suspend fun submitClassification(
+        context: Context,
+        item: WallpaperItem,
+        newTitle: String,
+        newTags: List<String>,
+    ): Result<Boolean> = withContext(Dispatchers.IO) {
+        runCatching {
+            // 1. Atualizar o item localmente no cache do app
+            updateLocalCatalogItem(context, item.id, newTitle, newTags)
+
+            // 2. Montar Issue estruturada para moderação no GitHub
+            val title = "[Sugestão] ${item.id}: $newTitle"
+            val body = buildString {
+                appendLine("### 🏷️ Sugestão de Classificação Manual de Wallpaper")
+                appendLine()
+                appendLine("- **ID:** `${item.id}`")
+                appendLine("- **Novo Título:** `$newTitle`")
+                appendLine("- **Tags Propostas:** ${newTags.joinToString(", ") { "`$it`" }}")
+                appendLine()
+                appendLine("![Preview](${item.thumbnailUrl})")
+                appendLine()
+                appendLine("---")
+                appendLine("```json")
+                appendLine(JSONObject().apply {
+                    put("id", item.id)
+                    put("name", newTitle)
+                    put("tags", JSONArray(newTags))
+                    put("classified_by", "manual")
+                    put("custom_classified", true)
+                }.toString(2))
+                appendLine("```")
+                appendLine()
+                appendLine("> *Para aprovar esta sugestão e atualizar automaticamente o catálogo oficial do repositório, responda com o comentário `/approve` ou adicione a label `approved`.*")
+            }
+
+            // 3. Abrir página de nova Issue pré-preenchida no GitHub para confirmação do usuário
+            withContext(Dispatchers.Main) {
+                val encodedTitle = URLEncoder.encode(title, "UTF-8")
+                val encodedBody = URLEncoder.encode(body, "UTF-8")
+                val issueUrl = "https://github.com/S-Marcos-S/viagara-wallpapers/issues/new?title=$encodedTitle&body=$encodedBody&labels=wallpaper-suggestion"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(issueUrl)).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                context.startActivity(intent)
+            }
+            true
+        }
+    }
+}
