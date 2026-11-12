@@ -90,6 +90,12 @@
 
     <!-- Settings & Updates -->
     <string name="settings_title">Settings</string>
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="theme_system_dynamic_title">System Dynamic</string>
+    <string name="theme_glass_title">Glass</string>
+    <string name="theme_oled_black_title">OLED Black</string>
+    <string name="theme_dark_modern_title">Modern Dark</string>
+    <string name="theme_light_clean_title">Light Clean</string>
     <string name="settings_section_updates">Updates</string>
     <string name="settings_beta_tester_title">Beta Releases</string>
     <string name="settings_beta_tester_desc">Receive test updates and experimental releases before public stable rollout</string>

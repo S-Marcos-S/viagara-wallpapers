@@ -307,8 +307,14 @@ object WallpaperRepository {
 
             val array = root.optJSONArray("wallpapers") ?: return WallpaperCatalog(categories, emptyList())
             val list = mutableListOf<WallpaperItem>()
+            val seenIds = mutableSetOf<String>()
+            val seenLiveTitles = mutableSetOf<String>()
+
             for (i in 0 until array.length()) {
                 val obj = array.getJSONObject(i)
+                val id = obj.getString("id")
+                if (!seenIds.add(id)) continue
+
                 val tagsArray = obj.optJSONArray("tags")
                 val tags = mutableListOf<String>()
                 if (tagsArray != null) {
@@ -327,11 +333,21 @@ object WallpaperRepository {
 
                 val itemType = obj.optString("type", if (obj.optBoolean("is_live", false)) "video" else "image")
                 val isLive = obj.optBoolean("is_live", itemType == "video")
+                val name = obj.getString("name")
+
+                // Prevent duplicate live wallpapers:
+                // Skip if another live wallpaper with the same normalized title was already added
+                if (isLive || itemType == "video") {
+                    val normalizedTitle = name.trim().lowercase()
+                    if (normalizedTitle.isNotBlank() && !seenLiveTitles.add(normalizedTitle)) {
+                        continue
+                    }
+                }
 
                 list.add(
                     WallpaperItem(
-                        id = obj.getString("id"),
-                        name = obj.getString("name"),
+                        id = id,
+                        name = name,
                         author = obj.optString("author", "Wallpaper HD/4K (Amanda)"),
                         authorUrl = obj.optString("author_url", "https://t.me/amandinhawallpaper").takeIf { it.isNotBlank() },
                         thumbnailUrl = obj.getString("thumbnail_url"),

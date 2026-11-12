@@ -158,13 +158,6 @@ async def process_media_message(
         elif isinstance(attr, DocumentAttributeVideo):
             has_video_attr = True
 
-    # In Telegram channels, live wallpapers are posted twice:
-    # 1. As an inline video preview (compressed stream video, usually < 1MB)
-    # 2. As an uncompressed document (.mp4) with full high resolution (10MB - 30MB)
-    # We strictly discard compressed video stream previews to avoid duplicate live wallpapers!
-    if has_video_attr and (not filename or doc_size < 1_200_000):
-        return None
-
     media_type = None
     ext = None
     if filename:
@@ -181,8 +174,6 @@ async def process_media_message(
 
     if not media_type:
         if "video" in mime or has_video_attr:
-            if doc_size < 1_200_000:
-                return None
             media_type = "video"
             ext = "mp4"
         elif "image" in mime:
@@ -190,6 +181,15 @@ async def process_media_message(
             ext = "png" if "png" in mime else "jpg"
 
     if not media_type or not ext:
+        return None
+
+    # In Telegram channels, live wallpapers are posted twice:
+    # 1. As an inline video preview (compressed stream video, usually < 1MB)
+    # 2. As an uncompressed document (.mp4) with full high resolution (10MB - 30MB)
+    # We strictly discard compressed video stream previews (< 1.2MB) to avoid duplicate live wallpapers!
+    if media_type == "video" and doc_size < 1_200_000:
+        print(f"Skipping low-res video stream preview ({doc_size} bytes): msg_id={msg.id}")
+        return None
         return None
 
     full_filename = f"{item_id}.{ext}"

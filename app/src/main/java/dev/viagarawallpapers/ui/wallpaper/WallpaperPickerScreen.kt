@@ -165,10 +165,12 @@ private fun lerp(start: Float, stop: Float, fraction: Float): Float {
 @Composable
 fun WallpaperPickerScreen(
     onOpenSettings: () -> Unit,
+    onPreviewStateChanged: ((Boolean) -> Unit)? = null,
 ) {
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
     val surface = MaterialTheme.colorScheme.surface
+    val isGlassActive = dev.viagarawallpapers.ui.theme.LocalGlassThemeActive.current
 
     var catalog by remember { mutableStateOf<WallpaperCatalog?>(null) }
     var selectedCategoryId by remember { mutableStateOf("all") }
@@ -179,6 +181,10 @@ fun WallpaperPickerScreen(
     var isApplying by remember { mutableStateOf(false) }
     val animProgress = remember { Animatable(0f) }
     var rootCoordinates by remember { mutableStateOf<LayoutCoordinates?>(null) }
+
+    LaunchedEffect(activePreviewState != null) {
+        onPreviewStateChanged?.invoke(activePreviewState != null)
+    }
 
     val favoriteIds by WallpaperRepository.favoriteIds.collectAsState()
     val prefs = remember { Prefs(context) }
@@ -253,12 +259,12 @@ fun WallpaperPickerScreen(
             .onGloballyPositioned { rootCoordinates = it }
     ) {
         Scaffold(
-            containerColor = surface,
+            containerColor = if (isGlassActive) Color.Transparent else surface,
             topBar = {
             Surface(
-                color = surface,
-                tonalElevation = if (isScrolled) 2.dp else 0.dp,
-                shadowElevation = if (isScrolled) 3.dp else 0.dp,
+                color = if (isGlassActive) Color.Transparent else surface,
+                tonalElevation = if (isScrolled && !isGlassActive) 2.dp else 0.dp,
+                shadowElevation = if (isScrolled && !isGlassActive) 3.dp else 0.dp,
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth()
@@ -555,18 +561,18 @@ private fun DailyWallpaperToggleCard(
     onToggle: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val isGlassActive = dev.viagarawallpapers.ui.theme.LocalGlassThemeActive.current
     val colorScheme = MaterialTheme.colorScheme
-    Surface(
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp))
-            .clickable { onToggle(!enabled) },
-        color = if (enabled) colorScheme.primaryContainer.copy(alpha = 0.35f) else colorScheme.surfaceVariant.copy(alpha = 0.40f),
+    dev.viagarawallpapers.ui.theme.GlassCard(
+        modifier = modifier.fillMaxWidth(),
+        cornerRadiusDp = 16.dp,
+        isGlassActive = isGlassActive,
+        fallbackColor = if (enabled) colorScheme.primaryContainer.copy(alpha = 0.35f) else colorScheme.surfaceVariant.copy(alpha = 0.40f),
         border = BorderStroke(
             width = 1.dp,
             color = if (enabled) colorScheme.primary.copy(alpha = 0.50f) else colorScheme.outlineVariant.copy(alpha = 0.30f),
         ),
-        shape = RoundedCornerShape(16.dp),
+        onClick = { onToggle(!enabled) },
     ) {
         Row(
             modifier = Modifier

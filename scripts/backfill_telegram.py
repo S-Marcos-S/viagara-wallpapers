@@ -220,10 +220,6 @@ async def main():
             elif isinstance(attr, DocumentAttributeVideo):
                 has_video_attr = True
 
-        # Strictly ignore low-res stream previews
-        if has_video_attr and (not filename or doc_size < 1_200_000):
-            continue
-
         media_type = None
         ext = None
         if filename:
@@ -240,8 +236,6 @@ async def main():
 
         if not media_type:
             if "video" in mime or has_video_attr:
-                if doc_size < 1_200_000:
-                    continue
                 media_type = "video"
                 ext = "mp4"
             elif "image" in mime:
@@ -249,6 +243,11 @@ async def main():
                 ext = "png" if "png" in mime else "jpg"
 
         if not media_type or not ext:
+            continue
+
+        # Strictly ignore low-res stream previews (< 1.2MB) to prevent duplicate live wallpapers
+        if media_type == "video" and doc_size < 1_200_000:
+            print(f"Skipping low-res video preview ({doc_size} bytes): msg_id={msg.id}")
             continue
 
         full_filename = f"{item_id}.{ext}"

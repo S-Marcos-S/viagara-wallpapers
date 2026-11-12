@@ -23,6 +23,8 @@ class Prefs(private val context: Context) {
         val DAILY_WALLPAPER_CURRENT_ID = stringPreferencesKey("daily_wallpaper_current_id")
         val DAILY_WALLPAPER_INDEX = intPreferencesKey("daily_wallpaper_index")
         val IS_BETA_TESTER = booleanPreferencesKey("is_beta_tester")
+        val ACTIVE_THEME = stringPreferencesKey("active_theme_id")
+        val HAPTICS_ENABLED = booleanPreferencesKey("haptics_enabled")
     }
 
     private val data get() = context.dataStore.data
@@ -51,6 +53,14 @@ class Prefs(private val context: Context) {
         it[Keys.IS_BETA_TESTER] ?: false
     }.distinctUntilChanged()
 
+    val activeThemeId: Flow<String> = data.map {
+        it[Keys.ACTIVE_THEME] ?: "system_dynamic"
+    }.distinctUntilChanged()
+
+    val hapticsEnabled: Flow<Boolean> = data.map {
+        it[Keys.HAPTICS_ENABLED] ?: true
+    }.distinctUntilChanged()
+
     suspend fun setWallpaperColumns(columns: Int) {
         context.dataStore.edit { it[Keys.WALLPAPER_COLUMNS] = columns.coerceIn(2, 4) }
     }
@@ -73,5 +83,13 @@ class Prefs(private val context: Context) {
 
     suspend fun setBetaTester(enabled: Boolean) {
         context.dataStore.edit { it[Keys.IS_BETA_TESTER] = enabled }
+    }
+
+    suspend fun setActiveThemeId(themeId: String) {
+        context.dataStore.edit { it[Keys.ACTIVE_THEME] = themeId }
+    }
+
+    suspend fun setHapticsEnabled(enabled: Boolean) {
+        context.dataStore.edit { it[Keys.HAPTICS_ENABLED] = enabled }
     }
 }

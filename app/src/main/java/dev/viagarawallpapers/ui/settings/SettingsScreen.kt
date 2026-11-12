@@ -3,8 +3,21 @@ package dev.viagarawallpapers.ui.settings
 
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,11 +32,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.OpenInNew
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Code
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
@@ -50,11 +65,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
@@ -70,12 +87,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.viagarawallpapers.BuildConfig
 import dev.viagarawallpapers.R
+import dev.viagarawallpapers.data.Prefs
 import dev.viagarawallpapers.ui.theme.GlassCard
+import dev.viagarawallpapers.ui.theme.LocalGlassThemeActive
 import dev.viagarawallpapers.update.DownloadStatus
 import dev.viagarawallpapers.update.RootInstaller
 import dev.viagarawallpapers.update.UpdateInfo
 import dev.viagarawallpapers.update.UpdateManager
 import dev.viagarawallpapers.util.HapticUtil
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -88,6 +108,11 @@ fun SettingsScreen(
     val context = LocalContext.current
     val view = LocalView.current
     val colorScheme = MaterialTheme.colorScheme
+    val isGlassActive = LocalGlassThemeActive.current
+    val prefs = remember { Prefs(context) }
+    val activeThemeId by prefs.activeThemeId.collectAsState(initial = "system_dynamic")
+    val hapticsEnabled by prefs.hapticsEnabled.collectAsState(initial = true)
+    val scope = rememberCoroutineScope()
 
     val updateInfo by UpdateManager.updateAvailable.collectAsState()
     val isCheckingUpdates by UpdateManager.isCheckingUpdates.collectAsState()
@@ -123,7 +148,7 @@ fun SettingsScreen(
                 ),
             )
         },
-        containerColor = MaterialTheme.colorScheme.background,
+        containerColor = if (isGlassActive) Color.Transparent else MaterialTheme.colorScheme.surface,
         modifier = Modifier.fillMaxSize(),
     ) { innerPadding ->
         LazyColumn(
@@ -133,6 +158,32 @@ fun SettingsScreen(
             contentPadding = PaddingValues(horizontal = 14.dp, vertical = 8.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
+            // Section: Appearance
+            item {
+                Text(
+                    text = stringResource(R.string.settings_section_appearance),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = colorScheme.primary,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp),
+                )
+            }
+
+            item {
+                GlassCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    cornerRadiusDp = 14.dp,
+                ) {
+                    ThemeColorPaletteRow(
+                        activeThemeId = activeThemeId,
+                        hapticsEnabled = hapticsEnabled,
+                        onSelectTheme = { id ->
+                            scope.launch { prefs.setActiveThemeId(id) }
+                        },
+                    )
+                }
+            }
+
             // Section: Updates
             item {
                 Row(
@@ -673,3 +724,184 @@ private fun AnnotatedString.Builder.parseInlineMarkdown(line: String, colorSchem
         append(line.substring(lastIndex))
     }
 }
+
+private data class ThemeColorDotOption(
+    val id: String,
+    val nameRes: Int,
+    val color: Color,
+    val borderColor: Color,
+    val checkmarkColor: Color,
+)
+
+@Composable
+private fun ThemeColorPaletteRow(
+    activeThemeId: String,
+    hapticsEnabled: Boolean,
+    onSelectTheme: (String) -> Unit,
+) {
+    val view = LocalView.current
+    val colorScheme = MaterialTheme.colorScheme
+
+    val isDark = isSystemInDarkTheme()
+    val options = remember(colorScheme, isDark) {
+        listOf(
+            ThemeColorDotOption(
+                id = "system_dynamic",
+                nameRes = R.string.theme_system_dynamic_title,
+                color = colorScheme.primary,
+                borderColor = colorScheme.outlineVariant.copy(alpha = 0.5f),
+                checkmarkColor = colorScheme.onPrimary,
+            ),
+            ThemeColorDotOption(
+                id = "glass",
+                nameRes = R.string.theme_glass_title,
+                color = if (isDark) Color(0x667FD1E0) else Color(0x88A0D0E8),
+                borderColor = Color.White.copy(alpha = 0.85f),
+                checkmarkColor = Color.White,
+            ),
+            ThemeColorDotOption(
+                id = "oled_black",
+                nameRes = R.string.theme_oled_black_title,
+                color = Color.Black,
+                borderColor = Color(0xFF333333),
+                checkmarkColor = Color(0xFFEDEDED),
+            ),
+            ThemeColorDotOption(
+                id = "dark_modern",
+                nameRes = R.string.theme_dark_modern_title,
+                color = Color(0xFF1B2733),
+                borderColor = Color(0xFF384755),
+                checkmarkColor = Color(0xFF7FD1E0),
+            ),
+            ThemeColorDotOption(
+                id = "light_clean",
+                nameRes = R.string.theme_light_clean_title,
+                color = Color(0xFFF3F6F8),
+                borderColor = Color(0xFFB0BCC7),
+                checkmarkColor = Color(0xFF10707F),
+            ),
+        )
+    }
+
+    val activeOption = options.firstOrNull { it.id == activeThemeId } ?: options.first()
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 14.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        Text(
+            text = stringResource(activeOption.nameRes),
+            style = MaterialTheme.typography.bodyMedium,
+            fontWeight = FontWeight.Medium,
+            color = MaterialTheme.colorScheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier
+                .weight(1f, fill = false)
+                .padding(end = 8.dp),
+        )
+
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            options.forEach { option ->
+                val isSelected = activeThemeId == option.id
+                ThemeColorDot(
+                    option = option,
+                    isSelected = isSelected,
+                    onClick = {
+                        if (!isSelected) {
+                            HapticUtil.tick(view, hapticsEnabled)
+                            onSelectTheme(option.id)
+                        }
+                    },
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun ThemeColorDot(
+    option: ThemeColorDotOption,
+    isSelected: Boolean,
+    onClick: () -> Unit,
+) {
+    val scale by animateFloatAsState(
+        targetValue = if (isSelected) 1.05f else 0.85f,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessMediumLow,
+        ),
+        label = "dotScale",
+    )
+    val ringSize by animateDpAsState(
+        targetValue = if (isSelected) 36.dp else 26.dp,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessMediumLow,
+        ),
+        label = "dotRingSize",
+    )
+    val ringAlpha by animateFloatAsState(
+        targetValue = if (isSelected) 1f else 0f,
+        animationSpec = tween(durationMillis = 200),
+        label = "dotRingAlpha",
+    )
+
+    Box(
+        modifier = Modifier
+            .size(38.dp)
+            .clip(CircleShape)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+                onClick = onClick,
+            ),
+        contentAlignment = Alignment.Center,
+    ) {
+        if (ringAlpha > 0.01f) {
+            Box(
+                modifier = Modifier
+                    .size(ringSize)
+                    .graphicsLayer { alpha = ringAlpha }
+                    .border(
+                        width = 2.dp,
+                        color = MaterialTheme.colorScheme.primary.copy(alpha = ringAlpha),
+                        shape = CircleShape,
+                    ),
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .size(26.dp)
+                .graphicsLayer {
+                    scaleX = scale
+                    scaleY = scale
+                }
+                .clip(CircleShape)
+                .background(option.color)
+                .border(1.dp, option.borderColor, CircleShape),
+            contentAlignment = Alignment.Center,
+        ) {
+            AnimatedVisibility(
+                visible = isSelected,
+                enter = scaleIn(spring(dampingRatio = Spring.DampingRatioMediumBouncy)) + fadeIn(tween(150)),
+                exit = scaleOut(tween(150)) + fadeOut(tween(150)),
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Check,
+                    contentDescription = stringResource(option.nameRes),
+                    tint = option.checkmarkColor,
+                    modifier = Modifier.size(14.dp),
+                )
+            }
+        }
+    }
+}
+

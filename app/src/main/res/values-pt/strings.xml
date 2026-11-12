@@ -90,6 +90,12 @@
 
     <!-- Settings & Updates -->
     <string name="settings_title">Configurações</string>
+    <string name="settings_section_appearance">Aparência</string>
+    <string name="theme_system_dynamic_title">Dinâmico do Sistema</string>
+    <string name="theme_glass_title">Vidro</string>
+    <string name="theme_oled_black_title">OLED Preto Puro</string>
+    <string name="theme_dark_modern_title">Escuro Moderno</string>
+    <string name="theme_light_clean_title">Claro Minimalista</string>
     <string name="settings_section_updates">Atualizações</string>
     <string name="settings_beta_tester_title">Participar de Versões Beta</string>
     <string name="settings_beta_tester_desc">Receba compilações de teste e novidades experimentais antes do lançamento público</string>
