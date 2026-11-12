@@ -53,6 +53,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -173,7 +178,6 @@ fun WallpaperPickerScreen(
     val isGlassActive = dev.viagarawallpapers.ui.theme.LocalGlassThemeActive.current
 
     var catalog by remember { mutableStateOf<WallpaperCatalog?>(null) }
-    var selectedCategoryId by remember { mutableStateOf("all") }
     var searchQuery by remember { mutableStateOf("") }
     var isLoadingCatalog by remember { mutableStateOf(true) }
     var activePreviewState by remember { mutableStateOf<PreviewTransitionState?>(null) }
@@ -198,32 +202,14 @@ fun WallpaperPickerScreen(
         isLoadingCatalog = false
     }
 
-    val filteredWallpapers = remember(catalog, selectedCategoryId, searchQuery, favoriteIds) {
-        val all = catalog?.wallpapers ?: emptyList()
-        val query = searchQuery.trim().lowercase()
-
-        val baseList = when {
-            selectedCategoryId.equals("all", ignoreCase = true) -> all
-            selectedCategoryId.equals("favorites", ignoreCase = true) -> all.filter { favoriteIds.contains(it.id) }
-            else -> all.filter {
-                it.category.equals(selectedCategoryId, ignoreCase = true)
-            }
-        }
-
-        if (query.isEmpty()) {
-            baseList
-        } else {
-            baseList.filter { item ->
-                item.name.lowercase().contains(query) ||
-                item.id.lowercase().contains(query) ||
-                item.id.replace("tg_", "").contains(query) ||
-                item.searchTerms.any { it.lowercase().contains(query) } ||
-                item.tags.any { it.lowercase().contains(query) } ||
-                item.category.lowercase().contains(query) ||
-                item.author.lowercase().contains(query)
-            }
-        }
+    val categories = remember(catalog) {
+        catalog?.categories ?: WallpaperRepository.DEFAULT_CATEGORIES
     }
+
+    val pagerState = rememberPagerState(initialPage = 0, pageCount = { categories.size.coerceAtLeast(1) })
+    val selectedCategoryIndex = pagerState.currentPage.coerceIn(0, (categories.size - 1).coerceAtLeast(0))
+    val selectedCategoryId = categories.getOrNull(selectedCategoryIndex)?.id ?: "all"
+    var isCurrentPageScrolled by remember { mutableStateOf(false) }
 
     val dismissPreview: () -> Unit = {
         if (!isClosing && !isApplying && activePreviewState != null) {
@@ -246,13 +232,6 @@ fun WallpaperPickerScreen(
         if (!isApplying) dismissPreview()
     }
 
-    val gridState = rememberLazyGridState()
-    val isScrolled by remember {
-        derivedStateOf {
-            gridState.firstVisibleItemIndex > 0 || gridState.firstVisibleItemScrollOffset > 0
-        }
-    }
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -263,8 +242,8 @@ fun WallpaperPickerScreen(
             topBar = {
             Surface(
                 color = if (isGlassActive) Color.Transparent else surface,
-                tonalElevation = if (isScrolled && !isGlassActive) 2.dp else 0.dp,
-                shadowElevation = if (isScrolled && !isGlassActive) 3.dp else 0.dp,
+                tonalElevation = if (isCurrentPageScrolled && !isGlassActive) 2.dp else 0.dp,
+                shadowElevation = if (isCurrentPageScrolled && !isGlassActive) 3.dp else 0.dp,
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth()
@@ -340,15 +319,14 @@ fun WallpaperPickerScreen(
                         colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
                     )
 
-                    val categories = catalog?.categories ?: WallpaperRepository.DEFAULT_CATEGORIES
                     WallpaperCategoriesRow(
                         categories = categories,
                         selectedCategoryId = selectedCategoryId,
                         onSelectCategory = { newCategory ->
-                            if (!selectedCategoryId.equals(newCategory, ignoreCase = true)) {
-                                selectedCategoryId = newCategory
+                            val targetIndex = categories.indexOfFirst { it.id.equals(newCategory, ignoreCase = true) }
+                            if (targetIndex >= 0 && targetIndex != pagerState.currentPage) {
                                 coroutineScope.launch {
-                                    gridState.scrollToItem(0)
+                                    pagerState.animateScrollToPage(targetIndex)
                                 }
                             }
                         },
@@ -357,7 +335,7 @@ fun WallpaperPickerScreen(
                             .padding(bottom = 10.dp),
                     )
 
-                    if (isScrolled) {
+                    if (isCurrentPageScrolled) {
                         HorizontalDivider(
                             color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f),
                             thickness = 0.5.dp,
@@ -367,128 +345,178 @@ fun WallpaperPickerScreen(
             }
         },
     ) { innerPadding ->
-        LazyVerticalGrid(
-            state = gridState,
-            columns = GridCells.Fixed(wallpaperColumns),
+        HorizontalPager(
+            state = pagerState,
+            userScrollEnabled = activePreviewState == null,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
-            contentPadding = PaddingValues(if (wallpaperColumns >= 4) 10.dp else if (wallpaperColumns == 3) 12.dp else 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(if (wallpaperColumns >= 4) 8.dp else if (wallpaperColumns == 3) 10.dp else 14.dp),
-            verticalArrangement = Arrangement.spacedBy(if (wallpaperColumns >= 4) 8.dp else if (wallpaperColumns == 3) 10.dp else 14.dp),
-        ) {
-            // Minimalist Search Bar (no lugar do antigo card "Fotos e Galeria")
-            item(span = { GridItemSpan(maxLineSpan) }) {
-                WallpaperSearchBar(
-                    query = searchQuery,
-                    onQueryChange = { searchQuery = it },
-                )
+        ) { pageIndex ->
+            val pageCategory = categories.getOrNull(pageIndex)
+            val pageCategoryId = pageCategory?.id ?: "all"
+            val pageGridState = rememberLazyGridState()
+
+            val isPageScrolled by remember {
+                derivedStateOf {
+                    pageGridState.firstVisibleItemIndex > 0 || pageGridState.firstVisibleItemScrollOffset > 0
+                }
+            }
+            LaunchedEffect(isPageScrolled, pagerState.currentPage == pageIndex) {
+                if (pagerState.currentPage == pageIndex) {
+                    isCurrentPageScrolled = isPageScrolled
+                }
             }
 
-            item(span = { GridItemSpan(maxLineSpan) }) {
-                DailyWallpaperToggleCard(
-                    enabled = isAutoDailyEnabled,
-                    onToggle = { enabled ->
-                        coroutineScope.launch {
-                            DailyWallpaperManager.setEnabled(context, enabled)
-                        }
-                    },
-                )
+            val pageWallpapers = remember(catalog, pageCategoryId, searchQuery, favoriteIds) {
+                val all = catalog?.wallpapers ?: emptyList()
+                val query = searchQuery.trim().lowercase()
+
+                val baseList = when {
+                    pageCategoryId.equals("all", ignoreCase = true) -> all
+                    pageCategoryId.equals("favorites", ignoreCase = true) -> all.filter { favoriteIds.contains(it.id) }
+                    else -> all.filter {
+                        it.category.equals(pageCategoryId, ignoreCase = true)
+                    }
+                }
+
+                if (query.isEmpty()) {
+                    baseList
+                } else {
+                    baseList.filter { item ->
+                        item.name.lowercase().contains(query) ||
+                        item.id.lowercase().contains(query) ||
+                        item.id.replace("tg_", "").contains(query) ||
+                        item.searchTerms.any { it.lowercase().contains(query) } ||
+                        item.tags.any { it.lowercase().contains(query) } ||
+                        item.category.lowercase().contains(query) ||
+                        item.author.lowercase().contains(query)
+                    }
+                }
             }
 
-            if (isLoadingCatalog && filteredWallpapers.isEmpty()) {
+            LazyVerticalGrid(
+                state = pageGridState,
+                columns = GridCells.Fixed(wallpaperColumns),
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(if (wallpaperColumns >= 4) 10.dp else if (wallpaperColumns == 3) 12.dp else 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(if (wallpaperColumns >= 4) 8.dp else if (wallpaperColumns == 3) 10.dp else 14.dp),
+                verticalArrangement = Arrangement.spacedBy(if (wallpaperColumns >= 4) 8.dp else if (wallpaperColumns == 3) 10.dp else 14.dp),
+            ) {
+                // Minimalist Search Bar (no lugar do antigo card "Fotos e Galeria")
                 item(span = { GridItemSpan(maxLineSpan) }) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(160.dp),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        CircularProgressIndicator(modifier = Modifier.size(32.dp))
-                    }
-                }
-            } else if (filteredWallpapers.isEmpty()) {
-                item(span = { GridItemSpan(maxLineSpan) }) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 40.dp),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier.padding(horizontal = 24.dp),
-                        ) {
-                            Icon(
-                                imageVector = Icons.Filled.Search,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.45f),
-                                modifier = Modifier.size(36.dp),
-                            )
-                            Spacer(Modifier.height(12.dp))
-                            Text(
-                                text = if (searchQuery.isNotBlank()) {
-                                    stringResource(R.string.wallpaper_search_no_results, searchQuery)
-                                } else if (selectedCategoryId.equals("favorites", ignoreCase = true)) {
-                                    "Nenhum papel de parede favorito ainda.\nToque no coração de qualquer papel de parede para favoritá-lo."
-                                } else {
-                                    stringResource(R.string.wallpaper_picker_empty)
-                                },
-                                fontSize = 14.sp,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                textAlign = TextAlign.Center,
-                            )
-                        }
-                    }
-                }
-            } else {
-                items(filteredWallpapers, key = { it.id }) { item ->
-                    val isBeingPreviewed = activePreviewState?.item?.id == item.id
-                    WallpaperGridItem(
-                        item = item,
-                        columns = wallpaperColumns,
-                        isFavorite = favoriteIds.contains(item.id),
-                        isBeingPreviewed = isBeingPreviewed,
-                        onToggleFavorite = {
-                            WallpaperRepository.toggleFavorite(context, item.id)
-                        },
-                        onClick = { boundsInRoot: Rect, thumb: Bitmap? ->
-                            val root = rootCoordinates
-                            val relativeRect = if (root != null && root.isAttached && boundsInRoot.width > 0f) {
-                                val rootBounds = root.boundsInRoot()
-                                Rect(
-                                    left = boundsInRoot.left - rootBounds.left,
-                                    top = boundsInRoot.top - rootBounds.top,
-                                    right = boundsInRoot.right - rootBounds.left,
-                                    bottom = boundsInRoot.bottom - rootBounds.top,
-                                )
-                            } else {
-                                boundsInRoot
-                            }
-                            val cornerRadius = when {
-                                wallpaperColumns >= 4 -> 10f
-                                wallpaperColumns == 3 -> 14f
-                                else -> 18f
-                            }
-                            activePreviewState = PreviewTransitionState(
-                                item = item,
-                                sourceRect = relativeRect,
-                                thumbnailBitmap = thumb,
-                                cornerRadiusDp = cornerRadius,
-                            )
-                            isClosing = false
-                            coroutineScope.launch {
-                                animProgress.snapTo(0f)
-                                animProgress.animateTo(
-                                    targetValue = 1f,
-                                    animationSpec = tween(
-                                        durationMillis = 340,
-                                        easing = FastOutSlowInEasing,
-                                    )
-                                )
-                            }
-                        }
+                    WallpaperSearchBar(
+                        query = searchQuery,
+                        onQueryChange = { searchQuery = it },
                     )
+                }
+
+                if (pageCategoryId.equals("all", ignoreCase = true)) {
+                    item(span = { GridItemSpan(maxLineSpan) }) {
+                        DailyWallpaperToggleCard(
+                            enabled = isAutoDailyEnabled,
+                            onToggle = { enabled ->
+                                coroutineScope.launch {
+                                    DailyWallpaperManager.setEnabled(context, enabled)
+                                }
+                            },
+                        )
+                    }
+                }
+
+                if (isLoadingCatalog && pageWallpapers.isEmpty()) {
+                    item(span = { GridItemSpan(maxLineSpan) }) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(160.dp),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            CircularProgressIndicator(modifier = Modifier.size(32.dp))
+                        }
+                    }
+                } else if (pageWallpapers.isEmpty()) {
+                    item(span = { GridItemSpan(maxLineSpan) }) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 40.dp),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                modifier = Modifier.padding(horizontal = 24.dp),
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.Search,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.45f),
+                                    modifier = Modifier.size(36.dp),
+                                )
+                                Spacer(Modifier.height(12.dp))
+                                Text(
+                                    text = if (searchQuery.isNotBlank()) {
+                                        stringResource(R.string.wallpaper_search_no_results, searchQuery)
+                                    } else if (pageCategoryId.equals("favorites", ignoreCase = true)) {
+                                        "Nenhum papel de parede favorito ainda.\nToque no coração de qualquer papel de parede para favoritá-lo."
+                                    } else {
+                                        stringResource(R.string.wallpaper_picker_empty)
+                                    },
+                                    fontSize = 14.sp,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    textAlign = TextAlign.Center,
+                                )
+                            }
+                        }
+                    }
+                } else {
+                    items(pageWallpapers, key = { it.id }) { item ->
+                        val isBeingPreviewed = activePreviewState?.item?.id == item.id
+                        WallpaperGridItem(
+                            item = item,
+                            columns = wallpaperColumns,
+                            isFavorite = favoriteIds.contains(item.id),
+                            isBeingPreviewed = isBeingPreviewed,
+                            onToggleFavorite = {
+                                WallpaperRepository.toggleFavorite(context, item.id)
+                            },
+                            onClick = { boundsInRoot: Rect, thumb: Bitmap? ->
+                                val root = rootCoordinates
+                                val relativeRect = if (root != null && root.isAttached && boundsInRoot.width > 0f) {
+                                    val rootBounds = root.boundsInRoot()
+                                    Rect(
+                                        left = boundsInRoot.left - rootBounds.left,
+                                        top = boundsInRoot.top - rootBounds.top,
+                                        right = boundsInRoot.right - rootBounds.left,
+                                        bottom = boundsInRoot.bottom - rootBounds.top,
+                                    )
+                                } else {
+                                    boundsInRoot
+                                }
+                                val cornerRadius = when {
+                                    wallpaperColumns >= 4 -> 10f
+                                    wallpaperColumns == 3 -> 14f
+                                    else -> 18f
+                                }
+                                activePreviewState = PreviewTransitionState(
+                                    item = item,
+                                    sourceRect = relativeRect,
+                                    thumbnailBitmap = thumb,
+                                    cornerRadiusDp = cornerRadius,
+                                )
+                                isClosing = false
+                                coroutineScope.launch {
+                                    animProgress.snapTo(0f)
+                                    animProgress.animateTo(
+                                        targetValue = 1f,
+                                        animationSpec = tween(
+                                            durationMillis = 340,
+                                            easing = FastOutSlowInEasing,
+                                        )
+                                    )
+                                }
+                            }
+                        )
+                    }
                 }
             }
         }
@@ -1901,15 +1929,30 @@ private fun WallpaperCategoriesRow(
     modifier: Modifier = Modifier,
 ) {
     val haptic = LocalHapticFeedback.current
-    Row(
+    val listState = rememberLazyListState()
+
+    val selectedIndex = remember(categories, selectedCategoryId) {
+        categories.indexOfFirst { it.id.equals(selectedCategoryId, ignoreCase = true) }
+    }
+
+    LaunchedEffect(selectedIndex) {
+        if (selectedIndex >= 0) {
+            listState.animateScrollToItem(selectedIndex)
+        }
+    }
+
+    LazyRow(
+        state = listState,
         modifier = modifier
             .fillMaxWidth()
-            .horizontalScroll(rememberScrollState())
             .padding(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        categories.forEach { category ->
+        items(
+            items = categories,
+            key = { it.id },
+        ) { category ->
             val isSelected = category.id.equals(selectedCategoryId, ignoreCase = true)
             val backgroundColor by animateColorAsState(
                 targetValue = if (isSelected) {

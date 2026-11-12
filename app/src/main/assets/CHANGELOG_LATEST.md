@@ -1,6 +1,6 @@
-### 🌌 Wallpapers FOSS v1.0.3
+### 🌌 Wallpapers FOSS v1.0.4
 
-- **Interface Otimizada:** Ícone de configurações reposicionado na barra superior ao lado dos controles de grade e galeria.
-- **Temas Completos:** Integração de temas incluindo Vidro Líquido, OLED Preto Puro, Escuro Moderno, Claro e Dinâmico.
-- **Navegação por Deslize:** Transição fluida entre telas através de gestos horizontais de rolagem (swipe).
-- **Sem Duplicatas:** Remoção e prevenção de papéis de parede animados duplicados.
+- **Navegação por Deslize entre Categorias:** Deslize horizontal (swipe) para alternar fluidamente entre as abas e categorias (Todos, Favoritos, Animes, etc.).
+- **Barra de Categorias com Auto-scroll:** Chips de categorias sincronizados com animação automática de rolagem ao deslizar ou selecionar.
+- **Interface Otimizada:** Ícone de configurações na barra superior ao lado dos controles de grade e galeria.
+- **Temas e Vidro:** Suporte a temas Vidro Líquido, OLED, Escuro, Claro e Dinâmico.
