@@ -133,7 +133,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.zIndex
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Brush
@@ -286,12 +285,19 @@ fun WallpaperPickerScreen(
                 }
             }
 
-            var showScrollToTop by remember { mutableStateOf(false) }
+            var isScrollingUp by remember { mutableStateOf(false) }
             var isAutoScrollingToTop by remember { mutableStateOf(false) }
+
+            val shouldShowScrollToTop by remember {
+                derivedStateOf {
+                    isScrollingUp && (pageGridState.firstVisibleItemIndex > 0 || pageGridState.firstVisibleItemScrollOffset > 200)
+                }
+            }
 
             LaunchedEffect(pageGridState) {
                 var prevIndex = pageGridState.firstVisibleItemIndex
                 var prevOffset = pageGridState.firstVisibleItemScrollOffset
+                var accumulatedDelta = 0
 
                 snapshotFlow {
                     Triple(
@@ -306,18 +312,29 @@ fun WallpaperPickerScreen(
                         return@collect
                     }
 
-                    val isNearTop = currIndex == 0 && currOffset <= 120
+                    val isNearTop = currIndex == 0 && currOffset <= 30
                     if (isNearTop) {
-                        showScrollToTop = false
+                        isScrollingUp = false
+                        accumulatedDelta = 0
                     } else if (isScrolling) {
-                        val indexDelta = currIndex - prevIndex
-                        val offsetDelta = currOffset - prevOffset
+                        val indexDiff = currIndex - prevIndex
+                        val offsetDiff = currOffset - prevOffset
 
-                        if (indexDelta < 0 || (indexDelta == 0 && offsetDelta < -15)) {
-                            showScrollToTop = true
-                        } else if (indexDelta > 0 || (indexDelta == 0 && offsetDelta > 15)) {
-                            showScrollToTop = false
+                        if (indexDiff != 0) {
+                            isScrollingUp = indexDiff < 0
+                            accumulatedDelta = 0
+                        } else {
+                            accumulatedDelta += offsetDiff
+                            if (accumulatedDelta > 15) {
+                                isScrollingUp = false
+                                accumulatedDelta = 0
+                            } else if (accumulatedDelta < -15) {
+                                isScrollingUp = true
+                                accumulatedDelta = 0
+                            }
                         }
+                    } else {
+                        accumulatedDelta = 0
                     }
                     prevIndex = currIndex
                     prevOffset = currOffset
@@ -484,12 +501,12 @@ fun WallpaperPickerScreen(
             }
 
             ScrollToTopFloatingButton(
-                visible = showScrollToTop,
+                visible = shouldShowScrollToTop,
                 onClick = {
                     coroutineScope.launch {
                         haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                        showScrollToTop = false
                         isAutoScrollingToTop = true
+                        isScrollingUp = false
                         try {
                             if (pageGridState.firstVisibleItemIndex > 20) {
                                 pageGridState.scrollToItem(20)
@@ -504,8 +521,7 @@ fun WallpaperPickerScreen(
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .navigationBarsPadding()
-                    .padding(end = 18.dp, bottom = 24.dp)
-                    .zIndex(10f),
+                    .padding(end = 16.dp, bottom = 20.dp),
             )
         }
     }
@@ -2066,17 +2082,17 @@ private fun ScrollToTopFloatingButton(
 ) {
     AnimatedVisibility(
         visible = visible,
-        enter = fadeIn(animationSpec = tween(200)) + scaleIn(
-            initialScale = 0.6f,
+        enter = fadeIn(animationSpec = tween(180)) + scaleIn(
+            initialScale = 0.65f,
             animationSpec = spring(dampingRatio = 0.75f, stiffness = Spring.StiffnessMediumLow),
         ),
-        exit = fadeOut(animationSpec = tween(180)) + scaleOut(
-            targetScale = 0.6f,
-            animationSpec = tween(180),
+        exit = fadeOut(animationSpec = tween(150)) + scaleOut(
+            targetScale = 0.65f,
+            animationSpec = tween(150),
         ),
         modifier = modifier,
     ) {
-        val buttonSize = 46.dp
+        val buttonSize = 44.dp
         if (isGlassActive) {
             Box(
                 modifier = Modifier
@@ -2093,13 +2109,12 @@ private fun ScrollToTopFloatingButton(
                     cornerPx = 1000f,
                     style = GlassStyle.DEFAULT,
                     tintOpacity = 28,
-                    surfaceColor = dynamicSurfaceColor(alpha = 1f).toArgb(),
                 ) {
                     Icon(
                         imageVector = Icons.Filled.KeyboardArrowUp,
                         contentDescription = stringResource(R.string.action_scroll_to_top),
                         tint = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.size(26.dp),
+                        modifier = Modifier.size(24.dp),
                     )
                 }
             }
@@ -2107,11 +2122,11 @@ private fun ScrollToTopFloatingButton(
             Surface(
                 onClick = onClick,
                 shape = CircleShape,
-                color = MaterialTheme.colorScheme.primaryContainer,
-                contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                color = dynamicSurfaceColor(alpha = 0.85f),
+                contentColor = MaterialTheme.colorScheme.onSurface,
                 tonalElevation = 6.dp,
-                shadowElevation = 8.dp,
-                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.45f)),
+                shadowElevation = 6.dp,
+                border = BorderStroke(1.dp, dynamicBorderColor(alpha = 0.25f)),
                 modifier = Modifier.size(buttonSize),
             ) {
                 Box(
@@ -2121,8 +2136,8 @@ private fun ScrollToTopFloatingButton(
                     Icon(
                         imageVector = Icons.Filled.KeyboardArrowUp,
                         contentDescription = stringResource(R.string.action_scroll_to_top),
-                        tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                        modifier = Modifier.size(26.dp),
+                        tint = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.size(24.dp),
                     )
                 }
             }
@@ -2130,6 +2145,7 @@ private fun ScrollToTopFloatingButton(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun GlassHeader(
     isGlassActive: Boolean,
@@ -2144,140 +2160,155 @@ private fun GlassHeader(
     modifier: Modifier = Modifier,
 ) {
     val isDark = isSystemInDarkTheme()
+    val animatedBgAlpha by animateFloatAsState(
+        targetValue = if (isScrolled) {
+            if (isGlassActive) (if (isDark) 0.68f else 0.78f) else (if (isDark) 0.90f else 0.92f)
+        } else {
+            if (isGlassActive) (if (isDark) 0.42f else 0.52f) else (if (isDark) 0.75f else 0.80f)
+        },
+        animationSpec = tween(durationMillis = 200),
+        label = "header_bg_alpha",
+    )
+    val animatedBorderAlpha by animateFloatAsState(
+        targetValue = if (isScrolled) {
+            if (isGlassActive) (if (isDark) 0.26f else 0.38f) else (if (isDark) 0.22f else 0.28f)
+        } else {
+            if (isGlassActive) (if (isDark) 0.14f else 0.20f) else 0f
+        },
+        animationSpec = tween(durationMillis = 200),
+        label = "header_border_alpha",
+    )
 
-    if (isGlassActive) {
-        GlassSurface(
-            modifier = modifier,
-            topCornerPx = 0f,
-            bottomCornerPx = 0f,
-            style = GlassStyle.DEFAULT,
-            tintOpacity = if (isDark) 35 else 45,
-            surfaceColor = dynamicSurfaceColor(alpha = 1f).toArgb(),
-        ) {
-            HeaderContent(
-                isGlassActive = true,
-                isDark = isDark,
-                wallpaperColumns = wallpaperColumns,
-                onToggleColumns = onToggleColumns,
-                onOpenGallery = onOpenGallery,
-                onOpenSettings = onOpenSettings,
-                categories = categories,
-                selectedCategoryId = selectedCategoryId,
-                onSelectCategory = onSelectCategory,
-            )
-        }
+    val surfaceColor = MaterialTheme.colorScheme.surface
+    val headerBgColor = surfaceColor.copy(alpha = animatedBgAlpha)
+    val bottomBorderColor = if (isGlassActive) {
+        Color.White.copy(alpha = animatedBorderAlpha)
     } else {
-        Surface(
-            modifier = modifier,
-            color = MaterialTheme.colorScheme.surface,
-            tonalElevation = if (isScrolled) 2.dp else 0.dp,
-            shadowElevation = if (isScrolled) 3.dp else 0.dp,
-        ) {
-            HeaderContent(
-                isGlassActive = false,
-                isDark = isDark,
-                wallpaperColumns = wallpaperColumns,
-                onToggleColumns = onToggleColumns,
-                onOpenGallery = onOpenGallery,
-                onOpenSettings = onOpenSettings,
-                categories = categories,
-                selectedCategoryId = selectedCategoryId,
-                onSelectCategory = onSelectCategory,
-            )
-        }
+        MaterialTheme.colorScheme.outlineVariant.copy(alpha = animatedBorderAlpha)
     }
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun HeaderContent(
-    isGlassActive: Boolean,
-    isDark: Boolean,
-    wallpaperColumns: Int,
-    onToggleColumns: () -> Unit,
-    onOpenGallery: () -> Unit,
-    onOpenSettings: () -> Unit,
-    categories: List<WallpaperCategory>,
-    selectedCategoryId: String,
-    onSelectCategory: (String) -> Unit,
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .statusBarsPadding()
-            .padding(bottom = 8.dp),
-    ) {
-        TopAppBar(
-            title = {
-                Text(
-                    text = stringResource(R.string.wallpaper_picker_title),
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface,
-                )
-            },
-            actions = {
-                val columnsDesc = stringResource(R.string.wallpaper_columns_desc, wallpaperColumns)
-                IconButton(
-                    onClick = onToggleColumns,
-                    modifier = Modifier.semantics { contentDescription = columnsDesc },
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(30.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                            .background(
-                                if (isGlassActive) {
-                                    Color.White.copy(alpha = if (isDark) 0.14f else 0.24f)
-                                } else {
-                                    MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f)
-                                }
+    Box(
+        modifier = modifier
+            .background(headerBgColor)
+            .then(
+                if (isGlassActive) {
+                    Modifier.drawBehind {
+                        // Specular top sheen gradient
+                        drawRect(
+                            brush = Brush.verticalGradient(
+                                colors = listOf(
+                                    Color.White.copy(alpha = if (isDark) 0.16f else 0.28f),
+                                    Color.White.copy(alpha = 0.03f),
+                                    Color.Transparent,
+                                ),
+                                startY = 0f,
+                                endY = size.height * 0.75f,
                             )
-                            .border(
-                                0.8.dp,
-                                if (isGlassActive) {
-                                    Color.White.copy(alpha = if (isDark) 0.22f else 0.35f)
-                                } else {
-                                    MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.45f)
-                                },
-                                RoundedCornerShape(8.dp)
-                            ),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text(
-                            text = "${wallpaperColumns}x",
-                            style = MaterialTheme.typography.labelSmall,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurface,
-                            fontSize = 11.sp,
                         )
+                        // Specular bottom border highlight
+                        if (animatedBorderAlpha > 0f) {
+                            val strokeWidth = 1.dp.toPx()
+                            drawLine(
+                                color = bottomBorderColor,
+                                start = Offset(0f, size.height - strokeWidth / 2f),
+                                end = Offset(size.width, size.height - strokeWidth / 2f),
+                                strokeWidth = strokeWidth,
+                            )
+                        }
+                    }
+                } else {
+                    Modifier.drawBehind {
+                        if (animatedBorderAlpha > 0f) {
+                            val strokeWidth = 1.dp.toPx()
+                            drawLine(
+                                color = bottomBorderColor,
+                                start = Offset(0f, size.height - strokeWidth / 2f),
+                                end = Offset(size.width, size.height - strokeWidth / 2f),
+                                strokeWidth = strokeWidth,
+                            )
+                        }
                     }
                 }
-                IconButton(onClick = onOpenGallery) {
-                    Icon(
-                        imageVector = Icons.Filled.PhotoLibrary,
-                        contentDescription = stringResource(R.string.wallpaper_picker_gallery),
-                        tint = MaterialTheme.colorScheme.onSurface,
-                    )
-                }
-                IconButton(onClick = onOpenSettings) {
-                    Icon(
-                        imageVector = Icons.Filled.Settings,
-                        contentDescription = stringResource(R.string.settings_title),
-                        tint = MaterialTheme.colorScheme.onSurface,
-                    )
-                }
-            },
-            colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = Color.Transparent,
-                scrolledContainerColor = Color.Transparent,
-            ),
-        )
-        if (categories.isNotEmpty()) {
-            WallpaperCategoriesRow(
-                categories = categories,
-                selectedCategoryId = selectedCategoryId,
-                onSelectCategory = onSelectCategory,
             )
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .statusBarsPadding()
+                .padding(bottom = 8.dp),
+        ) {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(R.string.wallpaper_picker_title),
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface,
+                    )
+                },
+                actions = {
+                    val columnsDesc = stringResource(R.string.wallpaper_columns_desc, wallpaperColumns)
+                    IconButton(
+                        onClick = onToggleColumns,
+                        modifier = Modifier.semantics { contentDescription = columnsDesc },
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .size(30.dp)
+                                .clip(RoundedCornerShape(8.dp))
+                                .background(
+                                    if (isGlassActive) {
+                                        Color.White.copy(alpha = if (isDark) 0.14f else 0.24f)
+                                    } else {
+                                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f)
+                                    }
+                                )
+                                .border(
+                                    0.8.dp,
+                                    if (isGlassActive) {
+                                        Color.White.copy(alpha = if (isDark) 0.22f else 0.35f)
+                                    } else {
+                                        MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.45f)
+                                    },
+                                    RoundedCornerShape(8.dp)
+                                ),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Text(
+                                text = "${wallpaperColumns}x",
+                                style = MaterialTheme.typography.labelSmall,
+                                fontWeight = FontWeight.Bold,
+                                color = MaterialTheme.colorScheme.onSurface,
+                                fontSize = 11.sp,
+                            )
+                        }
+                    }
+                    IconButton(onClick = onOpenGallery) {
+                        Icon(
+                            imageVector = Icons.Filled.PhotoLibrary,
+                            contentDescription = stringResource(R.string.wallpaper_picker_gallery),
+                            tint = MaterialTheme.colorScheme.onSurface,
+                        )
+                    }
+                    IconButton(onClick = onOpenSettings) {
+                        Icon(
+                            imageVector = Icons.Filled.Settings,
+                            contentDescription = stringResource(R.string.settings_title),
+                            tint = MaterialTheme.colorScheme.onSurface,
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color.Transparent,
+                    scrolledContainerColor = Color.Transparent,
+                ),
+            )
+            if (categories.isNotEmpty()) {
+                WallpaperCategoriesRow(
+                    categories = categories,
+                    selectedCategoryId = selectedCategoryId,
+                    onSelectCategory = onSelectCategory,
+                )
+            }
         }
     }
 }

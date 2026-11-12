@@ -1,4 +1,4 @@
-### 🌌 Wallpapers FOSS v1.0.7
+### 🌌 Wallpapers FOSS v1.0.8
 
-- **Efeito Vidro Líquido:** Cabeçalho com arquitetura de vidro líquido (AGSL/BoxBlur) mapeado sobre coordenadas de tela quando no tema Vidro, e cores nativas do tema nos demais modos.
-- **Botão Voltar ao Topo:** Botão minimalista redondo que surge dinamicamente ao rolar para cima e permanece acessível para retorno rápido ao início.
+- **Cabeçalho em Vidro Translúcido:** O cabeçalho agora possui efeito vidro fluido em todas as abas, permitindo que os papéis de parede passem por detrás dele ao rolar.
+- **Botão Voltar ao Topo:** Botão minimalista redondo que surge dinamicamente na lateral ao rolar a tela para cima, facilitando o retorno ao topo da página.
