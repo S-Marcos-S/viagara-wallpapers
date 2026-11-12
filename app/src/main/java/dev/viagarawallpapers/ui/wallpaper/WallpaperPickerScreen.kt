@@ -498,35 +498,35 @@ fun WallpaperPickerScreen(
                         )
                     }
                 }
-
-                ScrollToTopFloatingButton(
-                    visible = shouldShowScrollToTop,
-                    onClick = {
-                        coroutineScope.launch {
-                            haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                            isAutoScrollingToTop = true
-                            isScrollingUp = false
-                            try {
-                                if (pageGridState.firstVisibleItemIndex > 20) {
-                                    pageGridState.scrollToItem(20)
-                                }
-                                pageGridState.animateScrollToItem(0)
-                            } finally {
-                                isAutoScrollingToTop = false
-                            }
-                        }
-                    },
-                    isGlassActive = isGlassActive,
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .navigationBarsPadding()
-                        .padding(end = 16.dp, bottom = 20.dp),
-                )
             }
+
+            ScrollToTopFloatingButton(
+                visible = shouldShowScrollToTop,
+                onClick = {
+                    coroutineScope.launch {
+                        haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                        isAutoScrollingToTop = true
+                        isScrollingUp = false
+                        try {
+                            if (pageGridState.firstVisibleItemIndex > 20) {
+                                pageGridState.scrollToItem(20)
+                            }
+                            pageGridState.animateScrollToItem(0)
+                        } finally {
+                            isAutoScrollingToTop = false
+                        }
+                    }
+                },
+                isGlassActive = isGlassActive,
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .navigationBarsPadding()
+                    .padding(end = 16.dp, bottom = 20.dp),
+            )
         }
     }
 
-    // Floating Glass Header across all tabs
+        // Floating Glass Header across all tabs
         GlassHeader(
             isGlassActive = isGlassActive,
             isScrolled = isCurrentPageScrolled,
