@@ -277,15 +277,6 @@ fun WallpaperPickerScreen(
                                 color = MaterialTheme.colorScheme.onSurface,
                             )
                         },
-                        navigationIcon = {
-                            IconButton(onClick = onOpenSettings) {
-                                Icon(
-                                    imageVector = Icons.Filled.Settings,
-                                    contentDescription = stringResource(R.string.settings_title),
-                                    tint = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
-                        },
                         actions = {
                             val haptic = LocalHapticFeedback.current
                             val columnsDesc = stringResource(R.string.wallpaper_columns_desc, wallpaperColumns)
@@ -335,6 +326,13 @@ fun WallpaperPickerScreen(
                                 Icon(
                                     imageVector = Icons.Filled.PhotoLibrary,
                                     contentDescription = stringResource(R.string.wallpaper_picker_gallery),
+                                    tint = MaterialTheme.colorScheme.onSurface,
+                                )
+                            }
+                            IconButton(onClick = onOpenSettings) {
+                                Icon(
+                                    imageVector = Icons.Filled.Settings,
+                                    contentDescription = stringResource(R.string.settings_title),
                                     tint = MaterialTheme.colorScheme.onSurface,
                                 )
                             }
