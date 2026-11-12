@@ -21,9 +21,17 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -48,6 +56,9 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -78,6 +89,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Image
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.PhotoLibrary
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.window.Dialog
@@ -112,17 +124,26 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.toArgb
+import dev.viagarawallpapers.ui.theme.LocalGlassThemeActive
+import dev.viagarawallpapers.ui.theme.dynamicBorderColor
+import dev.viagarawallpapers.ui.theme.dynamicSurfaceColor
+import dev.viagarawallpapers.ui.theme.glass.GlassStyle
+import dev.viagarawallpapers.ui.theme.glass.GlassSurface
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -151,6 +172,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.material.icons.filled.RestartAlt
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import kotlinx.coroutines.launch
@@ -176,6 +198,11 @@ fun WallpaperPickerScreen(
     val coroutineScope = rememberCoroutineScope()
     val surface = MaterialTheme.colorScheme.surface
     val isGlassActive = dev.viagarawallpapers.ui.theme.LocalGlassThemeActive.current
+    val haptic = LocalHapticFeedback.current
+    val density = LocalDensity.current
+    var headerHeightPx by remember { mutableIntStateOf(0) }
+    val navBottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+    val headerTopPadding = if (headerHeightPx > 0) with(density) { headerHeightPx.toDp() } else 138.dp
 
     var catalog by remember { mutableStateOf<WallpaperCatalog?>(null) }
     var searchQuery by remember { mutableStateOf("") }
@@ -235,122 +262,13 @@ fun WallpaperPickerScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(if (isGlassActive) Color.Transparent else surface)
             .onGloballyPositioned { rootCoordinates = it }
     ) {
-        Scaffold(
-            containerColor = if (isGlassActive) Color.Transparent else surface,
-            topBar = {
-            Surface(
-                color = if (isGlassActive) Color.Transparent else surface,
-                tonalElevation = if (isCurrentPageScrolled && !isGlassActive) 2.dp else 0.dp,
-                shadowElevation = if (isCurrentPageScrolled && !isGlassActive) 3.dp else 0.dp,
-            ) {
-                Column(
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    TopAppBar(
-                        title = {
-                            Text(
-                                text = stringResource(R.string.wallpaper_picker_title),
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.onSurface,
-                            )
-                        },
-                        actions = {
-                            val haptic = LocalHapticFeedback.current
-                            val columnsDesc = stringResource(R.string.wallpaper_columns_desc, wallpaperColumns)
-                            IconButton(
-                                onClick = {
-                                    haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-                                    val nextColumns = when (wallpaperColumns) {
-                                        2 -> 3
-                                        3 -> 4
-                                        else -> 2
-                                    }
-                                    coroutineScope.launch {
-                                        prefs.setWallpaperColumns(nextColumns)
-                                    }
-                                },
-                                modifier = Modifier.semantics { contentDescription = columnsDesc },
-                            ) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(30.dp)
-                                        .clip(RoundedCornerShape(8.dp))
-                                        .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f))
-                                        .border(
-                                            0.8.dp,
-                                            MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.45f),
-                                            RoundedCornerShape(8.dp)
-                                        ),
-                                    contentAlignment = Alignment.Center,
-                                ) {
-                                    Text(
-                                        text = "${wallpaperColumns}x",
-                                        style = MaterialTheme.typography.labelSmall,
-                                        fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.onSurface,
-                                        fontSize = 11.sp,
-                                    )
-                                }
-                            }
-                            IconButton(
-                                onClick = {
-                                    try {
-                                        val intent = Intent(Intent.ACTION_SET_WALLPAPER)
-                                        context.startActivity(Intent.createChooser(intent, "Escolher papel de parede"))
-                                    } catch (_: Exception) {}
-                                }
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Filled.PhotoLibrary,
-                                    contentDescription = stringResource(R.string.wallpaper_picker_gallery),
-                                    tint = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
-                            IconButton(onClick = onOpenSettings) {
-                                Icon(
-                                    imageVector = Icons.Filled.Settings,
-                                    contentDescription = stringResource(R.string.settings_title),
-                                    tint = MaterialTheme.colorScheme.onSurface,
-                                )
-                            }
-                        },
-                        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
-                    )
-
-                    WallpaperCategoriesRow(
-                        categories = categories,
-                        selectedCategoryId = selectedCategoryId,
-                        onSelectCategory = { newCategory ->
-                            val targetIndex = categories.indexOfFirst { it.id.equals(newCategory, ignoreCase = true) }
-                            if (targetIndex >= 0 && targetIndex != pagerState.currentPage) {
-                                coroutineScope.launch {
-                                    pagerState.animateScrollToPage(targetIndex)
-                                }
-                            }
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 10.dp),
-                    )
-
-                    if (isCurrentPageScrolled) {
-                        HorizontalDivider(
-                            color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f),
-                            thickness = 0.5.dp,
-                        )
-                    }
-                }
-            }
-        },
-    ) { innerPadding ->
         HorizontalPager(
             state = pagerState,
             userScrollEnabled = activePreviewState == null,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding),
+            modifier = Modifier.fillMaxSize(),
         ) { pageIndex ->
             val pageCategory = categories.getOrNull(pageIndex)
             val pageCategoryId = pageCategory?.id ?: "all"
@@ -364,6 +282,62 @@ fun WallpaperPickerScreen(
             LaunchedEffect(isPageScrolled, pagerState.currentPage == pageIndex) {
                 if (pagerState.currentPage == pageIndex) {
                     isCurrentPageScrolled = isPageScrolled
+                }
+            }
+
+            var isScrollingUp by remember { mutableStateOf(false) }
+            var isAutoScrollingToTop by remember { mutableStateOf(false) }
+
+            val shouldShowScrollToTop by remember {
+                derivedStateOf {
+                    isScrollingUp && (pageGridState.firstVisibleItemIndex > 0 || pageGridState.firstVisibleItemScrollOffset > 200)
+                }
+            }
+
+            LaunchedEffect(pageGridState) {
+                var prevIndex = pageGridState.firstVisibleItemIndex
+                var prevOffset = pageGridState.firstVisibleItemScrollOffset
+                var accumulatedDelta = 0
+
+                snapshotFlow {
+                    Triple(
+                        pageGridState.firstVisibleItemIndex,
+                        pageGridState.firstVisibleItemScrollOffset,
+                        pageGridState.isScrollInProgress,
+                    )
+                }.collect { (currIndex, currOffset, isScrolling) ->
+                    if (isAutoScrollingToTop) {
+                        prevIndex = currIndex
+                        prevOffset = currOffset
+                        return@collect
+                    }
+
+                    val isNearTop = currIndex == 0 && currOffset <= 30
+                    if (isNearTop) {
+                        isScrollingUp = false
+                        accumulatedDelta = 0
+                    } else if (isScrolling) {
+                        val indexDiff = currIndex - prevIndex
+                        val offsetDiff = currOffset - prevOffset
+
+                        if (indexDiff != 0) {
+                            isScrollingUp = indexDiff < 0
+                            accumulatedDelta = 0
+                        } else {
+                            accumulatedDelta += offsetDiff
+                            if (accumulatedDelta > 15) {
+                                isScrollingUp = false
+                                accumulatedDelta = 0
+                            } else if (accumulatedDelta < -15) {
+                                isScrollingUp = true
+                                accumulatedDelta = 0
+                            }
+                        }
+                    } else {
+                        accumulatedDelta = 0
+                    }
+                    prevIndex = currIndex
+                    prevOffset = currOffset
                 }
             }
 
@@ -394,14 +368,20 @@ fun WallpaperPickerScreen(
                 }
             }
 
-            LazyVerticalGrid(
-                state = pageGridState,
-                columns = GridCells.Fixed(wallpaperColumns),
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(if (wallpaperColumns >= 4) 10.dp else if (wallpaperColumns == 3) 12.dp else 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(if (wallpaperColumns >= 4) 8.dp else if (wallpaperColumns == 3) 10.dp else 14.dp),
-                verticalArrangement = Arrangement.spacedBy(if (wallpaperColumns >= 4) 8.dp else if (wallpaperColumns == 3) 10.dp else 14.dp),
-            ) {
+            Box(modifier = Modifier.fillMaxSize()) {
+                LazyVerticalGrid(
+                    state = pageGridState,
+                    columns = GridCells.Fixed(wallpaperColumns),
+                    modifier = Modifier.fillMaxSize(),
+                    contentPadding = PaddingValues(
+                        top = headerTopPadding,
+                        bottom = navBottom + 24.dp,
+                        start = if (wallpaperColumns >= 4) 10.dp else if (wallpaperColumns == 3) 12.dp else 16.dp,
+                        end = if (wallpaperColumns >= 4) 10.dp else if (wallpaperColumns == 3) 12.dp else 16.dp,
+                    ),
+                    horizontalArrangement = Arrangement.spacedBy(if (wallpaperColumns >= 4) 8.dp else if (wallpaperColumns == 3) 10.dp else 14.dp),
+                    verticalArrangement = Arrangement.spacedBy(if (wallpaperColumns >= 4) 8.dp else if (wallpaperColumns == 3) 10.dp else 14.dp),
+                ) {
                 // Minimalist Search Bar (no lugar do antigo card "Fotos e Galeria")
                 item(span = { GridItemSpan(maxLineSpan) }) {
                     WallpaperSearchBar(
@@ -518,9 +498,72 @@ fun WallpaperPickerScreen(
                         )
                     }
                 }
+
+                ScrollToTopFloatingButton(
+                    visible = shouldShowScrollToTop,
+                    onClick = {
+                        coroutineScope.launch {
+                            haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                            isAutoScrollingToTop = true
+                            isScrollingUp = false
+                            try {
+                                if (pageGridState.firstVisibleItemIndex > 20) {
+                                    pageGridState.scrollToItem(20)
+                                }
+                                pageGridState.animateScrollToItem(0)
+                            } finally {
+                                isAutoScrollingToTop = false
+                            }
+                        }
+                    },
+                    isGlassActive = isGlassActive,
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
+                        .navigationBarsPadding()
+                        .padding(end = 16.dp, bottom = 20.dp),
+                )
             }
         }
     }
+
+    // Floating Glass Header across all tabs
+        GlassHeader(
+            isGlassActive = isGlassActive,
+            isScrolled = isCurrentPageScrolled,
+            wallpaperColumns = wallpaperColumns,
+            onToggleColumns = {
+                haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                val nextColumns = when (wallpaperColumns) {
+                    2 -> 3
+                    3 -> 4
+                    else -> 2
+                }
+                coroutineScope.launch {
+                    prefs.setWallpaperColumns(nextColumns)
+                }
+            },
+            onOpenGallery = {
+                try {
+                    val intent = Intent(Intent.ACTION_SET_WALLPAPER)
+                    context.startActivity(Intent.createChooser(intent, "Escolher papel de parede"))
+                } catch (_: Exception) {}
+            },
+            onOpenSettings = onOpenSettings,
+            categories = categories,
+            selectedCategoryId = selectedCategoryId,
+            onSelectCategory = { newCategory ->
+                val targetIndex = categories.indexOfFirst { it.id.equals(newCategory, ignoreCase = true) }
+                if (targetIndex >= 0 && targetIndex != pagerState.currentPage) {
+                    coroutineScope.launch {
+                        pagerState.animateScrollToPage(targetIndex)
+                    }
+                }
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.TopCenter)
+                .onSizeChanged { headerHeightPx = it.height },
+        )
 
         // Full-screen Wallpaper Preview & Application Overlay with opening and closing transition
         activePreviewState?.let { previewState ->
@@ -1930,6 +1973,8 @@ private fun WallpaperCategoriesRow(
 ) {
     val haptic = LocalHapticFeedback.current
     val listState = rememberLazyListState()
+    val isGlassActive = LocalGlassThemeActive.current
+    val isDark = isSystemInDarkTheme()
 
     val selectedIndex = remember(categories, selectedCategoryId) {
         categories.indexOfFirst { it.id.equals(selectedCategoryId, ignoreCase = true) }
@@ -1958,7 +2003,11 @@ private fun WallpaperCategoriesRow(
                 targetValue = if (isSelected) {
                     MaterialTheme.colorScheme.primary
                 } else {
-                    MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                    if (isGlassActive) {
+                        Color.White.copy(alpha = if (isDark) 0.12f else 0.22f)
+                    } else {
+                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                    }
                 },
                 label = "category_chip_bg",
             )
@@ -1981,7 +2030,14 @@ private fun WallpaperCategoriesRow(
                 shape = CircleShape,
                 color = backgroundColor,
                 border = if (!isSelected) {
-                    BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f))
+                    BorderStroke(
+                        1.dp,
+                        if (isGlassActive) {
+                            Color.White.copy(alpha = if (isDark) 0.20f else 0.35f)
+                        } else {
+                            MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f)
+                        }
+                    )
                 } else null,
             ) {
                 Text(
@@ -2014,5 +2070,245 @@ private fun getCategoryDisplayName(category: WallpaperCategory): String {
         "animals" -> stringResource(R.string.wallpaper_category_animals)
         "fantasy" -> stringResource(R.string.wallpaper_category_fantasy)
         else -> category.label.ifBlank { category.id.replaceFirstChar { it.uppercase() } }
+    }
+}
+
+@Composable
+private fun ScrollToTopFloatingButton(
+    visible: Boolean,
+    onClick: () -> Unit,
+    isGlassActive: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    AnimatedVisibility(
+        visible = visible,
+        enter = fadeIn(animationSpec = tween(180)) + scaleIn(
+            initialScale = 0.65f,
+            animationSpec = spring(dampingRatio = 0.75f, stiffness = Spring.StiffnessMediumLow),
+        ),
+        exit = fadeOut(animationSpec = tween(150)) + scaleOut(
+            targetScale = 0.65f,
+            animationSpec = tween(150),
+        ),
+        modifier = modifier,
+    ) {
+        val buttonSize = 44.dp
+        if (isGlassActive) {
+            Box(
+                modifier = Modifier
+                    .size(buttonSize)
+                    .clip(CircleShape)
+                    .clickable(
+                        role = Role.Button,
+                        onClick = onClick,
+                    ),
+                contentAlignment = Alignment.Center,
+            ) {
+                GlassSurface(
+                    modifier = Modifier.fillMaxSize(),
+                    cornerPx = 1000f,
+                    style = GlassStyle.DEFAULT,
+                    tintOpacity = 28,
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.KeyboardArrowUp,
+                        contentDescription = stringResource(R.string.action_scroll_to_top),
+                        tint = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.size(24.dp),
+                    )
+                }
+            }
+        } else {
+            Surface(
+                onClick = onClick,
+                shape = CircleShape,
+                color = dynamicSurfaceColor(alpha = 0.85f),
+                contentColor = MaterialTheme.colorScheme.onSurface,
+                tonalElevation = 6.dp,
+                shadowElevation = 6.dp,
+                border = BorderStroke(1.dp, dynamicBorderColor(alpha = 0.25f)),
+                modifier = Modifier.size(buttonSize),
+            ) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.KeyboardArrowUp,
+                        contentDescription = stringResource(R.string.action_scroll_to_top),
+                        tint = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.size(24.dp),
+                    )
+                }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun GlassHeader(
+    isGlassActive: Boolean,
+    isScrolled: Boolean,
+    wallpaperColumns: Int,
+    onToggleColumns: () -> Unit,
+    onOpenGallery: () -> Unit,
+    onOpenSettings: () -> Unit,
+    categories: List<WallpaperCategory>,
+    selectedCategoryId: String,
+    onSelectCategory: (String) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val isDark = isSystemInDarkTheme()
+    val animatedBgAlpha by animateFloatAsState(
+        targetValue = if (isScrolled) {
+            if (isGlassActive) (if (isDark) 0.68f else 0.78f) else (if (isDark) 0.90f else 0.92f)
+        } else {
+            if (isGlassActive) (if (isDark) 0.42f else 0.52f) else (if (isDark) 0.75f else 0.80f)
+        },
+        animationSpec = tween(durationMillis = 200),
+        label = "header_bg_alpha",
+    )
+    val animatedBorderAlpha by animateFloatAsState(
+        targetValue = if (isScrolled) {
+            if (isGlassActive) (if (isDark) 0.26f else 0.38f) else (if (isDark) 0.22f else 0.28f)
+        } else {
+            if (isGlassActive) (if (isDark) 0.14f else 0.20f) else 0f
+        },
+        animationSpec = tween(durationMillis = 200),
+        label = "header_border_alpha",
+    )
+
+    val surfaceColor = MaterialTheme.colorScheme.surface
+    val headerBgColor = surfaceColor.copy(alpha = animatedBgAlpha)
+    val bottomBorderColor = if (isGlassActive) {
+        Color.White.copy(alpha = animatedBorderAlpha)
+    } else {
+        MaterialTheme.colorScheme.outlineVariant.copy(alpha = animatedBorderAlpha)
+    }
+
+    Box(
+        modifier = modifier
+            .background(headerBgColor)
+            .then(
+                if (isGlassActive) {
+                    Modifier.drawBehind {
+                        // Specular top sheen gradient
+                        drawRect(
+                            brush = Brush.verticalGradient(
+                                colors = listOf(
+                                    Color.White.copy(alpha = if (isDark) 0.16f else 0.28f),
+                                    Color.White.copy(alpha = 0.03f),
+                                    Color.Transparent,
+                                ),
+                                startY = 0f,
+                                endY = size.height * 0.75f,
+                            )
+                        )
+                        // Specular bottom border highlight
+                        if (animatedBorderAlpha > 0f) {
+                            val strokeWidth = 1.dp.toPx()
+                            drawLine(
+                                color = bottomBorderColor,
+                                start = Offset(0f, size.height - strokeWidth / 2f),
+                                end = Offset(size.width, size.height - strokeWidth / 2f),
+                                strokeWidth = strokeWidth,
+                            )
+                        }
+                    }
+                } else {
+                    Modifier.drawBehind {
+                        if (animatedBorderAlpha > 0f) {
+                            val strokeWidth = 1.dp.toPx()
+                            drawLine(
+                                color = bottomBorderColor,
+                                start = Offset(0f, size.height - strokeWidth / 2f),
+                                end = Offset(size.width, size.height - strokeWidth / 2f),
+                                strokeWidth = strokeWidth,
+                            )
+                        }
+                    }
+                }
+            )
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .statusBarsPadding()
+                .padding(bottom = 8.dp),
+        ) {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = stringResource(R.string.wallpaper_picker_title),
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface,
+                    )
+                },
+                actions = {
+                    val columnsDesc = stringResource(R.string.wallpaper_columns_desc, wallpaperColumns)
+                    IconButton(
+                        onClick = onToggleColumns,
+                        modifier = Modifier.semantics { contentDescription = columnsDesc },
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .size(30.dp)
+                                .clip(RoundedCornerShape(8.dp))
+                                .background(
+                                    if (isGlassActive) {
+                                        Color.White.copy(alpha = if (isDark) 0.14f else 0.24f)
+                                    } else {
+                                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f)
+                                    }
+                                )
+                                .border(
+                                    0.8.dp,
+                                    if (isGlassActive) {
+                                        Color.White.copy(alpha = if (isDark) 0.22f else 0.35f)
+                                    } else {
+                                        MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.45f)
+                                    },
+                                    RoundedCornerShape(8.dp)
+                                ),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Text(
+                                text = "${wallpaperColumns}x",
+                                style = MaterialTheme.typography.labelSmall,
+                                fontWeight = FontWeight.Bold,
+                                color = MaterialTheme.colorScheme.onSurface,
+                                fontSize = 11.sp,
+                            )
+                        }
+                    }
+                    IconButton(onClick = onOpenGallery) {
+                        Icon(
+                            imageVector = Icons.Filled.PhotoLibrary,
+                            contentDescription = stringResource(R.string.wallpaper_picker_gallery),
+                            tint = MaterialTheme.colorScheme.onSurface,
+                        )
+                    }
+                    IconButton(onClick = onOpenSettings) {
+                        Icon(
+                            imageVector = Icons.Filled.Settings,
+                            contentDescription = stringResource(R.string.settings_title),
+                            tint = MaterialTheme.colorScheme.onSurface,
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color.Transparent,
+                    scrolledContainerColor = Color.Transparent,
+                ),
+            )
+            if (categories.isNotEmpty()) {
+                WallpaperCategoriesRow(
+                    categories = categories,
+                    selectedCategoryId = selectedCategoryId,
+                    onSelectCategory = onSelectCategory,
+                )
+            }
+        }
     }
 }

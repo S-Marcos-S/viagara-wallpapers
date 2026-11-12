@@ -122,6 +122,7 @@
     <string name="action_retry">Retry</string>
     <string name="action_show_more">Show more</string>
     <string name="action_show_less">Show less</string>
+    <string name="action_scroll_to_top">Scroll to top</string>
 
     <string name="update_notification_channel_name">App updates</string>
     <string name="update_notification_channel_desc">Alerts for new versions of Wallpapers FOSS</string>

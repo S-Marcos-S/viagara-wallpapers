@@ -1,4 +1,4 @@
-### 🌌 Wallpapers FOSS v1.0.5
+### 🌌 Wallpapers FOSS v1.0.6
 
-- **Novo Ícone do Aplicativo:** Identidade visual atualizada com novo design moderno em gradiente e suporte a ícones adaptativos e circulares.
-- **Design Refinado:** Fundo e assets otimizados para máxima fidelidade visual em diferentes launchers.
+- **Cabeçalho em Vidro Translúcido:** O cabeçalho agora possui efeito vidro fluido em todas as abas, permitindo que os papéis de parede passem por detrás dele ao rolar.
+- **Botão Voltar ao Topo:** Botão minimalista redondo que surge dinamicamente na lateral ao rolar a tela para cima, facilitando o retorno ao topo da página.
