@@ -56,17 +56,2091 @@
     {
       "id": "fantasy",
       "label": "Fantasia"
-    },
-    {
-      "id": "movies",
-      "label": "Movies"
-    },
-    {
-      "id": "animation",
-      "label": "Animation"
     }
   ],
   "wallpapers": [
+    {
+      "id": "tg_45038",
+      "name": "Minions no Vidro Embaçado",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45038.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45038.jpg",
+      "primary_color": "#354e5b",
+      "category": "anime",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "minions",
+        "despicable me",
+        "meu malvado favorito",
+        "water drops",
+        "cute",
+        "vidro",
+        "yellow",
+        "dark"
+      ],
+      "content_hash": "ef232ec68f70dca8928390e69852a662",
+      "search_terms": [
+        "minions",
+        "meu malvado favorito",
+        "despicable me",
+        "vidro embaçado",
+        "foggy glass",
+        "water drops",
+        "gotas de agua",
+        "personagem amarelo",
+        "fofo",
+        "cute",
+        "animation",
+        "filme"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45031",
+      "name": "Minecraft Pixel House Island",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45031.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45031.jpg",
+      "primary_color": "#1177D7",
+      "category": "games",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "games",
+        "minecraft",
+        "pixel art",
+        "voxel",
+        "island",
+        "blue",
+        "casa",
+        "landscape"
+      ],
+      "content_hash": "f01e8e3e736b7ef8a58fe79ef6cc06de",
+      "search_terms": [
+        "minecraft",
+        "pixel art",
+        "voxel",
+        "casa",
+        "house",
+        "ilha",
+        "island",
+        "água",
+        "water",
+        "reflexo",
+        "reflection",
+        "céu azul",
+        "blue sky",
+        "nuvens",
+        "clouds"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45030",
+      "name": "Minecraft Pôr do Sol Cherry Grove",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45030.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45030.jpg",
+      "primary_color": "#D97B34",
+      "category": "games",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "minecraft",
+        "games",
+        "sunset",
+        "cherry blossom",
+        "pôr do sol",
+        "shaders",
+        "nature",
+        "gaming"
+      ],
+      "content_hash": "6bb17e8edb08c60e6e39919a32b01555",
+      "search_terms": [
+        "minecraft",
+        "sunset",
+        "pôr do sol",
+        "cherry blossom",
+        "cerejeiras",
+        "cherry grove",
+        "shaders",
+        "games",
+        "jogo",
+        "landscape",
+        "paisagem",
+        "sky",
+        "céu",
+        "sol"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45029",
+      "name": "Cogumelo Super Mario Pixel 3D",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45029.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45029.jpg",
+      "primary_color": "#E52521",
+      "category": "games",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "games",
+        "mario",
+        "super mario",
+        "pixel art",
+        "3d",
+        "nintendo",
+        "dark",
+        "oled"
+      ],
+      "content_hash": "0f504185f3ced28c95d6c0d7916b2210",
+      "search_terms": [
+        "super mario",
+        "mario",
+        "cogumelo",
+        "mushroom",
+        "nintendo",
+        "pixel art",
+        "3d pixels",
+        "cubes",
+        "retro game",
+        "8-bit",
+        "red mushroom",
+        "black background",
+        "fundo preto"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45028",
+      "name": "Minecraft Sunset Flower Meadow",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45028.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45028.jpg",
+      "primary_color": "#ECA09D",
+      "category": "games",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "minecraft",
+        "games",
+        "sunset",
+        "flowers",
+        "pôr do sol",
+        "flores",
+        "aesthetic"
+      ],
+      "content_hash": "08c286c427a35e964e67949a9639752f",
+      "search_terms": [
+        "minecraft",
+        "campo de flores",
+        "flower field",
+        "pôr do sol",
+        "sunset",
+        "céu rosa",
+        "pink sky",
+        "voxel",
+        "blocky",
+        "grama",
+        "grass",
+        "sol",
+        "sun"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45027",
+      "name": "Minecraft Bee & Sunflowers Pixel Art",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45027.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45027.jpg",
+      "primary_color": "#FFA500",
+      "category": "games",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "games",
+        "minecraft",
+        "pixel art",
+        "bee",
+        "sunflower",
+        "abelha",
+        "girassol",
+        "yellow"
+      ],
+      "content_hash": "2ca14bccdbdf20dc3c99608e1be0d19a",
+      "search_terms": [
+        "minecraft",
+        "bee",
+        "abelha",
+        "sunflower",
+        "girassol",
+        "pixel art",
+        "sun",
+        "sol",
+        "pôr do sol",
+        "sunset",
+        "mojang",
+        "amarelo",
+        "laranja",
+        "natureza"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45026",
+      "name": "Pôr do Sol na Ilha Minecraft",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45026.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45026.jpg",
+      "primary_color": "#E45B3E",
+      "category": "games",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "minecraft",
+        "games",
+        "sunset",
+        "voxel",
+        "island",
+        "ocean",
+        "pôr do sol"
+      ],
+      "content_hash": "bf1f07b1f3f696f031c70f82a8a305d0",
+      "search_terms": [
+        "minecraft",
+        "voxel",
+        "island",
+        "sunset",
+        "ocean",
+        "sea",
+        "house",
+        "clouds",
+        "pôr do sol",
+        "ilha",
+        "casa",
+        "mar",
+        "nuvens",
+        "pixel art"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45019",
+      "name": "Cavaleiro da Lua",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45019.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45019.jpg",
+      "primary_color": "#8C7B6B",
+      "category": "fantasy",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "cavaleiro da lua",
+        "moon knight",
+        "marvel",
+        "hero",
+        "fantasy",
+        "dark",
+        "wallpaper"
+      ],
+      "content_hash": "2349c4b7dddd3cfe88fb9aa22afc4259",
+      "search_terms": [
+        "cavaleiro da lua",
+        "moon knight",
+        "marvel comics",
+        "herói",
+        "superherói",
+        "capuz",
+        "múmia",
+        "olhos brilhantes",
+        "fantasias",
+        "hero",
+        "masked",
+        "hood",
+        "egyptian",
+        "mitologia"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45018",
+      "name": "Hulk Marvel",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45018.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45018.jpg",
+      "primary_color": "#5b734c",
+      "category": "games",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "hulk",
+        "marvel",
+        "avengers",
+        "superhero",
+        "green",
+        "hero",
+        "comics",
+        "wallpaper"
+      ],
+      "content_hash": "1b818d2157c83bf2c7c0a5c23b916fdb",
+      "search_terms": [
+        "hulk",
+        "marvel",
+        "avengers",
+        "vingadores",
+        "super-herói",
+        "superhero",
+        "monster",
+        "monstro",
+        "green",
+        "verde",
+        "city",
+        "cidade",
+        "destruição",
+        "destruction",
+        "comics"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45017",
+      "name": "Doctor Doom",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45017.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45017.jpg",
+      "primary_color": "#1A2E26",
+      "category": "fantasy",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "doctor doom",
+        "marvel",
+        "villain",
+        "dark",
+        "superhero",
+        "comics",
+        "oled"
+      ],
+      "content_hash": "cfd0cdc311901e52f8c97a55bf4d0942",
+      "search_terms": [
+        "doctor doom",
+        "doutor destino",
+        "marvel comics",
+        "villain",
+        "vilão",
+        "mask",
+        "máscara",
+        "metal mask",
+        "hood",
+        "capuz",
+        "green background",
+        "fundo verde",
+        "dark",
+        "superhero",
+        "super-herói"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45016",
+      "name": "Thor Marvel Cinematic Universe",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45016.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45016.jpg",
+      "primary_color": "#4B0082",
+      "category": "fantasy",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "thor",
+        "marvel",
+        "avengers",
+        "superhero",
+        "dark",
+        "oled",
+        "lightning",
+        "fantasy"
+      ],
+      "content_hash": "2d57ae3615ab57c0f43d5f0304375bb2",
+      "search_terms": [
+        "thor",
+        "marvel",
+        "avengers",
+        "superhero",
+        "lightning",
+        "thunder",
+        "god of thunder",
+        "chris hemsworth",
+        "mcu",
+        "dark",
+        "oled",
+        "blue lightning",
+        "purple background",
+        "super-herói",
+        "trovão",
+        "raio"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45015",
+      "name": "Viúva Negra (Black Widow)",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45015.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45015.jpg",
+      "primary_color": "#A82216",
+      "category": "fantasy",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "black widow",
+        "viuva negra",
+        "marvel",
+        "avengers",
+        "dark",
+        "red",
+        "oled",
+        "superhero"
+      ],
+      "content_hash": "6ac92a5df6d16606f0b50fcac323d54d",
+      "search_terms": [
+        "viúva negra",
+        "black widow",
+        "marvel",
+        "avengers",
+        "scarlett johansson",
+        "natasha romanoff",
+        "vingadores",
+        "vermelho",
+        "red moon",
+        "lua vermelha",
+        "superhero",
+        "dark wallpaper",
+        "mcu",
+        "oled"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45014",
+      "name": "Mulher-Maravilha no Pôr do Sol",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45014.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45014.jpg",
+      "primary_color": "#C75924",
+      "category": "fantasy",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "wonder woman",
+        "mulher maravilha",
+        "dc comics",
+        "fantasy",
+        "sunset",
+        "superhero",
+        "pôr do sol"
+      ],
+      "content_hash": "953d0d084bc67e75daaf9c21e6725e84",
+      "search_terms": [
+        "wonder woman",
+        "mulher maravilha",
+        "diana prince",
+        "dc comics",
+        "superhero",
+        "super heroína",
+        "sunset",
+        "pôr do sol",
+        "warrior",
+        "guerreira",
+        "amazon",
+        "amazona",
+        "perfil",
+        "tiara"
+      ],
+      "classified_by": "gemini"
+    },
+    {
+      "id": "tg_45007",
+      "name": "Wallpaper #45007",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45007.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45007.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "50801fd6bbf85a1db5a04c2d04cfb2fa"
+    },
+    {
+      "id": "tg_45006",
+      "name": "Wallpaper #45006",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45006.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45006.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "e23241e29d31a57683e2a1cd3fa589f1"
+    },
+    {
+      "id": "tg_45005",
+      "name": "Wallpaper #45005",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45005.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45005.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "bda9d26f94681978f69129e23cce17e9"
+    },
+    {
+      "id": "tg_45004",
+      "name": "Wallpaper #45004",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45004.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45004.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "2f2748666a14832b59543ea267ea2a1f"
+    },
+    {
+      "id": "tg_45003",
+      "name": "Wallpaper #45003",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45003.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45003.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "62a6e5cf7610d03ad0ea0b2909197c93"
+    },
+    {
+      "id": "tg_45002",
+      "name": "Wallpaper #45002",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_45002.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_45002.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "dd25f6f9ea9560403aabdb02d980b341"
+    },
+    {
+      "id": "tg_44994",
+      "name": "Wallpaper #44994",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44994.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44994.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "4ec8cace12b7654bc50d3ab64428544f"
+    },
+    {
+      "id": "tg_44993",
+      "name": "Wallpaper #44993",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44993.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44993.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "b109652c07dd98bcb2712457429fcff8"
+    },
+    {
+      "id": "tg_44992",
+      "name": "Wallpaper #44992",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44992.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44992.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "5f0cb2e563e04a33b9fc32008b8c19fc"
+    },
+    {
+      "id": "tg_44991",
+      "name": "Wallpaper #44991",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44991.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44991.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "73b9346122c2c38954a56f95d37eff65"
+    },
+    {
+      "id": "tg_44986",
+      "name": "Wallpaper #44986",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44986.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44986.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "21723edeb72f1cf04638af61b562bd9b"
+    },
+    {
+      "id": "tg_44985",
+      "name": "Wallpaper #44985",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44985.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44985.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "ece3edcdc530892f4f3165d603eb9e52"
+    },
+    {
+      "id": "tg_44984",
+      "name": "Wallpaper #44984",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44984.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44984.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "5b2883c468a7f92fa5a2e8ff1fe0d71d"
+    },
+    {
+      "id": "tg_44979",
+      "name": "Wallpaper #44979",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44979.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44979.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "4a889733623799d4851ea00e5b28dd3d"
+    },
+    {
+      "id": "tg_44978",
+      "name": "Wallpaper #44978",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44978.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44978.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "2d7eb1edd04d3bac2c271febe25d75b5"
+    },
+    {
+      "id": "tg_44977",
+      "name": "Wallpaper #44977",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44977.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44977.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "14c93226ff7c9b459a6e56ea57497593"
+    },
+    {
+      "id": "tg_44972",
+      "name": "Wallpaper #44972",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44972.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44972.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "1149edcd5dbaf4c482cc42dc33f9d604"
+    },
+    {
+      "id": "tg_44971",
+      "name": "Wallpaper #44971",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44971.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44971.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "6a3a35d30373a15d33ce1d39ab1f1168"
+    },
+    {
+      "id": "tg_44970",
+      "name": "Wallpaper #44970",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44970.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44970.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "7ee9eeb16acf306302f845ac70ee62a9"
+    },
+    {
+      "id": "tg_44969",
+      "name": "Wallpaper #44969",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44969.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44969.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "75fb58d7ef018a9ebbaa41529a503a66"
+    },
+    {
+      "id": "tg_44968",
+      "name": "Wallpaper #44968",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44968.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44968.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "9881c064a4cb98a2fc88c73271d3a31c"
+    },
+    {
+      "id": "tg_44960",
+      "name": "Wallpaper #44960",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44960.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44960.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "03606867fcf1345d35c2496a841e294d"
+    },
+    {
+      "id": "tg_44959",
+      "name": "Wallpaper #44959",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44959.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44959.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "83bb615bb9ee0bf12697b5a746c1fa84"
+    },
+    {
+      "id": "tg_44958",
+      "name": "Wallpaper #44958",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44958.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44958.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "4fabb1772097c3a6747745e1f27c8519"
+    },
+    {
+      "id": "tg_44954",
+      "name": "Wallpaper #44954",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44954.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44954.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "ca1ae3b66b01c386305fcb03bc8c8001"
+    },
+    {
+      "id": "tg_44953",
+      "name": "Wallpaper #44953",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44953.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44953.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "86a64067bcec2dcdb64e97e0ef129e3d"
+    },
+    {
+      "id": "tg_44952",
+      "name": "Wallpaper #44952",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44952.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44952.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "b0bb751878e31ad9b21293baa1a93602"
+    },
+    {
+      "id": "tg_44948",
+      "name": "Wallpaper #44948",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44948.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44948.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "12074eb43c523a5f224a1dd8091327c3"
+    },
+    {
+      "id": "tg_44947",
+      "name": "Wallpaper #44947",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44947.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44947.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "d779b0950453646c0f01361f0f93fbc5"
+    },
+    {
+      "id": "tg_44946",
+      "name": "Wallpaper #44946",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44946.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44946.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "e5f0a850b5e6c3d5bf7e06ea952a1d33"
+    },
+    {
+      "id": "tg_44945",
+      "name": "Wallpaper #44945",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44945.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44945.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "853236a8d443a5d91cb3025ebd137c05"
+    },
+    {
+      "id": "tg_44940",
+      "name": "Wallpaper #44940",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44940.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44940.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "b07b235fbbad7d36048379b55905e4f4"
+    },
+    {
+      "id": "tg_44939",
+      "name": "Wallpaper #44939",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44939.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44939.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "de63d88ba4a64b99b02a17cc456b153c"
+    },
+    {
+      "id": "tg_44938",
+      "name": "Wallpaper #44938",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44938.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44938.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "d3efa17858575b18768da83c903e89a4"
+    },
+    {
+      "id": "tg_44937",
+      "name": "Wallpaper #44937",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44937.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44937.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "c698b73332970d4e943bce5326c0f83d"
+    },
+    {
+      "id": "tg_44931",
+      "name": "Wallpaper #44931",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44931.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44931.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "1e7c14b5e28e9b300922faa7c4680bff"
+    },
+    {
+      "id": "tg_44930",
+      "name": "Wallpaper #44930",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44930.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44930.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "68d66fd1ea0fffe4c1fd5e44356a11cc"
+    },
+    {
+      "id": "tg_44929",
+      "name": "Wallpaper #44929",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44929.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44929.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "2697917c9d3d14332b2cd6fd2770746c"
+    },
+    {
+      "id": "tg_44928",
+      "name": "Wallpaper #44928",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44928.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44928.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "ad666c4082abc53e23390eb4d72ad74e"
+    },
+    {
+      "id": "tg_44927",
+      "name": "Wallpaper #44927",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44927.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44927.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "e366508228c10ed169c7a7f583cd4147"
+    },
+    {
+      "id": "tg_44926",
+      "name": "Wallpaper #44926",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44926.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44926.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "04978d9776bad15b3dee046dc8cf3703"
+    },
+    {
+      "id": "tg_44919",
+      "name": "Wallpaper #44919",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44919.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44919.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "1da35491580fe20419ba3cd092c0f1fc"
+    },
+    {
+      "id": "tg_44918",
+      "name": "Wallpaper #44918",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44918.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44918.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "7e322bd66961f906c97fe7018dccf8ec"
+    },
+    {
+      "id": "tg_44917",
+      "name": "Wallpaper #44917",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44917.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44917.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "b8a54cf95559dab43637d9086155c336"
+    },
+    {
+      "id": "tg_44916",
+      "name": "Wallpaper #44916",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44916.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44916.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "ad41890db3dda8bf7364b6327eb9ffce"
+    },
+    {
+      "id": "tg_44911",
+      "name": "Wallpaper #44911",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44911.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44911.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "9b371b74765a46a5de86b33b57ba1fe8"
+    },
+    {
+      "id": "tg_44910",
+      "name": "Wallpaper #44910",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44910.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44910.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "c6b1b79c80ea5b65b72f78daf1612308"
+    },
+    {
+      "id": "tg_44909",
+      "name": "Wallpaper #44909",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44909.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44909.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "5024bd6db97da112a29195a86cb4643b"
+    },
+    {
+      "id": "tg_44905",
+      "name": "Wallpaper #44905",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44905.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44905.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "ed7c36dea51309b7e69921110232d1d9"
+    },
+    {
+      "id": "tg_44904",
+      "name": "Wallpaper #44904",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44904.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44904.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "7c2356a8021aed733cc98f2c62695a56"
+    },
+    {
+      "id": "tg_44903",
+      "name": "Wallpaper #44903",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44903.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44903.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "3a39488057b2a3107906b6474b0f663d"
+    },
+    {
+      "id": "tg_44902",
+      "name": "Wallpaper #44902",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44902.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44902.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "f62e21a7cecbf951921eba6cfe4a9e7f"
+    },
+    {
+      "id": "tg_44901",
+      "name": "Wallpaper #44901",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44901.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44901.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "a9c7affd2321397f26d21fed1e2af4c5"
+    },
+    {
+      "id": "tg_44900",
+      "name": "Wallpaper #44900",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44900.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44900.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "de6571eb0512c4fb7b07f20c00f932ca"
+    },
+    {
+      "id": "tg_44893",
+      "name": "Wallpaper #44893",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44893.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44893.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "3aad2477ad1aee1e9e5b7c93c7ae8528"
+    },
+    {
+      "id": "tg_44892",
+      "name": "Wallpaper #44892",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44892.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44892.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "54a3d9cc0b27355a8a8d3f32b7a9b7c2"
+    },
+    {
+      "id": "tg_44891",
+      "name": "Wallpaper #44891",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44891.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44891.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "7c26152732ee234a7aa82ddc964ac44e"
+    },
+    {
+      "id": "tg_44890",
+      "name": "Wallpaper #44890",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44890.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44890.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "a5ffa6f049aa78a8bbf78387e175229c"
+    },
+    {
+      "id": "tg_44889",
+      "name": "Wallpaper #44889",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44889.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44889.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "7d1d30d71cfa8e45db6cfcb55bbcbbd1"
+    },
+    {
+      "id": "tg_44888",
+      "name": "Wallpaper #44888",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44888.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44888.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "700c7bfcec547251d7c76e89d0a5fa81"
+    },
+    {
+      "id": "tg_44877",
+      "name": "Wallpaper #44877",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44877.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44877.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "217c8598824235628008ba5a190fd76e"
+    },
+    {
+      "id": "tg_44876",
+      "name": "Wallpaper #44876",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44876.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44876.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "1f3c8cca8416b05e221b82e5f7fe7483"
+    },
+    {
+      "id": "tg_44875",
+      "name": "Wallpaper #44875",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44875.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44875.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "ef893ff15b5855bea4baa478869314a8"
+    },
+    {
+      "id": "tg_44874",
+      "name": "Wallpaper #44874",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44874.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44874.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "207dd99ef7e27f6c6d05168f2e3b1b88"
+    },
+    {
+      "id": "tg_44873",
+      "name": "Wallpaper #44873",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44873.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44873.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "2c64a8c18a97df0dbf230b8e1e16b4de"
+    },
+    {
+      "id": "tg_44872",
+      "name": "Wallpaper #44872",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44872.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44872.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "313aae0b49822ef1d0589bf089520cb0"
+    },
+    {
+      "id": "tg_44865",
+      "name": "Wallpaper #44865",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44865.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44865.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "c19aef709514fbec0b47e4ade790636b"
+    },
+    {
+      "id": "tg_44864",
+      "name": "Wallpaper #44864",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44864.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44864.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "e3f84aeb1192627065999a1b987492ef"
+    },
+    {
+      "id": "tg_44863",
+      "name": "Wallpaper #44863",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44863.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44863.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "2a1ad34a9dd56872dbd2c068d164351b"
+    },
+    {
+      "id": "tg_44862",
+      "name": "Wallpaper #44862",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44862.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44862.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "400d976fdba8866a945ef9eb42a2f6a8"
+    },
+    {
+      "id": "tg_44861",
+      "name": "Wallpaper #44861",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44861.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44861.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "604f435e35d3a5677d87468a5c1ec921"
+    },
+    {
+      "id": "tg_44860",
+      "name": "Wallpaper #44860",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44860.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44860.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "2b7e49e27d95e5d3cfa8fe2eb9061c73"
+    },
+    {
+      "id": "tg_44859",
+      "name": "Wallpaper #44859",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44859.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44859.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "f658c43bebb8044efe3e1f7ddf612dde"
+    },
+    {
+      "id": "tg_44858",
+      "name": "Wallpaper #44858",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44858.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44858.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "a97479c1ef7266d8e92e50d7686b5858"
+    },
+    {
+      "id": "tg_44842",
+      "name": "Wallpaper #44842",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44842.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44842.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "1a8f6d21fdf45fdc59fd96e31cc786d2"
+    },
+    {
+      "id": "tg_44841",
+      "name": "Wallpaper #44841",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44841.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44841.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "b919e0fcc57df2b6a795113f9585a61a"
+    },
+    {
+      "id": "tg_44840",
+      "name": "Wallpaper #44840",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44840.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44840.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "559b51b5e37e1aa578d676142efb9003"
+    },
+    {
+      "id": "tg_44835",
+      "name": "Wallpaper #44835",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44835.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44835.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "6a47e82878bd91cc6a19dca51055929e"
+    },
+    {
+      "id": "tg_44834",
+      "name": "Wallpaper #44834",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44834.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44834.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "c9297252ef5a30411dd3421202383594"
+    },
+    {
+      "id": "tg_44833",
+      "name": "Wallpaper #44833",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44833.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44833.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "5937a28c800ae4ffe83b8f7983249880"
+    },
+    {
+      "id": "tg_44832",
+      "name": "Wallpaper #44832",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44832.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44832.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "4dff59f055d9695fe0ccf43439b2abd5"
+    },
+    {
+      "id": "tg_44831",
+      "name": "Wallpaper #44831",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44831.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44831.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "57f029533e824419e7262fe0fc50d9c7"
+    },
+    {
+      "id": "tg_44830",
+      "name": "Wallpaper #44830",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44830.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44830.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "2fe6c9c468835865c1980d9982fd618d"
+    },
+    {
+      "id": "tg_44822",
+      "name": "Wallpaper #44822",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44822.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44822.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "c5c80c9a907d05f51360c6d2a9eb0b0b"
+    },
+    {
+      "id": "tg_44821",
+      "name": "Wallpaper #44821",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44821.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44821.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "95d6661c450db76f71eacade3bd9072a"
+    },
+    {
+      "id": "tg_44820",
+      "name": "Wallpaper #44820",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44820.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44820.jpg",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "7ecfa281688e6b7f5a0852745ce5615a"
+    },
+    {
+      "id": "tg_44819",
+      "name": "Wallpaper #44819",
+      "author": "Wallpaper HD/4K (Amanda)",
+      "author_url": "https://t.me/amandinhawallpaper",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_44819.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/tg_44819.png",
+      "primary_color": "#121212",
+      "category": "images",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "image",
+        "hd",
+        "4k"
+      ],
+      "content_hash": "242975e0ec379b6559d479478e7b1e20"
+    },
     {
       "id": "tg_45157",
       "name": "Goku e Gohan Descansando",
@@ -20824,54 +22898,27 @@
     }
   ],
   "latest_notification": {
-    "id": "notif_1794477980",
-    "title": "Novo drop de Anime na área! 🔥",
-    "message": "40 novos wallpapers do Tanjiro, Nezuko e mais!",
-    "count": 40,
+    "id": "notif_1794502751",
+    "title": "Minecraft e Marvel chegaram!",
+    "message": "13 novos wallpapers épicos para sua tela",
+    "count": 13,
     "wallpaper_ids": [
-      "tg_45085",
-      "tg_45078",
-      "tg_45077",
-      "tg_45076",
-      "tg_45075",
-      "tg_45074",
-      "tg_45073",
-      "tg_45059",
-      "tg_45058",
-      "tg_45057",
-      "tg_45056",
-      "tg_45055",
-      "tg_45054",
-      "tg_45053",
-      "tg_45052",
-      "tg_45043",
-      "tg_45042",
-      "tg_45041",
-      "tg_45040",
-      "tg_45039",
-      "tg_45195",
-      "tg_45194",
-      "tg_45193",
-      "tg_45186",
-      "tg_45185",
-      "tg_45184",
-      "tg_45183",
-      "tg_45182",
-      "tg_45181",
-      "tg_45174",
-      "tg_45173",
-      "tg_45172",
-      "tg_45171",
-      "tg_45170",
-      "tg_45169",
-      "tg_45162",
-      "tg_45161",
-      "tg_45160",
-      "tg_45159",
-      "tg_45158"
+      "tg_45038",
+      "tg_45031",
+      "tg_45030",
+      "tg_45029",
+      "tg_45028",
+      "tg_45027",
+      "tg_45026",
+      "tg_45019",
+      "tg_45018",
+      "tg_45017",
+      "tg_45016",
+      "tg_45015",
+      "tg_45014"
     ],
-    "timestamp": 1794477980304,
+    "timestamp": 1794502751990,
     "generated_by": "gemini"
   },
-  "backfill_cursor_id": 45039
+  "backfill_cursor_id": 44819
 }
