@@ -1,6 +1,4 @@
-### 🌌 Wallpapers FOSS v1.0.4
+### 🌌 Wallpapers FOSS v1.0.5
 
-- **Navegação por Deslize entre Categorias:** Deslize horizontal (swipe) para alternar fluidamente entre as abas e categorias (Todos, Favoritos, Animes, etc.).
-- **Barra de Categorias com Auto-scroll:** Chips de categorias sincronizados com animação automática de rolagem ao deslizar ou selecionar.
-- **Interface Otimizada:** Ícone de configurações na barra superior ao lado dos controles de grade e galeria.
-- **Temas e Vidro:** Suporte a temas Vidro Líquido, OLED, Escuro, Claro e Dinâmico.
+- **Novo Ícone do Aplicativo:** Identidade visual atualizada com novo design moderno em gradiente e suporte a ícones adaptativos e circulares.
+- **Design Refinado:** Fundo e assets otimizados para máxima fidelidade visual em diferentes launchers.
