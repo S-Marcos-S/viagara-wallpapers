@@ -19,7 +19,6 @@
   <img src="https://img.shields.io/badge/Jetpack%20Compose-Material%203-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white" alt="Jetpack Compose" />
   <img src="https://img.shields.io/badge/Design-Material%20You-FF6F00?style=for-the-badge&logo=materialdesign&logoColor=white" alt="Material You" />
   <img src="https://img.shields.io/badge/Android-8.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android 8.0+" />
-  <img src="https://img.shields.io/badge/Google%20Gemini-Flash-4E86F7?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Google Gemini" />
 </p>
 
 <p align="center">
