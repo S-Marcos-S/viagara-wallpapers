@@ -60,7 +60,7 @@ PREFERRED_MODELS = [
     "gemini-flash-latest",
 ]
 
-PROMPT = """Você é um especialista em classificação e catalogação visual de papéis de parede mobile para um aplicativo Android (Viagara Launcher).
+PROMPT = """Você é um especialista em classificação e catalogação visual de papéis de parede mobile para o aplicativo Android Wallpapers FOSS.
 Analise detalhadamente a imagem fornecida e retorne APENAS um JSON válido no seguinte formato:
 
 {
@@ -318,7 +318,7 @@ def generate_dynamic_notification(
         summaries.append(f"- {name} (Categoria: {cat}; Tags: {tags})")
     items_text = "\n".join(summaries)
 
-    notif_prompt = f"""Você é o redator do aplicativo Android Viagara Launcher.
+    notif_prompt = f"""Você é o redator do aplicativo Android Wallpapers FOSS.
 Acabamos de adicionar {total_count} novos papéis de parede para celular:
 {items_text}
 

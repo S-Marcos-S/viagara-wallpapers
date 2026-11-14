@@ -1,16 +1,16 @@
-name: 🖼️ Enviar Papéis de Parede
-description: Selecione fotos da galeria para adicionar ao catálogo do Viagara Launcher
+name: Enviar Papéis de Parede
+description: Selecione fotos da galeria para adicionar ao catálogo do Wallpapers FOSS
 title: "[Wallpaper]: "
 labels: ["wallpaper-submission"]
 body:
   - type: markdown
     attributes:
       value: |
-        ### 🌌 Adicionar Papéis de Parede ao Catálogo
+        ### Adicionar Papéis de Parede ao Catálogo
         Anexe as imagens da sua galeria abaixo:
-        - 📱 **Seleção Múltipla Livre:** você pode selecionar quantas fotos quiser de uma só vez.
-        - 💎 **Qualidade Máxima:** resolução original 100% preservada (sem compressão).
-        - 🤖 **Classificação IA:** o **Google Gemini** identifica personagens, categorias, cores e tags de busca automaticamente.
+        - **Seleção Múltipla Livre:** você pode selecionar quantas fotos quiser de uma só vez.
+        - **Qualidade Máxima:** resolução original 100% preservada (sem compressão).
+        - **Classificação IA:** o **Google Gemini** identifica elementos visuais, categorias, cores e tags de busca automaticamente.
   - type: textarea
     id: images
     attributes:

@@ -48,7 +48,7 @@ jobs:
           OWNER: ${{ github.repository_owner }}
         run: |
           gh issue edit "$ISSUE_NUM" --add-label "aguardando-aprovacao" || true
-          gh issue comment "$ISSUE_NUM" --body "👋 Olá @$USER_LOGIN! Muito obrigado por sugerir papéis de parede para o repositório do **Viagara Launcher**!
+          gh issue comment "$ISSUE_NUM" --body "👋 Olá @$USER_LOGIN! Muito obrigado por sugerir papéis de parede para o repositório do **Wallpapers FOSS**!
 
           🛡️ **Moderação Ativa (Modelo 2):** Como você não é o mantenedor oficial deste repositório, esta sugestão foi colocada na fila de moderação para garantir a segurança e a qualidade do catálogo.
 

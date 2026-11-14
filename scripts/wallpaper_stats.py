@@ -37,12 +37,14 @@ def load_catalog() -> Dict[str, Any]:
 
 
 def calculate_local_dir_size(path: str) -> Tuple[int, int]:
-    """Returns (total_bytes, file_count) for a directory on disk."""
+    """Returns (total_bytes, file_count) for a directory on disk, ignoring .git, caches, and build folders."""
     if not os.path.exists(path):
         return 0, 0
     total_bytes = 0
     count = 0
-    for root, _, files in os.walk(path):
+    ignored_dirs = {".git", ".gradle", ".idea", "build", "__pycache__"}
+    for root, dirs, files in os.walk(path):
+        dirs[:] = [d for d in dirs if d not in ignored_dirs]
         for f in files:
             fp = os.path.join(root, f)
             if not os.path.islink(fp):
@@ -58,7 +60,7 @@ def fetch_sizes_from_github_api(repo: str, branch: str = "main") -> Dict[str, An
     """
     url = f"https://api.github.com/repos/{repo}/git/trees/{branch}?recursive=1"
     headers = {
-        "User-Agent": "Viagara-Wallpaper-Stats",
+        "User-Agent": "Wallpapers-FOSS-Stats",
         "Accept": "application/vnd.github.v3+json",
     }
     if GITHUB_TOKEN:
@@ -103,18 +105,15 @@ def fetch_sizes_from_github_api(repo: str, branch: str = "main") -> Dict[str, An
 
 
 def get_storage_stats(catalog: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-    # 1. Try local disk first
+    # 1. Prefer GitHub API for exact repository blob storage calculation
+    api_stats = fetch_sizes_from_github_api(DEFAULT_REPO, DEFAULT_BRANCH)
+    if api_stats and api_stats.get("full_count", 0) > 0:
+        return api_stats
+
+    # 2. Fallback to local disk calculation (excluding .git and caches)
     full_bytes, full_count = calculate_local_dir_size(FULL_DIR)
     thumb_bytes, thumb_count = calculate_local_dir_size(THUMB_DIR)
     total_bytes, total_count = calculate_local_dir_size(BASE_DIR)
-
-    # 2. If local files are empty or sparse (fewer files on disk than catalog wallpapers), fallback to GitHub API
-    total_in_catalog = len(catalog.get("wallpapers", [])) if catalog else 0
-    if (total_in_catalog > 0 and full_count < total_in_catalog) or full_count == 0 or full_bytes == 0:
-        print(f"Notice: Local directory is sparse ({full_count}/{total_in_catalog} files). Querying GitHub Git Trees API for exact repository sizes...")
-        api_stats = fetch_sizes_from_github_api(DEFAULT_REPO, DEFAULT_BRANCH)
-        if api_stats and api_stats.get("full_count", 0) > 0:
-            return api_stats
 
     return {
         "full_bytes": full_bytes,
@@ -211,34 +210,34 @@ def generate_stats_markdown(storage: Dict[str, Any], catalog_stats: Dict[str, An
 
     lines = [
         "<!-- START_WALLPAPER_STATS -->",
-        "## 📊 Painel de Estatísticas Diárias do Repositório",
+        "## Painel de Estatísticas Diárias do Repositório",
         "",
-        f"> 🕒 **Última atualização:** {now_brt} (`{now_utc}`)",
+        f"> **Última atualização:** {now_brt} (`{now_utc}`)",
         "",
-        "### 💾 Armazenamento e Consumo em Disco",
+        "### Armazenamento e Consumo em Disco",
         "",
         "| Diretório / Recurso | Tamanho em Gigabytes | Tamanho em Megabytes | Arquivos |",
         "| :--- | :---: | :---: | :---: |",
-        f"| 📁 **Wallpapers em Alta Resolução (`wallpapers/full/`)** | **{full_gb:.3f} GB** | {full_mb:.1f} MB | {storage['full_count']} |",
-        f"| 🖼️ **Miniaturas Otimizadas (`wallpapers/thumbnails/`)** | **{thumb_gb:.3f} GB** | {thumb_mb:.1f} MB | {storage['thumb_count']} |",
-        f"| 📦 **Total do Repositório** | **{repo_gb:.3f} GB** | **{repo_mb:.1f} MB** | {storage['total_count']} |",
+        f"| **Wallpapers em Alta Resolução (`wallpapers/full/`)** | **{full_gb:.3f} GB** | {full_mb:.1f} MB | {storage['full_count']} |",
+        f"| **Miniaturas Otimizadas (`wallpapers/thumbnails/`)** | **{thumb_gb:.3f} GB** | {thumb_mb:.1f} MB | {storage['thumb_count']} |",
+        f"| **Total do Repositório** | **{repo_gb:.3f} GB** | **{repo_mb:.1f} MB** | {storage['total_count']} |",
         "",
-        "### 🤖 Status das Descrições e Classificação por IA",
+        "### Status das Descrições e Classificação por IA",
         "",
         "| Método de Descrição | Quantidade | Porcentagem | Barra de Progresso |",
         "| :--- | :---: | :---: | :--- |",
-        f"| ✨ **IA Avançada (Google Gemini)** | **{classes['gemini']}** | **{gemini_pct:.1f}%** | `{'█' * int(gemini_pct // 5)}{'░' * (20 - int(gemini_pct // 5))}` |",
-        f"| 🤖 **IA Simples (MobileNetV3 / Local)** | **{classes['simple_ai']}** | **{simple_pct:.1f}%** | `{'█' * int(simple_pct // 5)}{'░' * (20 - int(simple_pct // 5))}` |",
-        f"| ✍️ **Curadoria Manual (Humana)** | **{classes['manual']}** | **{manual_pct:.1f}%** | `{'█' * int(manual_pct // 5)}{'░' * (20 - int(manual_pct // 5))}` |",
-        f"| ⏳ **Pendentes / Sem Descrição** | **{classes['sem_descricao']}** | **{pending_pct:.1f}%** | `{'█' * int(pending_pct // 5)}{'░' * (20 - int(pending_pct // 5))}` |",
-        f"| 🎯 **Total Geral no Catálogo** | **{total_wallpapers}** | **100%** | |",
+        f"| **IA Avançada (Google Gemini)** | **{classes['gemini']}** | **{gemini_pct:.1f}%** | `{'█' * int(gemini_pct // 5)}{'░' * (20 - int(gemini_pct // 5))}` |",
+        f"| **IA Simples (MobileNetV3 / Local)** | **{classes['simple_ai']}** | **{simple_pct:.1f}%** | `{'█' * int(simple_pct // 5)}{'░' * (20 - int(simple_pct // 5))}` |",
+        f"| **Curadoria Manual (Humana)** | **{classes['manual']}** | **{manual_pct:.1f}%** | `{'█' * int(manual_pct // 5)}{'░' * (20 - int(manual_pct // 5))}` |",
+        f"| **Pendentes / Sem Descrição** | **{classes['sem_descricao']}** | **{pending_pct:.1f}%** | `{'█' * int(pending_pct // 5)}{'░' * (20 - int(pending_pct // 5))}` |",
+        f"| **Total Geral no Catálogo** | **{total_wallpapers}** | **100%** | |",
         "",
-        "### 🎬 Tipos de Papéis de Parede",
+        "### Tipos de Papéis de Parede",
         "",
-        f"- 🖼️ **Imagens Estáticas (WebP / JPG):** **{types['image']}** ({pct(types['image']):.1f}%)",
-        f"- 🎥 **Live Wallpapers / Vídeos (MP4):** **{types['video']}** ({pct(types['video']):.1f}%)",
+        f"- **Imagens Estáticas (WebP / JPG):** **{types['image']}** ({pct(types['image']):.1f}%)",
+        f"- **Live Wallpapers / Vídeos (MP4):** **{types['video']}** ({pct(types['video']):.1f}%)",
         "",
-        "### 🏷️ Distribuição por Categorias",
+        "### Distribuição por Categorias",
         "",
         "| Categoria | Quantidade | Proporção |",
         "| :--- | :---: | :---: |",
@@ -255,11 +254,9 @@ def generate_stats_markdown(storage: Dict[str, Any], catalog_stats: Dict[str, An
 
 def update_readme(stats_md: str):
     header = (
-        "# 🌌 Viagara Wallpapers Repository\n\n"
-        "Repositório oficial de papéis de parede estáticos e dinâmicos (Live Wallpapers) em alta definição "
-        "para o **Viagara Launcher**.\n\n"
-        "Os papéis de parede são curados, sincronizados e categorizados automaticamente através de fluxos de "
-        "Inteligência Artificial (Google Gemini Flash & Simple AI Vision) e curadoria da comunidade.\n\n"
+        "# Wallpapers FOSS\n\n"
+        "Aplicativo e repositório de papéis de parede estáticos e dinâmicos (Live Wallpapers) em alta definição "
+        "para celulares Android.\n\n"
         "---\n\n"
     )
 

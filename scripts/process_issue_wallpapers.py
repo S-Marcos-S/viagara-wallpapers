@@ -446,7 +446,7 @@ def main():
     if added_items:
         summary_lines.append(f"## 🎉 {len(added_items)} Novos Papéis de Parede Adicionados!")
         summary_lines.append("")
-        summary_lines.append("As imagens foram integradas ao repositório em **resolução original máxima** (100% de fidelidade) e já estão prontas para exibição no **Viagara Launcher**.")
+        summary_lines.append("As imagens foram integradas ao repositório em **resolução original máxima** (100% de fidelidade) e já estão prontas para exibição no **Wallpapers FOSS**.")
         summary_lines.append("")
         summary_lines.append("| Miniatura | ID | Tipo | Resolução Original | Créditos |")
         summary_lines.append("| :---: | :---: | :---: | :---: | :---: |")
