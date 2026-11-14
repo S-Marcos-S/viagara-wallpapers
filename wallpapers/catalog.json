@@ -2518,48 +2518,6 @@
       "content_hash": "c11a3300b963ee9dc58f32e587eae4f2"
     },
     {
-      "id": "wp_i12_1",
-      "name": "Buraco Negro com Disco de Acreção",
-      "author": "S-Marcos-S",
-      "author_url": "https://github.com/S-Marcos-S",
-      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/wp_i12_1.webp",
-      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/wp_i12_1.webp",
-      "primary_color": "#FF6B00",
-      "category": "space",
-      "type": "image",
-      "is_live": false,
-      "tags": [
-        "space",
-        "black hole",
-        "espaço",
-        "buraco negro",
-        "oled",
-        "dark",
-        "cosmos",
-        "galaxy"
-      ],
-      "search_terms": [
-        "buraco negro",
-        "black hole",
-        "accretion disk",
-        "disco de acreção",
-        "espaço",
-        "space",
-        "galáxia",
-        "galaxy",
-        "nebulosa",
-        "nebula",
-        "estrelas",
-        "stars",
-        "universo",
-        "universe",
-        "interstellar"
-      ],
-      "content_hash": "84680db5a799cb02998101081e7d4d60",
-      "classified_by": "gemini",
-      "resolution": "485x1080"
-    },
-    {
       "id": "tg_46305",
       "name": "Planeta Escuro com Anéis Cósmicos",
       "author": "Wallpaper HD/4K (Amanda)",
@@ -2643,7 +2601,7 @@
     },
     {
       "id": "tg_46303",
-      "name": "Buraco Negro no Espaço",
+      "name": "Planeta com anéis e brilho",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_46303.webp",
@@ -2660,7 +2618,16 @@
         "oled",
         "dark",
         "cosmos",
-        "galaxy"
+        "galaxy",
+        "espaço",
+        "disco de acreção",
+        "accretion disk",
+        "estrelas",
+        "stars",
+        "nebulosa",
+        "nebula",
+        "universo",
+        "universe"
       ],
       "content_hash": "b9939d62a0305afa7fd707e6a286fd89",
       "search_terms": [
@@ -2678,9 +2645,12 @@
         "universe",
         "cosmos",
         "oled",
-        "dark"
+        "dark",
+        "espaco",
+        "galaxy"
       ],
-      "classified_by": "gemini"
+      "classified_by": "manual",
+      "custom_classified": true
     },
     {
       "id": "tg_46302",
@@ -15973,7 +15943,7 @@
     },
     {
       "id": "tg_46220",
-      "name": "Guts Berserk",
+      "name": "Soldado sombrio",
       "author": "Wallpaper HD/4K (Amanda)",
       "author_url": "https://t.me/amandinhawallpaper",
       "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/tg_46220.webp",
@@ -15989,7 +15959,14 @@
         "dark",
         "oled",
         "manga",
-        "sword"
+        "sword",
+        "guerreiro",
+        "espada",
+        "dark fantasy",
+        "preto e branco",
+        "black and white",
+        "cavaleiro negro",
+        "guts berserk"
       ],
       "content_hash": "2879e20231e920e2176647f1babbed8c",
       "search_terms": [
@@ -16008,7 +15985,8 @@
         "cavaleiro negro",
         "guts berserk"
       ],
-      "classified_by": "gemini"
+      "classified_by": "manual",
+      "custom_classified": true
     },
     {
       "id": "tg_46219",

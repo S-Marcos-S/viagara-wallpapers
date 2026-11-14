@@ -4,7 +4,7 @@ on:
   issue_comment:
     types: [created]
   issues:
-    types: [closed, labeled]
+    types: [opened, closed, labeled]
   workflow_dispatch:
     inputs:
       issue_number:
@@ -21,21 +21,27 @@ jobs:
     if: >
       (
         github.event_name == 'issues' &&
+        github.event.action == 'opened' &&
+        (github.actor == github.repository_owner || github.event.issue.author_association == 'OWNER') &&
+        (contains(github.event.issue.title, '[Sugestão]') || contains(github.event.issue.labels.*.name, 'wallpaper-suggestion') || contains(github.event.issue.body, 'custom_classified'))
+      ) ||
+      (
+        github.event_name == 'issues' &&
         github.event.action == 'closed' &&
         github.event.issue.state_reason != 'not_planned' &&
-        github.actor == github.repository_owner &&
+        (github.actor == github.repository_owner || github.event.issue.author_association == 'OWNER') &&
         (contains(github.event.issue.title, '[Sugestão]') || contains(github.event.issue.labels.*.name, 'wallpaper-suggestion') || contains(github.event.issue.body, 'custom_classified'))
       ) ||
       (
         github.event_name == 'issues' &&
         github.event.action == 'labeled' &&
         github.event.label.name == 'approved' &&
-        github.actor == github.repository_owner
+        (github.actor == github.repository_owner || github.event.issue.author_association == 'OWNER')
       ) ||
       (
         github.event_name == 'issue_comment' &&
         github.event.action == 'created' &&
-        contains(github.event.comment.body, '/approve') &&
+        (contains(github.event.comment.body, '/approve') || contains(github.event.comment.body, '/aprovar')) &&
         contains(fromJSON('["OWNER", "COLLABORATOR", "MEMBER"]'), github.event.comment.author_association)
       ) ||
       github.event_name == 'workflow_dispatch'
@@ -58,11 +64,17 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           DISPATCH_ISSUE_NUM: ${{ inputs.issue_number }}
           DEFAULT_ISSUE_BODY: ${{ github.event.issue.body }}
+          EVENT_ISSUE_NUM: ${{ github.event.issue.number }}
         run: |
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
-            export ISSUE_BODY=$(gh api "repos/${{ github.repository }}/issues/${DISPATCH_ISSUE_NUM}" --jq '.body')
+            ISSUE_NUM="$DISPATCH_ISSUE_NUM"
           else
+            ISSUE_NUM="$EVENT_ISSUE_NUM"
+          fi
+          if [ -n "$DEFAULT_ISSUE_BODY" ]; then
             export ISSUE_BODY="$DEFAULT_ISSUE_BODY"
+          else
+            export ISSUE_BODY=$(gh api "repos/${{ github.repository }}/issues/${ISSUE_NUM}" --jq '.body')
           fi
           python scripts/apply_suggestion.py
 
