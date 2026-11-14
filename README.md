@@ -31,10 +31,10 @@
 
 ## Sobre o Repositório
 
-Coleção de papéis de parede projetados especificamente para celulares (telas verticais nos formatos 9:16, 19.5:9 e 20:9), garantindo enquadramento ideal e alta resolução sem distorções em dispositivos Android.
+Coleção de papéis de parede projetados para celulares.
 
 - **Imagens e Vídeos:** Catálogo com papéis de parede estáticos (WebP/JPG) e animados (Live Wallpapers em MP4).
-- **Curadoria Inteligente:** Classificação de títulos, categorias e paletas de cores via Google Gemini Flash.
+- **Curadoria Inteligente:** Classificação de títulos, categorias e paletas de cores via IA.
 - **Resolução Original:** Armazenamento dos arquivos com 100% de fidelidade e miniaturas WebP otimizadas para carregamento rápido.
 
 ---
