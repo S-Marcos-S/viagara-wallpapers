@@ -9,49 +9,49 @@ Os papéis de parede são curados, sincronizados e categorizados automaticamente
 <!-- START_WALLPAPER_STATS -->
 ## 📊 Painel de Estatísticas Diárias do Repositório
 
-> 🕒 **Última atualização:** 13/11/2026 às 08:58 (Horário de Brasília) (`2026-11-13 11:58 UTC`)
+> 🕒 **Última atualização:** 14/11/2026 às 03:50 (Horário de Brasília) (`2026-11-14 06:50 UTC`)
 
 ### 💾 Armazenamento e Consumo em Disco
 
 | Diretório / Recurso | Tamanho em Gigabytes | Tamanho em Megabytes | Arquivos |
 | :--- | :---: | :---: | :---: |
-| 📁 **Wallpapers em Alta Resolução (`wallpapers/full/`)** | **2.215 GB** | 2268.2 MB | 728 |
-| 🖼️ **Miniaturas Otimizadas (`wallpapers/thumbnails/`)** | **0.025 GB** | 25.8 MB | 728 |
-| 📦 **Total do Repositório** | **4.452 GB** | **4558.9 MB** | 1571 |
+| 📁 **Wallpapers em Alta Resolução (`wallpapers/full/`)** | **2.322 GB** | 2377.3 MB | 761 |
+| 🖼️ **Miniaturas Otimizadas (`wallpapers/thumbnails/`)** | **0.027 GB** | 27.5 MB | 761 |
+| 📦 **Total do Repositório** | **4.667 GB** | **4779.3 MB** | 1639 |
 
 ### 🤖 Status das Descrições e Classificação por IA
 
 | Método de Descrição | Quantidade | Porcentagem | Barra de Progresso |
 | :--- | :---: | :---: | :--- |
-| ✨ **IA Avançada (Google Gemini)** | **661** | **91.7%** | `██████████████████░░` |
+| ✨ **IA Avançada (Google Gemini)** | **751** | **99.6%** | `███████████████████░` |
 | 🤖 **IA Simples (MobileNetV3 / Local)** | **0** | **0.0%** | `░░░░░░░░░░░░░░░░░░░░` |
 | ✍️ **Curadoria Manual (Humana)** | **3** | **0.4%** | `░░░░░░░░░░░░░░░░░░░░` |
-| ⏳ **Pendentes / Sem Descrição** | **57** | **7.9%** | `█░░░░░░░░░░░░░░░░░░░` |
-| 🎯 **Total Geral no Catálogo** | **721** | **100%** | |
+| ⏳ **Pendentes / Sem Descrição** | **0** | **0.0%** | `░░░░░░░░░░░░░░░░░░░░` |
+| 🎯 **Total Geral no Catálogo** | **754** | **100%** | |
 
 ### 🎬 Tipos de Papéis de Parede
 
-- 🖼️ **Imagens Estáticas (WebP / JPG):** **714** (99.0%)
-- 🎥 **Live Wallpapers / Vídeos (MP4):** **7** (1.0%)
+- 🖼️ **Imagens Estáticas (WebP / JPG):** **747** (99.1%)
+- 🎥 **Live Wallpapers / Vídeos (MP4):** **7** (0.9%)
 
 ### 🏷️ Distribuição por Categorias
 
 | Categoria | Quantidade | Proporção |
 | :--- | :---: | :---: |
-| `Oled` | **144** | 20.0% |
-| `Anime` | **111** | 15.4% |
-| `Abstract` | **79** | 11.0% |
-| `Nature` | **75** | 10.4% |
-| `Images` | **60** | 8.3% |
-| `Fantasy` | **59** | 8.2% |
-| `Minimal` | **44** | 6.1% |
-| `Games` | **37** | 5.1% |
-| `Animals` | **33** | 4.6% |
-| `Space` | **33** | 4.6% |
-| `Cars` | **26** | 3.6% |
+| `Oled` | **157** | 20.8% |
+| `Anime` | **126** | 16.7% |
+| `Abstract` | **103** | 13.7% |
+| `Nature` | **85** | 11.3% |
+| `Fantasy` | **59** | 7.8% |
+| `Space` | **47** | 6.2% |
+| `Minimal` | **44** | 5.8% |
+| `Animals` | **41** | 5.4% |
+| `Games` | **37** | 4.9% |
+| `Cars` | **32** | 4.2% |
 | `City` | **8** | 1.1% |
-| `Live` | **7** | 1.0% |
+| `Live` | **7** | 0.9% |
 | `Cyberpunk` | **3** | 0.4% |
+| `Images` | **3** | 0.4% |
 | `Movies` | **1** | 0.1% |
 | `Animation` | **1** | 0.1% |
 

@@ -1,19 +1,11 @@
 {
-  "id": "notif_1794603641",
-  "title": "Brilho OLED e Gradientes!",
-  "message": "9 novos wallpapers abstratos para sua tela",
-  "count": 9,
+  "id": "notif_1794639027",
+  "title": "Mistérios do Espaço!",
+  "message": "1 novo wallpaper de buraco negro esperando por você",
+  "count": 1,
   "wallpaper_ids": [
-    "tg_44834",
-    "tg_44833",
-    "tg_44832",
-    "tg_44831",
-    "tg_44830",
-    "tg_44822",
-    "tg_44821",
-    "tg_44820",
-    "tg_44819"
+    "wp_i12_1"
   ],
-  "timestamp": 1794603641295,
+  "timestamp": 1794639027774,
   "generated_by": "gemini"
 }

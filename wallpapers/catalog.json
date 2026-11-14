@@ -60,6 +60,48 @@
   ],
   "wallpapers": [
     {
+      "id": "wp_i12_1",
+      "name": "Buraco Negro com Disco de Acreção",
+      "author": "S-Marcos-S",
+      "author_url": "https://github.com/S-Marcos-S",
+      "thumbnail_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/thumbnails/wp_i12_1.webp",
+      "full_url": "https://raw.githubusercontent.com/S-Marcos-S/viagara-wallpapers/main/wallpapers/full/wp_i12_1.webp",
+      "primary_color": "#FF6B00",
+      "category": "space",
+      "type": "image",
+      "is_live": false,
+      "tags": [
+        "space",
+        "black hole",
+        "espaço",
+        "buraco negro",
+        "oled",
+        "dark",
+        "cosmos",
+        "galaxy"
+      ],
+      "search_terms": [
+        "buraco negro",
+        "black hole",
+        "accretion disk",
+        "disco de acreção",
+        "espaço",
+        "space",
+        "galáxia",
+        "galaxy",
+        "nebulosa",
+        "nebula",
+        "estrelas",
+        "stars",
+        "universo",
+        "universe",
+        "interstellar"
+      ],
+      "content_hash": "84680db5a799cb02998101081e7d4d60",
+      "classified_by": "gemini",
+      "resolution": "485x1080"
+    },
+    {
       "id": "tg_46305",
       "name": "Planeta Escuro com Anéis Cósmicos",
       "author": "Wallpaper HD/4K (Amanda)",
@@ -30162,22 +30204,14 @@
     }
   ],
   "latest_notification": {
-    "id": "notif_1794603641",
-    "title": "Brilho OLED e Gradientes!",
-    "message": "9 novos wallpapers abstratos para sua tela",
-    "count": 9,
+    "id": "notif_1794639027",
+    "title": "Mistérios do Espaço!",
+    "message": "1 novo wallpaper de buraco negro esperando por você",
+    "count": 1,
     "wallpaper_ids": [
-      "tg_44834",
-      "tg_44833",
-      "tg_44832",
-      "tg_44831",
-      "tg_44830",
-      "tg_44822",
-      "tg_44821",
-      "tg_44820",
-      "tg_44819"
+      "wp_i12_1"
     ],
-    "timestamp": 1794603641295,
+    "timestamp": 1794639027774,
     "generated_by": "gemini"
   },
   "backfill_cursor_id": 44581
